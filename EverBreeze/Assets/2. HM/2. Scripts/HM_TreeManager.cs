@@ -10,23 +10,12 @@ public class HM_TreeManager : MonoBehaviour
     {
         instance = this;
     }
+
     public int[] levels = { 0, 1, 2, 3 };
     public GameObject[] trees;
 
     public GameObject particle;
     int a = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void QuestEventTrigger(int num)
     {

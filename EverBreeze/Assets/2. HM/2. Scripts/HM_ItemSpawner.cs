@@ -15,18 +15,6 @@ public class HM_ItemSpawner : MonoBehaviour
     public GameObject itemSpwaner;
     GameObject gemPrefeb;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SpwanJemStone()
     {
         if(gemPrefeb == null)

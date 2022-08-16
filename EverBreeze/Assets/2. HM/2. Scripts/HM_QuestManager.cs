@@ -32,11 +32,12 @@ public class HM_QuestManager : MonoBehaviour
             HM_RayGrab.instance.NullGrabable();
             HM_RayGrab.instance.isGrabOn = false;
         }
-        else if(other.tag == "JamStone")
+        else if(isQuest_1_Clear == true && other.tag == "JamStone")
         {
             isQuest_2_Clear = true;
             block_3.SetActive(true);
             block_2.SetActive(false);
+
             HM_TreeManager.instance.QuestEventTrigger(2);
 
             Destroy(other.gameObject);
