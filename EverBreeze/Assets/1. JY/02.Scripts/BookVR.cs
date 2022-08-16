@@ -35,7 +35,7 @@ public class BookVR : MonoBehaviour
         {
             //Book Anchor의 위치 = Left Hand의 위치 
             book.transform.position = anchor.transform.position;
-            book.transform.eulerAngles = new Vector3(anchor.transform.eulerAngles.x, anchor.transform.eulerAngles.y, 0);
+            book.transform.eulerAngles = new Vector3(anchor.transform.eulerAngles.x, anchor.transform.eulerAngles.y, anchor.transform.eulerAngles.z);
         }
     }
 }
