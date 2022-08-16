@@ -9,6 +9,7 @@ TagManager:
   - Water
   - Branch
   - JamStone
+  - WaterBall
   layers:
   - Default
   - TransparentFX
