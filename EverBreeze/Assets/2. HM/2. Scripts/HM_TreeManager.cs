@@ -4,42 +4,44 @@ using UnityEngine;
 
 public class HM_TreeManager : MonoBehaviour
 {
-    public HM_TreeManager instance;
+    public static HM_TreeManager instance;
 
-    private void Awake()
+     void Awake()
     {
         instance = this;
     }
+
     public int[] levels = { 0, 1, 2, 3 };
     public GameObject[] trees;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject particle;
+    int a = 0;
+
+    public void QuestEventTrigger(int num)
     {
-        
+        StartCoroutine(ChangeTreesMat(num));
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator ChangeTreesMat(int level)
     {
-        
-    }
+        particle.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        trees[level].SetActive(true);
 
-    public void ChangeTreeState(int level)
-    {
-        if(level >= 0 && level <= 3)  // 레벨이 총 4개이기에 0,1,2,3 
+        #region 마지막 트리가 SetActive(false)가 되기 위함
+
+        if (level != 0)
         {
-            for (int i = 0; i <= trees.Length; i++) 
-            {
-                if (i == level)
-                {
-                    trees[i].SetActive(true);   // 레벨에 맞는 나무 활성화
-                }
-                else
-                {
-                    trees[i].SetActive(false); // 나머지 나무는 비활성화
-                }
-            }
+            trees[level - 1].SetActive(false);
         }
+        else
+        {
+            trees[3].SetActive(false);
+        }
+        #endregion
+
+        yield return new WaitForSeconds(3f);
+        particle.SetActive(false);
     }
+
 }
