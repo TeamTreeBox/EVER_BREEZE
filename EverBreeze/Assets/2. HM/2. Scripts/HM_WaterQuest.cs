@@ -14,7 +14,7 @@ public class HM_WaterQuest : MonoBehaviour
 
     bool iscris_blowup = false;
 
-   public GameObject debug_playerpos;
+    public GameObject debug_playerpos;
 
     // Start is called before the first frame update
     void Start()
@@ -42,18 +42,12 @@ public class HM_WaterQuest : MonoBehaviour
 
 #if UNITY_EDITOR
 
-        if(distance < 5f)
+
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            if(Input.GetKey(KeyCode.F))
-            {
-
-                this.transform.position = Vector3.zero;
-
-                this.transform.SetParent(debug_playerpos.transform);
-
-               
-            }
+            StartCoroutine(Debug_Test());
         }
+
 #endif
     }
 
@@ -73,7 +67,14 @@ public class HM_WaterQuest : MonoBehaviour
         }
     }
 
+    IEnumerator Debug_Test()
+    {
+        this.transform.SetParent(debug_playerpos.transform);
 
+        this.transform.localPosition = Vector3.zero;
+
+        yield return new WaitForEndOfFrame();
+    }
 
 
 }

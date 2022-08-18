@@ -10,6 +10,8 @@ TagManager:
   - Branch
   - JamStone
   - WaterBall
+  - Right_Song
+  - Wrong_Song
   layers:
   - Default
   - TransparentFX
