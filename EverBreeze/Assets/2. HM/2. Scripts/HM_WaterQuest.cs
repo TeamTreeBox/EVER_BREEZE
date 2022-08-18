@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class HM_WaterQuest : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class HM_WaterQuest : MonoBehaviour
 
     bool iscris_blowup = false;
 
-   
+   public GameObject debug_playerpos;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class HM_WaterQuest : MonoBehaviour
     {
         distance = Vector3.Distance(player.transform.position, this.transform.position);
         cristal_Dis = Vector3.Distance(cristal.transform.position, cristal_pos.transform.position);
-        if (distance < 3f)
+        if (distance < 6f)
         {
             if (cristal_Dis > 0.2f)
             {
@@ -38,6 +39,22 @@ public class HM_WaterQuest : MonoBehaviour
                 StopAllCoroutines();
             }
         }
+
+#if UNITY_EDITOR
+
+        if(distance < 5f)
+        {
+            if(Input.GetKey(KeyCode.F))
+            {
+
+                this.transform.position = Vector3.zero;
+
+                this.transform.SetParent(debug_playerpos.transform);
+
+               
+            }
+        }
+#endif
     }
 
     IEnumerator CristalBlowUp()
@@ -55,4 +72,8 @@ public class HM_WaterQuest : MonoBehaviour
             rigi.useGravity = false;
         }
     }
+
+
+
+
 }
