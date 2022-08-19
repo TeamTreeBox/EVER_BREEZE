@@ -23,7 +23,7 @@ public class Slot : MonoBehaviour
         {
             InsertItem(obj);
         }
-        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+        if (OVRInput.GetDown(OVRInput.Button.Four))
         {
             ReleaseItem(obj);
         }

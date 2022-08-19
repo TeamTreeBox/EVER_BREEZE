@@ -55,10 +55,10 @@ public class JY_RayGrab : MonoBehaviour
                 Debug.DrawRay(transform.position, transform.forward * 300f, Color.red);
             }
         }
-        else if (isGrabOn == true && OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+        else if (isGrabOn == true && OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
         {
             grabable.transform.SetParent(null);
-
+            grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             isGrabOn = false;
         }
     }
