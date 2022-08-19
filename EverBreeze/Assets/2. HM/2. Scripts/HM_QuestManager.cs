@@ -13,9 +13,7 @@ public class HM_QuestManager : MonoBehaviour
     public GameObject block_3;
     public GameObject block_4;
 
-    public GameObject gemStone;
-
-
+    
 
     private void OnTriggerEnter(Collider other)
     {

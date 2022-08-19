@@ -14,7 +14,7 @@ public class HM_WaterQuest : MonoBehaviour
 
     bool iscris_blowup = false;
 
-    public GameObject debug_playerpos;
+    //public GameObject debug_playerpos;
 
     // Start is called before the first frame update
     void Start()
@@ -25,30 +25,25 @@ public class HM_WaterQuest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(player.transform.position, this.transform.position);
-        cristal_Dis = Vector3.Distance(cristal.transform.position, cristal_pos.transform.position);
-        if (distance < 6f)
-        {
-            if (cristal_Dis > 0.2f)
-            {
-                StartCoroutine(CristalBlowUp());
-            }
-            else
-            {
-                iscris_blowup = true;
-                StopAllCoroutines();
-            }
-        }
 
 #if UNITY_EDITOR
 
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            StartCoroutine(Debug_Test());
+            //StartCoroutine(Debug_Test());
         }
 
 #endif
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            StartCoroutine(CristalBlowUp());
+        }
     }
 
     IEnumerator CristalBlowUp()
@@ -67,14 +62,14 @@ public class HM_WaterQuest : MonoBehaviour
         }
     }
 
-    IEnumerator Debug_Test()
-    {
-        this.transform.SetParent(debug_playerpos.transform);
+    //IEnumerator Debug_Test()
+    //{
+    //    this.transform.SetParent(debug_playerpos.transform);
 
-        this.transform.localPosition = Vector3.zero;
+    //    this.transform.localPosition = Vector3.zero;
 
-        yield return new WaitForEndOfFrame();
-    }
+    //    yield return new WaitForEndOfFrame();
+    //}
 
 
 }

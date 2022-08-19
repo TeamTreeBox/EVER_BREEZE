@@ -15,7 +15,12 @@ public class HM_PCQuestMg : MonoBehaviour
 
     public GameObject gemStone;
 
+    HM_PCJam pcJam;
 
+    private void Start()
+    {
+        pcJam = gemStone.transform.GetChild(0).gameObject.GetComponent<HM_PCJam>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,7 +36,7 @@ public class HM_PCQuestMg : MonoBehaviour
             HM_ItemSpawner.instance.SpwanJemStone();
             
         }
-        else if (isQuest_1_Clear == true && other.tag == "JamStone")
+        else if (isQuest_1_Clear == true && other.tag == "JamStone" && pcJam.isTouchEnough == true)
         {
             isQuest_2_Clear = true;
             block_3.SetActive(true);

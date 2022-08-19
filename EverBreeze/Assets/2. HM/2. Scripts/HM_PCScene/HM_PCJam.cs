@@ -20,6 +20,8 @@ public class HM_PCJam : MonoBehaviour
     GameObject particle;
     float dist;
 
+    public bool isTouchEnough = false;
+    int touchCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,13 +49,19 @@ public class HM_PCJam : MonoBehaviour
                 StartCoroutine(Debug_Test());
             }
         }
+
+        if(touchCount >= 3)
+        {
+            isTouchEnough = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-       if(other.tag == "Right_Song")
+        if (other.tag == "Right_Song" && isTouchEnough == false)
         {
             StartCoroutine(ChangeEmissionValue());
+            touchCount++;
         }
     }
 

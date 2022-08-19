@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7372208959193713332}
   m_Layer: 8
   m_Name: BetterCrystal01 (6)
-  m_TagString: Untagged
+  m_TagString: JamStone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   debug_playerpos: {fileID: 0}
+  isTouchEnough: 0
 --- !u!65 &4299771882888505725
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -234,7 +235,7 @@ GameObject:
   - component: {fileID: 528667338440648621}
   m_Layer: 8
   m_Name: Crystalsv09
-  m_TagString: Untagged
+  m_TagString: JamStone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
