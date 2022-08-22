@@ -45,6 +45,8 @@ public class JY_Slot : MonoBehaviour
         water.gameObject.SetActive(true);
 
         waterIn = true;
+
+        water.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Inventory;
     }
 
     void WaterReleaseItem(GameObject obj)
