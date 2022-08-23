@@ -11,9 +11,9 @@ public class HM_Fountain : MonoBehaviour
        
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider  other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player_Hand")
         {
             WaterBall.GetComponent<HM_WaterQuest>().CristalCoroutine();
         }    

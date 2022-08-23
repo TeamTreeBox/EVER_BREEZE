@@ -57,6 +57,7 @@ public class HM_PCWaterQuest : MonoBehaviour
             Rigidbody rigi = cristal.GetComponent<Rigidbody>();
 
             rigi.useGravity = false;
+            rigi.isKinematic = true;
 
           if(cristal_Dis < 0.1f)
             {

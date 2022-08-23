@@ -9,6 +9,8 @@ public class HM_WaterQuest : MonoBehaviour
     public GameObject cristal;
     public GameObject cristal_pos;
 
+    public GameObject waterVfx;
+
     float distance;
     float cristal_Dis;
 
@@ -25,6 +27,10 @@ public class HM_WaterQuest : MonoBehaviour
     {
         cristal_Dis = Vector3.Distance(cristal.transform.position, cristal_pos.transform.position);
 
+        if(cristal_Dis < 1f)
+        {
+            StopAllCoroutines();
+        }
     }
 
     public void CristalCoroutine()
@@ -45,12 +51,24 @@ public class HM_WaterQuest : MonoBehaviour
             Rigidbody rigi = cristal.GetComponent<Rigidbody>();
 
             rigi.useGravity = false;
+            //rigi.isKinematic = true;
+            rigi.constraints = RigidbodyConstraints.FreezePosition;
 
-            if (cristal_Dis < 0.1f)
+            if (cristal_Dis < 0.55f)
             {
+                this.gameObject.layer = 1 << 6;
                 iscris_blowup = true;
                 StopAllCoroutines();
             }
         }
+    }
+
+    public void SizeChangeWaterVFX()
+    {
+        waterVfx.transform.localScale = new Vector3(.2f, .2f, .2f);
+
+        GameObject vfxChild = waterVfx.transform.GetChild(0).gameObject;
+
+        vfxChild.transform.localScale = new Vector3(.1f, .1f, .1f);
     }
 }

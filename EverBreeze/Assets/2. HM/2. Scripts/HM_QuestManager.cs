@@ -33,8 +33,8 @@ public class HM_QuestManager : MonoBehaviour
         else if(isQuest_1_Clear == true && other.tag == "JamStone")
         {
             isQuest_2_Clear = true;
-            block_3.SetActive(true);
-            block_2.SetActive(false);
+            block_2.SetActive(true);
+            block_3.SetActive(false);
 
             HM_TreeManager.instance.QuestEventTrigger(2);
 

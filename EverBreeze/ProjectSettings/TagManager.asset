@@ -12,6 +12,8 @@ TagManager:
   - WaterBall
   - Right_Song
   - Wrong_Song
+  - Animal
+  - Player_Hand
   layers:
   - Default
   - TransparentFX

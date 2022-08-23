@@ -4,32 +4,73 @@ using UnityEngine;
 
 public class HM_JemStone : MonoBehaviour
 {
-    Material jemMat;
-    Texture jemTexture;
-    MeshRenderer jemMesh;
+    Material mat;
+    Texture texture;
+    MeshRenderer meshRenderer;
 
-    Color finalColor;
+    float emssionValue = 0;
+    float emssionplus = 0.3f;
+    float strengthValue = 0f;
+    float strength_Plus = 0.7f;
 
+    Color color;
+
+    public GameObject player;
+    GameObject particle;
+    float dist;
+
+    public bool isTouchEnough = false;
+    int touchCount = 0;
     // Start is called before the first frame update
     void Start()
     {
-        jemMesh = GetComponent<MeshRenderer>();
-        jemMat = jemMesh.material;
-        jemTexture = GetComponent<Texture>();
+        player = GameObject.FindWithTag("Player");
+        particle = this.transform.parent.GetChild(2).gameObject;
+        meshRenderer = GetComponent<MeshRenderer>();
+        mat = meshRenderer.material;
+        texture = GetComponent<Texture>();
+        //mat.SetFloat("_EmissionPower", 2f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    // Update is called once per frame
+    void Update()
     {
-        if(other.tag == this.gameObject.tag)
-        {
-            float emission = Mathf.PingPong( Time.time, 1.0f);
-            Color baseColor = Color.red;
-             finalColor = baseColor * Mathf.LinearToGammaSpace(emission);
+        print("Emission : " + mat.GetFloat("_EmissionPower"));
+        print("Stregth : " + mat.GetFloat("_Translucency"));
 
-            jemMat.SetColor("_EmissionColor", finalColor * 1.5f);
+        dist = Vector3.Distance(player.transform.position, this.transform.position);
+
+        if (touchCount >= 3)
+        {
+            isTouchEnough = true;
         }
     }
 
-    
-    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Right_Song" && isTouchEnough == false)
+        {
+            StartCoroutine(ChangeEmissionValue());
+            touchCount++;
+        }
+        else
+        {
+
+        }
+    }
+
+    IEnumerator ChangeEmissionValue()
+    {
+        particle.SetActive(true);
+        for (int i = 0; i < 18; i++)
+        {
+            mat.SetFloat("_EmissionPower", emssionValue += emssionplus);
+            mat.SetFloat("_Translucency", strengthValue += strength_Plus);
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return new WaitForSeconds(1f);
+
+        particle.SetActive(false);
+    }
+
 }

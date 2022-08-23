@@ -48,6 +48,11 @@ public class HM_RayGrab : MonoBehaviour
                 grapable.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
                 grapable.transform.localPosition = Vector3.zero;
 
+                if(grapable.tag == "WaterBall")
+                {
+                    grapable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
+                }
+
                 isGrabOn = true;
             }
             else
