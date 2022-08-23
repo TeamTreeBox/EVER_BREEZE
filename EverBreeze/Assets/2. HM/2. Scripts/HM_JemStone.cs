@@ -20,6 +20,8 @@ public class HM_JemStone : MonoBehaviour
     float dist;
 
     public bool isTouchEnough = false;
+    bool isTouching = false;
+
     int touchCount = 0;
     // Start is called before the first frame update
     void Start()
@@ -46,17 +48,15 @@ public class HM_JemStone : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Right_Song" && isTouchEnough == false)
+        if (other.tag == "Right_Song" && isTouchEnough == false && isTouching == false)
         {
+            isTouching = true;
             StartCoroutine(ChangeEmissionValue());
             touchCount++;
         }
-        else
-        {
-
-        }
+      
     }
 
     IEnumerator ChangeEmissionValue()
@@ -70,6 +70,7 @@ public class HM_JemStone : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
+        isTouching = false;
         particle.SetActive(false);
     }
 

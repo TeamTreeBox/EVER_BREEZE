@@ -65,6 +65,7 @@ public class HM_WaterQuest : MonoBehaviour
 
     public void SizeChangeWaterVFX()
     {
+        print("WaterSizeChanage");
         waterVfx.transform.localScale = new Vector3(.2f, .2f, .2f);
 
         GameObject vfxChild = waterVfx.transform.GetChild(0).gameObject;
