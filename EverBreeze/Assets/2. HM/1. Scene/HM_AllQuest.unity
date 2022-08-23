@@ -598,6 +598,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 1002265678194057200, guid: a5bedd72f5a3f6a4a9dd1c1e242a4fb7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1191183027072538396}
+    - target: {fileID: 1002265678194057200, guid: a5bedd72f5a3f6a4a9dd1c1e242a4fb7, type: 3}
+      propertyPath: cristal_pos
+      value: 
+      objectReference: {fileID: 1775550772}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5bedd72f5a3f6a4a9dd1c1e242a4fb7, type: 3}
 --- !u!1 &459897740
@@ -759,12 +767,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 563773545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21aee9c9b9552df48920b6072ff5c086, type: 3}
+  m_Script: {fileID: 11500000, guid: 056cabf5feea6904696579aab7218237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1191183027072538396}
-  cristal: {fileID: 187934988}
-  cristal_pos: {fileID: 1775550772}
+  WaterBall: {fileID: 187934988}
 --- !u!1 &580658692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,6 +1847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pr_BasicHand_Light_01_R
       objectReference: {fileID: 0}
+    - target: {fileID: 4061546487890428475, guid: 12e421e5a21eeec4cb66fadeb8cf1697, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7347200008874902267, guid: 12e421e5a21eeec4cb66fadeb8cf1697, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2489,7 +2499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1189770702373215122
 GameObject:
   m_ObjectHideFlags: 0
@@ -5718,6 +5728,7 @@ GameObject:
   - component: {fileID: 1191183027372733634}
   - component: {fileID: 1191183027388802888}
   - component: {fileID: 1191183027388726654}
+  - component: {fileID: 1191183027388802889}
   m_Layer: 0
   m_Name: CustomHandRight
   m_TagString: Untagged
@@ -6365,6 +6376,19 @@ MonoBehaviour:
   m_controller: 2
   m_parentTransform: {fileID: 1191215632629843198}
   m_player: {fileID: 1191183027072538396}
+--- !u!65 &1191183027388802889
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191183027377946256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1191202727195462562
 Transform:
   m_ObjectHideFlags: 0

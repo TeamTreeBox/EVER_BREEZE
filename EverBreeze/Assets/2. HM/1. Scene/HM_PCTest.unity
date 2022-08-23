@@ -2161,6 +2161,27 @@ MonoBehaviour:
   block_3: {fileID: 910105990}
   block_4: {fileID: 327468211}
   gemStone: {fileID: 523302770234413681, guid: 5f4ff438e87f03a46b3e2e62fb8e86de, type: 3}
+--- !u!1 &1862749732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 979553989535407285, guid: a5bedd72f5a3f6a4a9dd1c1e242a4fb7, type: 3}
+  m_PrefabInstance: {fileID: 656920943638222647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1862749738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862749732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eefccbe604e708439d61d34c11e4f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1354056669}
+  cristal: {fileID: 1862749732}
+  cristal_pos: {fileID: 1616437576}
+  debug_playerpos: {fileID: 437073259}
 --- !u!1 &1870044033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,7 +2409,8 @@ PrefabInstance:
       propertyPath: debug_playerpos
       value: 
       objectReference: {fileID: 437073259}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1002265678194057200, guid: a5bedd72f5a3f6a4a9dd1c1e242a4fb7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a5bedd72f5a3f6a4a9dd1c1e242a4fb7, type: 3}
 --- !u!114 &881725473851389911
 MonoBehaviour:

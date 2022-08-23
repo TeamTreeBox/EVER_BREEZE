@@ -45,8 +45,8 @@ public class HM_RayGrab : MonoBehaviour
 
                 grapable.transform.SetParent(grapPos.transform);
 
-                grapable.transform.localPosition = Vector3.zero;
                 grapable.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+                grapable.transform.localPosition = Vector3.zero;
 
                 isGrabOn = true;
             }
