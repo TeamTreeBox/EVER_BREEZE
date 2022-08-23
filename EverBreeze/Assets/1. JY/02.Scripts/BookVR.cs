@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class BookVR : MonoBehaviour
 {
+    public static BookVR instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public GameObject book;         //가이드북 Object
     public GameObject bookAnchor;   //가이드북 Position
 
@@ -18,14 +25,17 @@ public class BookVR : MonoBehaviour
     bool InventoryActive;
     bool ItemActive;
 
-    void Start()
+    public bool InventoryOn;
+
+    public void Start()
     {
         book.SetActive(false);
         inventory.SetActive(false);
-        item.SetActive(false);
+        //item.SetActive(false);
 
         UIActive = false;
         InventoryActive = false;
+        InventoryOn = false;
     }
 
     // Update is called once per frame
@@ -44,7 +54,7 @@ public class BookVR : MonoBehaviour
             book.transform.eulerAngles = new Vector3(bookAnchor.transform.eulerAngles.x, bookAnchor.transform.eulerAngles.y, bookAnchor.transform.eulerAngles.z);
         }
         //------------------------------------------인벤토리
-        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch))
         {
             InventoryActive = !InventoryActive;
             inventory.SetActive(InventoryActive);
@@ -53,9 +63,10 @@ public class BookVR : MonoBehaviour
         {
             inventory.transform.position = inventoryPos.transform.position;
             inventory.transform.eulerAngles = new Vector3(inventoryPos.transform.eulerAngles.x, inventoryPos.transform.eulerAngles.y, inventoryPos.transform.eulerAngles.z);
+            InventoryOn = true;
         }
         //------------------------------------------아이템 정보
-        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
+        /*if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
         {
             ItemActive = !ItemActive;
             item.SetActive(ItemActive);
@@ -65,6 +76,6 @@ public class BookVR : MonoBehaviour
         {
             item.transform.position = itemPos.transform.position;
             item.transform.eulerAngles = new Vector3(itemPos.transform.eulerAngles.x, itemPos.transform.eulerAngles.y, itemPos.transform.eulerAngles.z);
-        }
+        }*/
     }
 }
