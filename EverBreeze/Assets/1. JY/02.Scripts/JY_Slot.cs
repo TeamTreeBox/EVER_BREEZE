@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class JY_Slot : MonoBehaviour
 {
+    private bool activeState;
+
+
     public GameObject ItemInSlot;
 
     public GameObject waterFactory;
@@ -18,18 +21,51 @@ public class JY_Slot : MonoBehaviour
         water.SetActive(false);
     }
 
+    public void Update()
+    {
+        if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
+        {
+            ButtonSecondary();
+        }
+    }
+
+    public void ButtonSecondary()
+    {
+        if (activeState == true)
+        {
+            print("!»ç¶óÁü");
+            activeState = false;
+        }
+        else
+        {
+            print("!»ý°ÜÁü");
+            activeState = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject obj = other.gameObject;
+        if (activeState == true && obj.CompareTag("Player") && waterCount == waterMaxCount)
+        {
+            WaterReleaseItem();
+            print("!!»ç¶óÁü");
+        }
+
+    }
+    int waterCount;
+    int waterMaxCount = 1;
     private void OnTriggerStay(Collider other)
     {
         //if (ItemInSlot != null) return;
+        //GameObject obj = other.gameObject;
         GameObject obj = other.gameObject;
         //if (!IsItem(obj)) return;
-        if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger) && other.gameObject.tag == "Water" && waterIn == false)
+
+        if (activeState == false && obj.CompareTag("Water") && waterCount < waterMaxCount)
         {
             WaterInsertItem(obj);
-        }
-        if (OVRInput.GetUp(OVRInput.Button.Four) && waterIn == true)
-        {
-            WaterReleaseItem(obj);
+            print("!!»ý°ÜÁü");
         }
     }
 
@@ -40,7 +76,10 @@ public class JY_Slot : MonoBehaviour
 
     void WaterInsertItem(GameObject obj)
     {
+        waterCount++;
+
         Destroy(obj.gameObject);
+        //obj.gameObject.SetActive(false);
 
         water.gameObject.SetActive(true);
 
@@ -49,7 +88,7 @@ public class JY_Slot : MonoBehaviour
         water.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Inventory;
     }
 
-    void WaterReleaseItem(GameObject obj)
+    void WaterReleaseItem()
     {
         print(">M< Out Item");
         water.gameObject.SetActive(false);
@@ -58,6 +97,7 @@ public class JY_Slot : MonoBehaviour
         waterNew.transform.position = waterPos.transform.position;
 
         waterIn = false;
+        waterCount--;
     }
 
     /*void InsertItem(GameObject obj)

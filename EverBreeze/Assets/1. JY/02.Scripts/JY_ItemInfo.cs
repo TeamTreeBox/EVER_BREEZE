@@ -13,6 +13,8 @@ public enum ItemState
 
 public class JY_ItemInfo : MonoBehaviour
 {
+    private bool activeState;
+
     public GameObject waterInfo;
 
     public ItemState state = ItemState.Field;
@@ -20,6 +22,7 @@ public class JY_ItemInfo : MonoBehaviour
     void Start()
     {
         waterInfo.SetActive(false);
+        activeState = true;
     }
 
     public ItemState State
@@ -30,7 +33,10 @@ public class JY_ItemInfo : MonoBehaviour
             switch (state)
             {
                 case ItemState.Field:
-                    Feild();
+                    if (activeState = false)
+                    {
+                        Feild();
+                    }
                     break;
 
                 case ItemState.Grab:
@@ -49,7 +55,10 @@ public class JY_ItemInfo : MonoBehaviour
         switch (state)
         {
             case ItemState.Field:
-                Feild();
+                if (activeState = false)
+                {
+                    Feild();
+                }
                 break;
 
             case ItemState.Grab:
@@ -65,7 +74,7 @@ public class JY_ItemInfo : MonoBehaviour
         {
             stateInventory = true;
             ItemState state = ItemState.Inventory;
-            print("%R.Two 버튼 누름%");
+            //print("%R.Two 버튼 누름%");
             print(state);
         }
     }
@@ -80,18 +89,23 @@ public class JY_ItemInfo : MonoBehaviour
 
     }
 
-    public RaycastHit hit;
-    float MaxDistance = 15f;
-
-    bool isInfoOn;
-
+    bool itemInfoActive;
     private void Inventory()
     {
-        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && isInfoOn == false)
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "Water")
         {
-            print("%아이템 정보%");
-            isInfoOn = true;
-            waterInfo.SetActive(true);
+            print("B버튼 누름");
+            if (activeState == true)
+            {
+                waterInfo.SetActive(false);
+                print("사라짐");
+                activeState = false;
+            }else
+            {
+                waterInfo.SetActive(true);
+                print("생겨짐");
+                activeState = true;
+            }
         }
     }
 }

@@ -18,8 +18,8 @@ public class BookVR : MonoBehaviour
     public GameObject inventory;    //인벤토리 Object
     public GameObject inventoryPos; //인벤토리 Position
 
-    public GameObject item;         //아이템 Object
-    public GameObject itemPos;      //인벤토리 Position
+    //public GameObject item;         //아이템 Object
+    //public GameObject itemPos;      //인벤토리 Position
 
     bool UIActive;
     bool InventoryActive;

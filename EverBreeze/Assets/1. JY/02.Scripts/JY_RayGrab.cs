@@ -43,6 +43,8 @@ public class JY_RayGrab : MonoBehaviour
 
                 grabable = hit.transform.gameObject;
 
+
+
                 grabable.transform.SetParent(grabPos.transform);
 
                 grabable.transform.localPosition = Vector3.zero;
@@ -57,8 +59,11 @@ public class JY_RayGrab : MonoBehaviour
         }
         else if (isGrabOn == true && OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
         {
-            grabable.transform.SetParent(null);
-            grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            if(grabable  != null)
+            {
+                grabable.transform.SetParent(null);
+            //grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            }
             isGrabOn = false;
         }
     }

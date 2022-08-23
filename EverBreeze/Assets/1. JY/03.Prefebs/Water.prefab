@@ -132,6 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterInfo: {fileID: 7360880713044043525}
   state: 0
+  itemInfoPos: {fileID: 0}
+  itemInfo: {fileID: 0}
 --- !u!54 &3405851642181554536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -203,6 +205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 3777402809872198897, guid: 9b11ea6dd40743e418ee19bf0392754b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 46431a94937bf8e458c1bb116066b3e5, type: 3}
     - target: {fileID: 3777402809872198902, guid: 9b11ea6dd40743e418ee19bf0392754b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -253,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3777402810666007117, guid: 9b11ea6dd40743e418ee19bf0392754b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.964
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b11ea6dd40743e418ee19bf0392754b, type: 3}
