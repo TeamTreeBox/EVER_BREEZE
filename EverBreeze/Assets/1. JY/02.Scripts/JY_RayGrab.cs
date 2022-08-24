@@ -5,66 +5,96 @@ using UnityEngine;
 public class JY_RayGrab : MonoBehaviour
 {
     public static JY_RayGrab instance;
-
     private void Awake()
     {
         instance = this;
     }
 
-    RaycastHit hit;
-    int layerMask;
+    public RaycastHit hit;
+    int layerMask00;
+    int layerMask01;
 
     public GameObject grabPos;
-    public GameObject grabable;
+    public GameObject grapable;
 
     public bool isGrabOn = false;
+
+    public GameObject waterFactory;
 
     // Start is called before the first frame update
     void Start()
     {
-        layerMask = 1 << 6;
+        layerMask00 = 1 << 6;
+        layerMask01 = 1 << 7;
     }
 
     public void NullGrabable()
     {
-        grabable = null;
+        grapable = null;
     }
 
+    bool slotHit;
     // Update is called once per frame
     void Update()
     {
-
+        print("isGrabOn" + " " + isGrabOn);
         if (isGrabOn == false && OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 300f, layerMask))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 300f, layerMask00))
             {
                 print("hit!");
                 Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
 
-                grabable = hit.transform.gameObject;
+                grapable = hit.transform.gameObject;
 
+                if (grapable.gameObject != null)
+                {
+                    isGrabOn = true;
+                    grapable.transform.SetParent(grabPos.transform);
 
+                    grapable.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+                    grapable.transform.localPosition = Vector3.zero;
 
-                grabable.transform.SetParent(grabPos.transform);
+                    if (grapable.tag == "WaterBall")
+                    {
+                        grapable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
+                    }
 
-                grabable.transform.localPosition = Vector3.zero;
-                grabable.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+                    
+                    grapable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Grab;
+                }
 
-                isGrabOn = true;
             }
             else
             {
                 Debug.DrawRay(transform.position, transform.forward * 300f, Color.red);
             }
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 300f, layerMask01))
+            {
+                grapable = hit.transform.gameObject;
+                if (grapable.GetComponent<JY_Slot>().isWaterItemIn == true)
+                {
+                    grapable.GetComponent<JY_Slot>().water.gameObject.SetActive(false);
+
+                    GameObject waterNew = Instantiate(waterFactory);
+                    waterNew.transform.position = grabPos.transform.position;
+
+                    //grapable.GetComponent<JY_Slot>().waterCount--;
+
+                    grapable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Grab;
+                }
+            }
         }
         else if (isGrabOn == true && OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
         {
-            if(grabable  != null)
+            if (grapable.gameObject != null)
             {
-                grabable.transform.SetParent(null);
-            //grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                print("%%OUT%%");
+                grapable.transform.SetParent(null);
+                grapable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                isGrabOn = false;
+                grapable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Field;
             }
-            isGrabOn = false;
+            }
         }
-    }
 }

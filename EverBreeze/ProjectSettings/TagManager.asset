@@ -14,6 +14,7 @@ TagManager:
   - Wrong_Song
   - Animal
   - Player_Hand
+  - Slot
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Water
   - UI
   - Item
-  - 
+  - Slot
   - 
   - 
   - 

@@ -7,18 +7,25 @@ public class JY_Slot : MonoBehaviour
 {
     private bool activeState;
 
-
     public GameObject ItemInSlot;
 
     public GameObject waterFactory;
     public GameObject waterPos;
     public GameObject water;
-    bool waterIn;
+
+    public GameObject branchFactory;
+    public GameObject branchPos;
+    public GameObject branch;
+
+    public GameObject jamStoneFactory;
+    public GameObject jamStonePos;
+    public GameObject jamStone;
 
     public void Start()
     {
-        waterIn = false;
         water.SetActive(false);
+        branch.SetActive(false);
+        jamStone.SetActive(false);
     }
 
     public void Update()
@@ -43,18 +50,36 @@ public class JY_Slot : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*public void OnTriggerEnter(Collider other)
     {
         GameObject obj = other.gameObject;
-        if (activeState == true && obj.CompareTag("Player") && waterCount == waterMaxCount)
+        if (activeState == true && JY_RayGrab.instance.grapable.CompareTag("Slot") && waterCount == waterMaxCount)
         {
             WaterReleaseItem();
-            print("!!ªÁ∂Û¡¸");
+            print("!!@ªÁ∂Û¡¸");
         }
 
-    }
-    int waterCount;
+        if (activeState == true && branchCount == branchMaxCount)
+        {
+            BranchReleaseItem();
+            print("!!#ªÁ∂Û¡¸");
+        }
+
+        if (activeState == true && jamStoneCount == jamStoneMaxCount)
+        {
+            JamStoneReleaseItem();
+            print("!!$ªÁ∂Û¡¸");
+        }
+
+    }*/
+    public int waterCount;
     int waterMaxCount = 1;
+
+    int branchCount;
+    int branchMaxCount = 1;
+
+    int jamStoneCount;
+    int jamStoneMaxCount = 1;
     private void OnTriggerStay(Collider other)
     {
         //if (ItemInSlot != null) return;
@@ -64,8 +89,23 @@ public class JY_Slot : MonoBehaviour
 
         if (activeState == false && obj.CompareTag("Water") && waterCount < waterMaxCount)
         {
+            JY_RayGrab.instance.isGrabOn = false;
             WaterInsertItem(obj);
-            print("!!ª˝∞‹¡¸");
+            print("!!@ª˝∞‹¡¸");
+        }
+
+        if (activeState == false && obj.CompareTag("Branch") && branchCount < branchMaxCount)
+        {
+            JY_RayGrab.instance.isGrabOn = false;
+            BranchInsertItem(obj);
+            print("!!#ª˝∞‹¡¸");
+        }
+
+        if (activeState == false && obj.CompareTag("JamStone") && jamStoneCount < jamStoneMaxCount)
+        {
+            JY_RayGrab.instance.isGrabOn = false;
+            jamStoneInsertItem(obj);
+            print("!!$ª˝∞‹¡¸");
         }
     }
 
@@ -74,6 +114,7 @@ public class JY_Slot : MonoBehaviour
         return obj.GetComponent<Item>();
     }
 
+    public bool isWaterItemIn; 
     void WaterInsertItem(GameObject obj)
     {
         waterCount++;
@@ -83,12 +124,36 @@ public class JY_Slot : MonoBehaviour
 
         water.gameObject.SetActive(true);
 
-        waterIn = true;
-
         water.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Inventory;
+
+        isWaterItemIn = true;
     }
 
-    void WaterReleaseItem()
+    void BranchInsertItem(GameObject obj)
+    {
+        branchCount++;
+
+        Destroy(obj.gameObject);
+        //obj.gameObject.SetActive(false);
+
+        branch.gameObject.SetActive(true);
+
+        branch.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Inventory;
+    }
+
+    void jamStoneInsertItem(GameObject obj)
+    {
+        jamStoneCount++;
+
+        Destroy(obj.gameObject);
+        //obj.gameObject.SetActive(false);
+
+        jamStone.gameObject.SetActive(true);
+
+        jamStone.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Inventory;
+    }
+
+    public void WaterReleaseItem()
     {
         print(">M< Out Item");
         water.gameObject.SetActive(false);
@@ -96,49 +161,28 @@ public class JY_Slot : MonoBehaviour
         GameObject waterNew = Instantiate(waterFactory);
         waterNew.transform.position = waterPos.transform.position;
 
-        waterIn = false;
         waterCount--;
     }
 
-    /*void InsertItem(GameObject obj)
+    void BranchReleaseItem()
     {
-        obj.GetComponent<Rigidbody>().isKinematic = true;
-        obj.transform.SetParent(gameObject.transform, true);
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localEulerAngles = obj.GetComponent<Item>().slotRotatin;
-        obj.transform.localScale = new Vector3(obj.transform.localScale.x / 2, obj.transform.localScale.y / 2, obj.transform.localScale.z / 2);
-        obj.GetComponent<Item>().inSlot = true;
-        obj.GetComponent<Item>().currentSlot = this;
-        ItemInSlot = obj;
-        isInitem = true;
-        //slotImage.color = Color.gray;
-    }*/
+        print(">M< Out Item");
+        branch.gameObject.SetActive(false);
 
-    /*    void ReleaseItem(GameObject obj)
-        {
-            print(">M< Out Item");
-            obj.GetComponent<Rigidbody>().isKinematic = false;
-            obj.transform.SetParent(null);
-            obj.transform.localPosition = this.transform.position;
-            obj.transform.localEulerAngles = obj.GetComponent<Item>().slotRotatin;
-            obj.transform.localScale = new Vector3(obj.transform.localScale.x * 2, obj.transform.localScale.y * 2, obj.transform.localScale.z * 2);
-            obj.GetComponent<Item>().inSlot = false;
-            obj.GetComponent<Item>().currentSlot = null;
-            ItemInSlot = null;
-            isInitem = false;
-        }
+        GameObject branchNew = Instantiate(branchFactory);
+        branchNew.transform.position = branchPos.transform.position;
 
-        void Inventoryobj()
-        {
-            // ¿Œ∫•≈‰∏Æ √ﬂ∞° ***
-            if (ItemInSlot.GetComponent<Item>() == null) return;
-            if (ItemInSlot.GetComponent<Item>().inSlot == true)
-            {
-                ItemInSlot.GetComponent<Slot>().ItemInSlot = null;
-                ItemInSlot.transform.parent = null;
-                ItemInSlot.GetComponent<Item>().inSlot = false;
-                ItemInSlot.GetComponent<Item>().currentSlot.ResetColor();
-                ItemInSlot.GetComponent<Item>().currentSlot = null;
-            }
-        }*/
+        branchCount--;
+    }
+
+    void JamStoneReleaseItem()
+    {
+        print(">M< Out Item");
+        jamStone.gameObject.SetActive(false);
+
+        GameObject jamStoneNew = Instantiate(jamStoneFactory);
+        jamStoneNew.transform.position = jamStonePos.transform.position;
+
+        jamStoneCount--;
+    }
 }

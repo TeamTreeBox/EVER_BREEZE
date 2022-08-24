@@ -15,54 +15,30 @@ public class JY_ItemInfo : MonoBehaviour
 {
     private bool activeState;
 
-    public GameObject waterInfo;
+    public GameObject itemInfo;
 
     public ItemState state = ItemState.Field;
     
     void Start()
     {
-        waterInfo.SetActive(false);
-        activeState = true;
+        itemInfo.SetActive(false);
+        activeState = false;
     }
 
-    public ItemState State
-    {
-        get => state;
-        set
-        {
-            switch (state)
-            {
-                case ItemState.Field:
-                    if (activeState = false)
-                    {
-                        Feild();
-                    }
-                    break;
-
-                case ItemState.Grab:
-                    Grab();
-                    break;
-
-                case ItemState.Inventory:
-                    Inventory();
-                    break;
-            }
-        }
-    }
     bool stateInventory;
     void Update()
     {
+        print(state);
         switch (state)
         {
             case ItemState.Field:
-                if (activeState = false)
-                {
                     Feild();
-                }
+                    //print(state);
                 break;
 
             case ItemState.Grab:
                 Grab();
+                //print(state);
                 break;
 
             case ItemState.Inventory:
@@ -75,18 +51,33 @@ public class JY_ItemInfo : MonoBehaviour
             stateInventory = true;
             ItemState state = ItemState.Inventory;
             //print("%R.Two 버튼 누름%");
-            print(state);
+            //print(state);
         }
     }
 
     private void Feild()
     {
-        waterInfo.SetActive(false);
+        itemInfo.SetActive(false);
     }
 
     private void Grab()
     {
-
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) )
+        {
+            print("B버튼 누름");
+            if (activeState == true)
+            {
+                itemInfo.SetActive(true);
+                print("사라짐");
+                activeState = false;
+            }
+            else
+            {
+                itemInfo.SetActive(false);
+                print("생겨짐");
+                activeState = true;
+            }
+        }
     }
 
     bool itemInfoActive;
@@ -97,12 +88,46 @@ public class JY_ItemInfo : MonoBehaviour
             print("B버튼 누름");
             if (activeState == true)
             {
-                waterInfo.SetActive(false);
+                itemInfo.SetActive(true);
                 print("사라짐");
                 activeState = false;
             }else
             {
-                waterInfo.SetActive(true);
+                itemInfo.SetActive(false);
+                print("생겨짐");
+                activeState = true;
+            }
+        }
+
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "Branch")
+        {
+            print("B버튼 누름");
+            if (activeState == true)
+            {
+                itemInfo.SetActive(true);
+                print("사라짐");
+                activeState = false;
+            }
+            else
+            {
+                itemInfo.SetActive(false);
+                print("생겨짐");
+                activeState = true;
+            }
+        }
+
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "JamSotone")
+        {
+            print("B버튼 누름");
+            if (activeState == true)
+            {
+                itemInfo.SetActive(true);
+                print("사라짐");
+                activeState = false;
+            }
+            else
+            {
+                itemInfo.SetActive(false);
                 print("생겨짐");
                 activeState = true;
             }
