@@ -15,6 +15,7 @@ public class HM_Fountain : MonoBehaviour
     {
         if(other.tag == "Player_Hand")
         {
+            if(WaterBall.gameObject != null)
             WaterBall.GetComponent<HM_WaterQuest>().CristalCoroutine();
         }    
     }
