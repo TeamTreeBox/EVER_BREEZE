@@ -43,28 +43,42 @@ public class HM_RayGrab : MonoBehaviour
 
                 grapable = hit.transform.gameObject;
 
-                grapable.transform.SetParent(grapPos.transform);
-
-                grapable.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-                grapable.transform.localPosition = Vector3.zero;
-
-                if(grapable.tag == "WaterBall")
+                if(grapable.gameObject != null)
                 {
-                    grapable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
-                }
+                    grapable.transform.SetParent(grapPos.transform);
 
-                isGrabOn = true;
+                    grapable.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+                    grapable.transform.localPosition = Vector3.zero;
+
+                    if (grapable.tag == "WaterBall")
+                    {
+                        grapable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
+                    }
+
+                    isGrabOn = true;
+                }
+                
             }
             else
-            {
+            { 
                 Debug.DrawRay(transform.position, transform.forward * 300f, Color.red);
             }
         }
         else if(isGrabOn == true && OVRInput.GetDown(OVRInput.Button.One))
         {
-            grapable.transform.SetParent(null);
+            if(grapable.gameObject != null)
+            {
+                grapable.transform.SetParent(null);
 
-            isGrabOn = false;
+                isGrabOn = false;
+            }
+        }
+        else if(OVRInput.GetDown(OVRInput.Button.Two))
+        {
+            if(grapable.gameObject != null)
+            {
+                Destroy(grapable.gameObject);
+            }
         }
     }
 }
