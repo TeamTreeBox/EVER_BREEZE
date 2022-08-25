@@ -28,17 +28,16 @@ public class JY_ItemInfo : MonoBehaviour
     bool stateInventory;
     void Update()
     {
-        print(state);
         switch (state)
         {
             case ItemState.Field:
                     Feild();
-                    //print(state);
+                    print(state);
                 break;
 
             case ItemState.Grab:
                 Grab();
-                //print(state);
+                print(state);
                 break;
 
             case ItemState.Inventory:
@@ -62,7 +61,7 @@ public class JY_ItemInfo : MonoBehaviour
 
     private void Grab()
     {
-        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) )
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
         {
             print("B버튼 누름");
             if (activeState == true)
@@ -85,50 +84,50 @@ public class JY_ItemInfo : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "Water")
         {
-            print("B버튼 누름");
+            //print("B버튼 누름");
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
-                print("사라짐");
+                print("Water생겨짐");
                 activeState = false;
             }else
             {
                 itemInfo.SetActive(false);
-                print("생겨짐");
+                print("Water사라짐");
                 activeState = true;
             }
         }
 
         if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "Branch")
         {
-            print("B버튼 누름");
+            //print("B버튼 누름");
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
-                print("사라짐");
+                print("Branch생겨짐");
                 activeState = false;
             }
             else
             {
                 itemInfo.SetActive(false);
-                print("생겨짐");
+                print("Branch사라짐");
                 activeState = true;
             }
         }
 
         if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "JamSotone")
         {
-            print("B버튼 누름");
+            //print("B버튼 누름");
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
-                print("사라짐");
+                print("JamSotone생겨짐");
                 activeState = false;
             }
             else
             {
                 itemInfo.SetActive(false);
-                print("생겨짐");
+                print("JamSotone사라짐");
                 activeState = true;
             }
         }
