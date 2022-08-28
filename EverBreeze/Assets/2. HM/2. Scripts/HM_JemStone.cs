@@ -16,6 +16,7 @@ public class HM_JemStone : MonoBehaviour
     Color color;
 
     public GameObject player;
+    public GameObject JingleBell;
     GameObject particle;
     float dist;
 
@@ -27,7 +28,7 @@ public class HM_JemStone : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        particle = this.transform.parent.GetChild(2).gameObject;
+        particle = this.transform.GetChild(0).gameObject;
         meshRenderer = GetComponent<MeshRenderer>();
         mat = meshRenderer.material;
         texture = GetComponent<Texture>();
@@ -42,7 +43,7 @@ public class HM_JemStone : MonoBehaviour
 
         dist = Vector3.Distance(player.transform.position, this.transform.position);
 
-        if (touchCount >= 3)
+        if (touchCount >= 1)
         {
             isTouchEnough = true;
         }
@@ -56,8 +57,15 @@ public class HM_JemStone : MonoBehaviour
             StartCoroutine(ChangeEmissionValue());
             touchCount++;
         }
-      
+        
+        if(other.tag == "Branch" && isTouchEnough == true)
+        {
+            HM_RayGrab.instance.MakeJinglebell();
+            Destroy(this.gameObject);
+            Destroy(other.gameObject);
+        }
     }
+
 
     IEnumerator ChangeEmissionValue()
     {

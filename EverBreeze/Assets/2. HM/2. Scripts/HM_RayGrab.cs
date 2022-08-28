@@ -5,7 +5,7 @@ using UnityEngine;
 public class HM_RayGrab : MonoBehaviour
 {
     public static HM_RayGrab instance;
-
+    public GameObject jingleBell;
     private void Awake()
     {
         instance = this;
@@ -16,6 +16,9 @@ public class HM_RayGrab : MonoBehaviour
 
     public GameObject grapPos;
     public GameObject grapable;
+
+
+   
 
     public bool isGrabOn = false;
 
@@ -36,7 +39,7 @@ public class HM_RayGrab : MonoBehaviour
 
         if (isGrabOn == false && OVRInput.GetDown(OVRInput.Button.One))
         {
-            if(Physics.Raycast(transform.position,transform.forward,out hit, 300f, layerMask))
+            if(Physics.Raycast(transform.position,transform.forward,out hit, 500f, layerMask))
             {
                 print("hit!");
                 Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
@@ -74,12 +77,12 @@ public class HM_RayGrab : MonoBehaviour
                 isGrabOn = false;
             }
         }
-        else if(OVRInput.GetDown(OVRInput.Button.Two))
-        {
-            if(grapable.gameObject != null)
-            {
-                Destroy(grapable.gameObject);
-            }
-        }
+    }
+
+    
+
+    public void MakeJinglebell()
+    {
+        GameObject bell = Instantiate(jingleBell, grapPos.transform);
     }
 }

@@ -15,6 +15,13 @@ TagManager:
   - Animal
   - Player_Hand
   - Slot
+  - JingleBell
+  - Missile
+  - FxTemporaire
+  - Potion
+  - Liquid
+  - ButterFly
+  - Bottle
   layers:
   - Default
   - TransparentFX
@@ -44,10 +51,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - HandPlayer
+  - Hand
+  - Grabbable
+  - Grabbing
   m_SortingLayers:
   - name: Default
     uniqueID: 0
