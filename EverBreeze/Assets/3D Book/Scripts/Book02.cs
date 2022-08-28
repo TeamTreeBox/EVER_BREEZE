@@ -126,6 +126,7 @@ public class Book02 : MonoBehaviour {
 
         page = num;
         myAudio.PlayOneShot(pageTurnSound);
+
     }
 
 }

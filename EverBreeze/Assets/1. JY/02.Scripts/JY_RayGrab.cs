@@ -72,12 +72,12 @@ public class JY_RayGrab : MonoBehaviour
                 Debug.DrawRay(transform.position, transform.forward * 300f, Color.red);
             }
 
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 300f, layerMask01)) 
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 300f, layerMask01))
             {
-                print("Slot Hit");
-                if (hit.transform.GetComponent<JY_Slot1>().isInitem == true && isGrabOn == false && isSlotOff == false)
+                if (hit.transform.GetComponent<JY_Slot1>().isInitem == true && isGrabOn == false && isSlotOff == false && OVRInput.GetDown(OVRInput.Button.One))
                 {
                     isSlotOff = true;
+                    isGrabOn = true;
                 }
                 /*if (grabable.GetComponent<JY_Slot>().isWaterItemIn == true)
                 {
