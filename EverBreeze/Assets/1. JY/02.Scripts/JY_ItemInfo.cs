@@ -32,12 +32,10 @@ public class JY_ItemInfo : MonoBehaviour
         {
             case ItemState.Field:
                     Feild();
-                    print(state);
                 break;
 
             case ItemState.Grab:
                 Grab();
-                print(state);
                 break;
 
             case ItemState.Inventory:
@@ -45,35 +43,37 @@ public class JY_ItemInfo : MonoBehaviour
                 break;
         }
 
-        if (BookVR.instance.InventoryOn == true && stateInventory == false)
+        /*if (BookVR.instance.InventoryOn == true && stateInventory == false)
         {
             stateInventory = true;
             ItemState state = ItemState.Inventory;
             //print("%R.Two 버튼 누름%");
             //print(state);
-        }
+        }*/
     }
 
     private void Feild()
     {
         itemInfo.SetActive(false);
+        print(state);
     }
 
     private void Grab()
     {
         if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
         {
-            print("B버튼 누름");
+            print(state);
+            print("Grab B버튼 누름");
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
-                print("사라짐");
+                print("Grab 사라짐");
                 activeState = false;
             }
             else
             {
                 itemInfo.SetActive(false);
-                print("생겨짐");
+                print("Grab 생겨짐");
                 activeState = true;
             }
         }
@@ -84,7 +84,8 @@ public class JY_ItemInfo : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "Water")
         {
-            //print("B버튼 누름");
+            print(state);
+            //print("Inventory B버튼 누름");
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
@@ -100,7 +101,8 @@ public class JY_ItemInfo : MonoBehaviour
 
         if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "Branch")
         {
-            //print("B버튼 누름");
+            print(state);
+            //print("Inventory B버튼 누름");
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
@@ -117,6 +119,7 @@ public class JY_ItemInfo : MonoBehaviour
 
         if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "JamSotone")
         {
+            print(state);
             //print("B버튼 누름");
             if (activeState == true)
             {
