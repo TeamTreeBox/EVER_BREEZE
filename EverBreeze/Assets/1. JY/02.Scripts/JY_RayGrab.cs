@@ -16,6 +16,9 @@ public class JY_RayGrab : MonoBehaviour
 
     public GameObject grabPos;
     public GameObject grabable;
+    public GameObject hitThing;
+
+    float scaleSpeed = 1f;
 
     public bool isGrabOn = false;
 
@@ -26,6 +29,8 @@ public class JY_RayGrab : MonoBehaviour
     {
         layerMask00 = 1 << 6;
         layerMask01 = 1 << 7;
+
+        isGrabOn = false;
     }
 
     public void NullGrabable()
@@ -35,6 +40,7 @@ public class JY_RayGrab : MonoBehaviour
 
     public bool slotHit;
     public bool isSlotOff;
+    public bool isSlotScale;
 
     // Update is called once per frame
     public void Update()
@@ -74,34 +80,43 @@ public class JY_RayGrab : MonoBehaviour
 
             if (Physics.Raycast(transform.position, transform.forward, out hit, 300f, layerMask01))
             {
-                if (hit.transform.GetComponent<JY_Slot1>().isInitem == true && isGrabOn == false && isSlotOff == false && OVRInput.GetDown(OVRInput.Button.One))
+
+                if (hit.transform.GetComponent<JY_Slot1>().isInitem == true && isGrabOn == false && isSlotOff == false)
                 {
-                    isSlotOff = true;
-                    isGrabOn = true;
+                    print("%%Slot Hit%%");
+                    if (OVRInput.GetDown(OVRInput.Button.One))
+                        isSlotOff = true;
                 }
-                /*if (grabable.GetComponent<JY_Slot>().isWaterItemIn == true)
-                {
-                    grabable.GetComponent<JY_Slot>().water.gameObject.SetActive(false);
 
-                    GameObject waterNew = Instantiate(waterFactory);
-                    waterNew.transform.position = grabPos.transform.position;
-
-                    grabable.GetComponent<JY_Slot>().waterCount--;
-
-                    grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Grab;
-                }*/
             }
         }
         else if (isGrabOn == true && OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
         {
             if (grabable.gameObject != null)
             {
-                print("%%OUT%%");
+                print("%%Slot Hit OUT%%");
                 grabable.transform.SetParent(null);
                 grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 isGrabOn = false;
                 grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Field;
             }
+        }
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 300f, layerMask01))
+        {
+            hitThing = hit.transform.gameObject;
+
+            if (isSlotScale == false)
+            {
+                print("Select Hit");
+                hitThing.transform.localScale = new Vector3(transform.localScale.x + 1f * scaleSpeed * Time.deltaTime, transform.localScale.y + 1f * scaleSpeed * Time.deltaTime, transform.localScale.z + 1f * scaleSpeed * Time.deltaTime);
+                isSlotScale = true;
+            }
+            if (isSlotScale == true)
+            {
+                print("Select Hit OUT");
+                hitThing.transform.localScale = new Vector3(transform.localScale.x - 1f * scaleSpeed * Time.deltaTime, transform.localScale.y - 1f * scaleSpeed * Time.deltaTime, transform.localScale.z - 1f * scaleSpeed * Time.deltaTime);
+                isSlotScale = false;
             }
         }
+    }
 }
