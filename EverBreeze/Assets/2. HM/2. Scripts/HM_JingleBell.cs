@@ -7,30 +7,40 @@ public class HM_JingleBell : MonoBehaviour
     public bool isJingleTouch = false;
     public int jingleShake = 0;
 
-    //public GameObject tree;
+     GameObject tree;
 
-    //float distance;
+    float distance;
+
+    private void Start()
+    {
+        tree = GameObject.FindGameObjectWithTag("Tree");
+    }
 
     // Update is called once per frame
     void Update()
     {
-       // distance = Vector3.Distance(tree.transform.position, this.transform.position);
+        distance = Vector3.Distance(tree.transform.position, this.transform.position);
+        print(distance);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "First_Touch")
+        if(distance < 20f)
         {
-            FirstTouch();
-        }
-        else if (other.gameObject.name == "Second_Touch")
-        {
-            SecondTouch();
-            if(jingleShake >= 1)
+            if (other.gameObject.name == "First_Touch")
             {
-                ThirdShake();
+                FirstTouch();
+            }
+            else if (other.gameObject.name == "Second_Touch")
+            {
+                SecondTouch();
+                if (jingleShake >= 3)
+                {
+                    ThirdShake();
+                }
             }
         }
+        
     }
 
     void FirstTouch()
@@ -48,6 +58,10 @@ public class HM_JingleBell : MonoBehaviour
     void ThirdShake()
     {
         print("나무가 변하게 하기");
+        HM_QuestManager.instance.StartCoru(3);
+
+        Destroy(this.gameObject);
+
     }
 
 }

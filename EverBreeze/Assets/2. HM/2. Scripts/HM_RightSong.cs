@@ -10,9 +10,9 @@ public class HM_RightSong : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "JamStone")
+        if (other.tag == "JamStone")
         {
-            start_vfx.SetActive(false)                                                                                                                                                                                                                                                                                                                                                                                   ;
+            start_vfx.SetActive(false);
             ShowVFXandDestory();
         }
     }

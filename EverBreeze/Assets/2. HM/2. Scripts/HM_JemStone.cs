@@ -38,12 +38,10 @@ public class HM_JemStone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("Emission : " + mat.GetFloat("_EmissionPower"));
-        print("Stregth : " + mat.GetFloat("_Translucency"));
-
+       
         dist = Vector3.Distance(player.transform.position, this.transform.position);
 
-        if (touchCount >= 1)
+        if (touchCount >= 2)
         {
             isTouchEnough = true;
         }
@@ -58,11 +56,10 @@ public class HM_JemStone : MonoBehaviour
             touchCount++;
         }
         
-        if(other.tag == "Branch" && isTouchEnough == true)
+        if(other.gameObject.name == "QuestTrigger" && isTouchEnough == true)
         {
-            HM_RayGrab.instance.MakeJinglebell();
+            HM_QuestManager.instance.StartCoru(2);
             Destroy(this.gameObject);
-            Destroy(other.gameObject);
         }
     }
 
@@ -80,6 +77,11 @@ public class HM_JemStone : MonoBehaviour
 
         isTouching = false;
         particle.SetActive(false);
+    }
+
+    public void SizeChange()
+    {
+
     }
 
 }
