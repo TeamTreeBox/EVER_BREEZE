@@ -10,6 +10,7 @@ public class HM_WaterQuest : MonoBehaviour
     public GameObject cristal_pos;
 
     public GameObject waterVfx;
+    public GameObject inSideWater;
 
     float distance;
     float cristal_Dis;
@@ -19,7 +20,8 @@ public class HM_WaterQuest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        inSideWater.SetActive(false);
+        inSideWater.SetActive(true);
     }
 
     // Update is called once per frame
@@ -42,6 +44,8 @@ public class HM_WaterQuest : MonoBehaviour
     {
         while (iscris_blowup == false)
         {
+            inSideWater.SetActive(false);
+            inSideWater.SetActive(true);
             cristal.transform.position = Vector3.Lerp(cristal.transform.position, cristal_pos.transform.position, Time.deltaTime);
 
             yield return new WaitForSeconds(0.1f);
@@ -61,15 +65,21 @@ public class HM_WaterQuest : MonoBehaviour
                 StopAllCoroutines();
             }
         }
+
+       
     }
 
     public void SizeChangeWaterVFX()
     {
         print("WaterSizeChanage");
-        waterVfx.transform.localScale = new Vector3(.2f, .2f, .2f);
+        waterVfx.transform.localScale = new Vector3(.1f, .1f, .1f);
 
         GameObject vfxChild = waterVfx.transform.GetChild(0).gameObject;
 
         vfxChild.transform.localScale = new Vector3(.1f, .1f, .1f);
+
+        inSideWater.SetActive(false);
+        inSideWater.SetActive(true);
+
     }
 }

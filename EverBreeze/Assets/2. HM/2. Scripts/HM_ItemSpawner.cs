@@ -12,15 +12,40 @@ public class HM_ItemSpawner : MonoBehaviour
     }
 
     public GameObject gemStone;
+    public GameObject JingleBell;
+    public GameObject brach;
+
     public GameObject itemSpwaner;
-    GameObject gemPrefeb;
+    bool gemPrefeb;
+    bool jingle;
+    bool isBranch;
 
     public void SpwanJemStone()
     {
-        if(gemPrefeb == null)
+        if(gemPrefeb == false)
         {
-            gemPrefeb = Instantiate(gemStone);
-            gemPrefeb.transform.position = itemSpwaner.transform.position;
+            gemStone.transform.position = itemSpwaner.transform.position;
+            gemStone.SetActive(true);
+            gemPrefeb = true;
+        }
+    }
+
+    public void SpwanBranch()
+    {
+        if(isBranch == false)
+        {
+            brach.SetActive(true);
+            isBranch = true;
+        }
+    }
+
+    public void SpwanJingleBell()
+    {
+        if(jingle == false)
+        {
+            JingleBell.transform.position = itemSpwaner.transform.position;
+            JingleBell.SetActive(true);
+            jingle = true;
         }
     }
 

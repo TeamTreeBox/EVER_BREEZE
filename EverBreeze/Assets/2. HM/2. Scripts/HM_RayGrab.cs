@@ -5,7 +5,7 @@ using UnityEngine;
 public class HM_RayGrab : MonoBehaviour
 {
     public static HM_RayGrab instance;
-    public GameObject jingleBell;
+    
     private void Awake()
     {
         instance = this;
@@ -58,6 +58,10 @@ public class HM_RayGrab : MonoBehaviour
                     {
                         grapable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
                     }
+                    else if(grapable.tag == "JingleBell")
+                    {
+                        grapable.transform.localScale = new Vector3(.8f, .8f, .8f);
+                    }
 
                     isGrabOn = true;
                 }
@@ -72,17 +76,11 @@ public class HM_RayGrab : MonoBehaviour
         {
             if(grapable.gameObject != null)
             {
+                grapable.transform.localScale = new Vector3(.2f, .2f, .2f);
                 grapable.transform.SetParent(null);
 
                 isGrabOn = false;
             }
         }
-    }
-
-    
-
-    public void MakeJinglebell()
-    {
-        GameObject bell = Instantiate(jingleBell, grapPos.transform);
     }
 }

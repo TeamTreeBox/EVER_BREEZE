@@ -12,7 +12,7 @@ public class HM_TreeManager : MonoBehaviour
     }
 
     public int[] levels = { 0, 1, 2, 3 };
-    public GameObject[] trees;
+    public GameObject[] trees; 
 
     public GameObject particle;
     int a = 0;
