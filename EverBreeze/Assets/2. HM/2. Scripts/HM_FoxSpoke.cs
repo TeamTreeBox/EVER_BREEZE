@@ -101,7 +101,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
         print("settrigger");
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
 
         StartCoroutine(FoxAnim());
     }
@@ -147,7 +147,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_1()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
 
         fox_Talk_UI.SetActive(true);
 
@@ -168,7 +168,7 @@ public class HM_FoxSpoke : MonoBehaviour
     {
         StartCoroutine(OnQuestComplete());
 
-        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(5f);
 
         fox_Talk_UI.SetActive(true);
 

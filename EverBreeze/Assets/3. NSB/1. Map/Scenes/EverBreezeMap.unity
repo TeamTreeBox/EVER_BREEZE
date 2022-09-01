@@ -308,6 +308,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6341737173911284603, guid: e2ae39bfca71c7645b789087d277957c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7156816787025578854, guid: e2ae39bfca71c7645b789087d277957c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -355,6 +359,10 @@ PrefabInstance:
     - target: {fileID: 7156816787025578855, guid: e2ae39bfca71c7645b789087d277957c, type: 3}
       propertyPath: m_Name
       value: EverBreezeMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168606836227178789, guid: e2ae39bfca71c7645b789087d277957c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2ae39bfca71c7645b789087d277957c, type: 3}
