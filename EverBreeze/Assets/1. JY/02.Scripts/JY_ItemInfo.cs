@@ -32,7 +32,7 @@ public class JY_ItemInfo : MonoBehaviour
         {
             case ItemState.Field:
                     Feild();
-                    print(state);
+                    //print(state);
                 break;
 
             case ItemState.Grab:
@@ -45,13 +45,13 @@ public class JY_ItemInfo : MonoBehaviour
                 break;
         }
 
-        if (BookVR.instance.InventoryOn == true && stateInventory == false)
+        /*if (BookVR.instance.InventoryOn == true && stateInventory == false)
         {
             stateInventory = true;
             ItemState state = ItemState.Inventory;
             //print("%R.Two 버튼 누름%");
             //print(state);
-        }
+        }*/
     }
 
     private void Feild()

@@ -77,7 +77,6 @@ public class Slot : MonoBehaviour
             ItemInSlot.GetComponent<Slot>().ItemInSlot = null;
             ItemInSlot.transform.parent = null;
             ItemInSlot.GetComponent<Item>().inSlot = false;
-            ItemInSlot.GetComponent<Item>().currentSlot.ResetColor();
             ItemInSlot.GetComponent<Item>().currentSlot = null;
         }
     }

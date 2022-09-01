@@ -1,28 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class JY_Slot1 : MonoBehaviour
 {
     public GameObject ItemInSlot;
-    public MeshRenderer slotMaterial;
-    MaterialPropertyBlock originalBlock;
-    public int itemCount;
+    public GameObject countImage;
 
-    [SerializeField]
-    private Text text_Count;
+    public GameObject slot01;
+    public GameObject slot02;
+    public GameObject slot03;
 
-    void Start()
-    {
-        slotMaterial = GetComponent<MeshRenderer>();
-        originalBlock = new MaterialPropertyBlock();
+    public int itemCount = 0;
+    public int itemMaxCount = 5;
 
-        slotMaterial.SetPropertyBlock(originalBlock);
-    }
+    public TextMeshProUGUI text_Count;
 
     public bool isInitem = false;
     public GameObject itemPOS;
+
+    public bool inSlot01;
+    public bool inSlot02;
+    public bool inSlot03;
+
+    void Start()
+    {
+        countImage.SetActive(false);
+    }
+
     public void OnTriggerStay(Collider other)
     {
         //if (ItemInSlot != null) return;
@@ -33,31 +41,14 @@ public class JY_Slot1 : MonoBehaviour
             InsertItem(obj);
         }
     }
-
-    public void Update()
+    
+    public void OutItem()
     {
-        if (JY_RayGrab.instance.isSlotOff == true)
+        if (isInitem == true && OVRInput.GetDown(OVRInput.Button.One))
         {
-            GameObject obj = transform.GetChild(0).gameObject;
+            GameObject obj = transform.GetChild(1).gameObject;
             ReleaseItem(obj);
         }
-    }
-
-    public void SetSlotCount(int _count)
-    {
-        itemCount += _count;
-        text_Count.text = itemCount.ToString();
-
-        if (itemCount <= 0)
-            ClearSlot();
-    }
-
-    // 해당 슬롯 하나 삭제
-    private void ClearSlot()
-    {
-        itemCount = 0;
-
-        text_Count.text = "0";
     }
 
     bool IsItem(GameObject obj)
@@ -69,22 +60,40 @@ public class JY_Slot1 : MonoBehaviour
     {
         obj.gameObject.layer = 7;
         JY_RayGrab.instance.isGrabOn = false;
+
         print(JY_RayGrab.instance.isGrabOn);
+
         JY_RayGrab.instance.NullGrabable();
         obj.GetComponent<Rigidbody>().isKinematic = true;
+        obj.GetComponent<Rigidbody>().useGravity = false;
+
         obj.transform.SetParent(gameObject.transform, true);
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localEulerAngles = obj.GetComponent<Item>().slotRotatin;
         obj.transform.localScale = new Vector3(obj.transform.localScale.x / 4.0f, obj.transform.localScale.y / 4.0f, obj.transform.localScale.z / 4.0f);
         obj.GetComponent<Item>().inSlot = true;
+        if (this == slot01)
+        {
+            inSlot01 = true;
+        }
+        if (this == slot02)
+        {
+            inSlot02 = true;
+        }
+        if (this == slot03)
+        {
+            inSlot03 = true;
+        }
         obj.GetComponent<Item>().currentSlot = this;
         ItemInSlot = obj;
         isInitem = true;
-        int id = Shader.PropertyToID("_Black");
-        originalBlock.SetColor(id, Color.red);
-        slotMaterial.SetPropertyBlock(originalBlock);
+
         obj.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Inventory;
 
+        //Count UI
+        itemCount++;
+        countImage.SetActive(true);
+        text_Count.text = itemCount.ToString();
         print(">M< In Item >M<");
     }
 
@@ -92,15 +101,18 @@ public class JY_Slot1 : MonoBehaviour
     {
         obj.gameObject.layer = 6;
         obj.GetComponent<Rigidbody>().isKinematic = false;
+        obj.GetComponent<Rigidbody>().useGravity = false;
         obj.transform.SetParent(null);
-        //obj.transform.localPosition = this.transform.position;
-        //obj.transform.localPosition = itemPOS.transform.localPosition;
-        //obj.transform.localScale = new Vector3(obj.transform.localScale.x *4.0f, obj.transform.localScale.y * 4.0f, obj.transform.localScale.z * 4.0f);
+        
         obj.transform.localEulerAngles = obj.GetComponent<Item>().slotRotatin;
         obj.GetComponent<Item>().inSlot = false;
         obj.GetComponent<Item>().currentSlot = null;
         ItemInSlot = null;
-        isInitem = false;
+
+        if (text_Count.text == "0")
+        {
+            isInitem = false;
+        }
 
         JY_RayGrab.instance.isGrabOn = true;
         JY_RayGrab.instance.grabable = obj.gameObject;
@@ -111,30 +123,18 @@ public class JY_Slot1 : MonoBehaviour
 
         obj.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Grab;
         JY_RayGrab.instance.isSlotOff = false;
-        ResetColor();
 
+        itemCount--;
+        countImage.SetActive(true);
+        text_Count.text = itemCount.ToString();
+
+        if (itemCount <= 0)
+            ClearSlot();
         print(">>M< Out Item >M<<<");
     }
 
-    public void ResetColor()
+    public void ClearSlot()
     {
-        //slotMaterial.material.color = originalColor;
-        int id = Shader.PropertyToID("_Black");
-        originalBlock.SetColor(id, Color.green);
-        slotMaterial.SetPropertyBlock(originalBlock);
+        countImage.SetActive(false);
     }
-
-    /*void Inventoryobj()
-    {
-        // 인벤토리 추가 ***
-        if (ItemInSlot.GetComponent<Item>() == null) return;
-        if (ItemInSlot.GetComponent<Item>().inSlot == true)
-        {
-            ItemInSlot.GetComponent<Slot>().ItemInSlot = null;
-            ItemInSlot.transform.parent = null;
-            ItemInSlot.GetComponent<Item>().inSlot = false;
-            ItemInSlot.GetComponent<Item>().currentSlot.ResetColor();
-            ItemInSlot.GetComponent<Item>().currentSlot = null;
-        }
-    }*/
 }
