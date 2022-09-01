@@ -18,19 +18,11 @@ public class JY_RaySlot : MonoBehaviour
     public GameObject slot02;
     public GameObject slot03;
 
-    //public GameObject waterFactory;
-
-    public bool slotHit;
-    public bool isSlotOff;
-    public bool isGrabOn;
-
     private bool state;
 
     void Start()
     {
         layerMask01 = 1 << 7;
-
-        isSlotOff = false;
         state = false;
     }
 
