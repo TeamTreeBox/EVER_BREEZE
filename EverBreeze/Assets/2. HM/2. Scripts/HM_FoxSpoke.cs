@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class HM_FoxSpoke : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class HM_FoxSpoke : MonoBehaviour
     }
 
     Animator foxAnim;
+    NavMeshAgent foxAi;
     int ranBehavior = 0;
 
     public float txt_Speed = 3f;
@@ -40,6 +42,7 @@ public class HM_FoxSpoke : MonoBehaviour
     {
         fox_spriterender = fox_Talk_UI.GetComponent<SpriteRenderer>();
         foxAnim = this.GetComponent<Animator>();
+        foxAi = this.GetComponent<NavMeshAgent>();
         fox_Talk_UI.SetActive(false);
 
         StartCoroutine(FoxAnim());
@@ -65,22 +68,29 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator FoxAnim()
     {
-
-        ranBehavior = Random.Range(1, 4);
-
-        switch (ranBehavior)
+        if (foxAi.isStopped == false)
         {
-            case 1:
-                foxAnim.SetTrigger("Idle_1");
-                break;
+            foxAnim.SetBool("IsWalking", false);
+            ranBehavior = Random.Range(1, 4);
 
-            case 2:
-                foxAnim.SetTrigger("Idle_2");
-                break;
+            switch (ranBehavior)
+            {
+                case 1:
+                    foxAnim.SetTrigger("Idle_1");
+                    break;
 
-            case 3:
-                foxAnim.SetTrigger("Idle_3");
-                break;
+                case 2:
+                    foxAnim.SetTrigger("Idle_2");
+                    break;
+
+                case 3:
+                    foxAnim.SetTrigger("Idle_3");
+                    break;
+            }
+        }
+        else
+        {
+            foxAnim.SetBool("IsWalking", true);
         }
 
         yield return new WaitForSeconds(8f);
@@ -101,7 +111,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
         print("settrigger");
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
 
         StartCoroutine(FoxAnim());
     }
@@ -147,7 +157,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_1()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
 
         fox_Talk_UI.SetActive(true);
 
@@ -168,7 +178,7 @@ public class HM_FoxSpoke : MonoBehaviour
     {
         StartCoroutine(OnQuestComplete());
 
-        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(5f);
 
         fox_Talk_UI.SetActive(true);
 
