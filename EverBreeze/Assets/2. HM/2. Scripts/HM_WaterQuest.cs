@@ -76,7 +76,7 @@ public class HM_WaterQuest : MonoBehaviour
 
         GameObject vfxChild = waterVfx.transform.GetChild(0).gameObject;
 
-        vfxChild.transform.localScale = new Vector3(.1f, .1f, .1f);
+        vfxChild.transform.localScale = new Vector3(.05f, .05f, .05f);
 
         inSideWater.SetActive(false);
         inSideWater.SetActive(true);

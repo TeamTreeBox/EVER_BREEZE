@@ -10,6 +10,7 @@ public class HM_CheckPlayer : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             HM_FoxAI.instane.MoveOriginalPosition();
+            print("PlayerTriggerEnter");
         }
     }
 
@@ -18,6 +19,7 @@ public class HM_CheckPlayer : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             HM_FoxAI.instane.PlayerExitPosition();
+            print("PlayerTriggerExit");
         }
     }
 }

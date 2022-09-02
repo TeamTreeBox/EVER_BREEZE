@@ -31,6 +31,7 @@ public class HM_FoxAI : MonoBehaviour
 
     public void MoveOriginalPosition()
     {
+        isPlayerComeOn = true;
         StopCoroutine(RandMove());
         fox_AI.isStopped = true;
         fox_AI.isStopped = false;
@@ -40,8 +41,9 @@ public class HM_FoxAI : MonoBehaviour
 
     public void PlayerExitPosition()
     {
-        fox_AI.isStopped = false;
+        isPlayerComeOn = false;
         fox_AI.isStopped = true;
+        fox_AI.isStopped = false;
 
         StartCoroutine(RandMove());
     }
@@ -50,7 +52,7 @@ public class HM_FoxAI : MonoBehaviour
     {
         while (isPlayerComeOn == false)
         {
-            int a = Random.Range(0, RandPose.Length + 1);
+            int a = Random.Range(0, RandPose.Length);
 
             fox_AI.SetDestination(RandPose[a].transform.position);
 
