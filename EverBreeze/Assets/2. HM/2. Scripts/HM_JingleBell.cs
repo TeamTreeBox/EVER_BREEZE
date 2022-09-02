@@ -20,7 +20,7 @@ public class HM_JingleBell : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(tree.transform.position, this.transform.position);
-        print(distance);
+        
     }
 
     private void OnTriggerEnter(Collider other)

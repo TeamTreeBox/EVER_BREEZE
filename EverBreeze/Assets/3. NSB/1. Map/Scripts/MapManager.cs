@@ -9,7 +9,7 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         instance = this;
-
+                                      
         FirstSpring.SetActive(false);
         SecondSpring.SetActive(false);
         ThirdSpring.SetActive(false);

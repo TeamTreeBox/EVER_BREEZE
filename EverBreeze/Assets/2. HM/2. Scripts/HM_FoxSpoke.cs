@@ -51,18 +51,7 @@ public class HM_FoxSpoke : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "HM_PCTest")
-        {
-            if (Input.GetKeyDown(KeyCode.F) && is_UI_Open == false)
-            {
-                is_UI_Open = true;
-
-                print("버튼눌림");
-                SelectNum_Talk(debug_Num);
-                debug_Num++;
-
-            }
-        }
+       
 
     }
 

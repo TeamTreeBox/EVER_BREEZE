@@ -54,7 +54,6 @@ public class HM_QuestManager : MonoBehaviour
         HM_TreeManager.instance.QuestEventTrigger(1);
 
         HM_ItemSpawner.instance.SpwanJemStone();
-        HM_ItemSpawner.instance.SpwanBranch();
         HM_RayGrab.instance.NullGrabable();
         HM_RayGrab.instance.isGrabOn = false;
 

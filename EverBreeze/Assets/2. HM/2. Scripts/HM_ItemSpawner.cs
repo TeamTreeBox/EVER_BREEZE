@@ -13,7 +13,6 @@ public class HM_ItemSpawner : MonoBehaviour
 
     public GameObject gemStone;
     public GameObject JingleBell;
-    public GameObject brach;
 
     public GameObject itemSpwaner;
     bool gemPrefeb;
@@ -30,14 +29,6 @@ public class HM_ItemSpawner : MonoBehaviour
         }
     }
 
-    public void SpwanBranch()
-    {
-        if(isBranch == false)
-        {
-            brach.SetActive(true);
-            isBranch = true;
-        }
-    }
 
     public void SpwanJingleBell()
     {
