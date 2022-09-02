@@ -10,7 +10,7 @@ public class JY_ValumManager : MonoBehaviour
 
     private void Start()
     {
-        slider.value = 0.59f;
+        slider.value = 1.0f;
     }
 
     public void Update()

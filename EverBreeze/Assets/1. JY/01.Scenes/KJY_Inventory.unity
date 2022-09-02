@@ -4870,6 +4870,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   page01: {fileID: 3109066751205867326}
   page02: {fileID: 863738794306758425}
+  page03: {fileID: 3109066750735465293}
+  page04: {fileID: 1631466889}
+  page05: {fileID: 4909980}
+  page06: {fileID: 259453583}
+  page07: {fileID: 734636544}
+  page08: {fileID: 812983270}
+  page09: {fileID: 1590737892}
+  page10: {fileID: 947508527}
+  page11: {fileID: 7979147}
+  page12: {fileID: 3109066750591709463}
+  page13: {fileID: 752061392}
 --- !u!1 &863738792906951928
 GameObject:
   m_ObjectHideFlags: 0
@@ -6076,7 +6087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3109066749909463634
 Transform:
   m_ObjectHideFlags: 0
@@ -8299,14 +8310,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5846986925477638951}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -0.44, y: 0.5296, z: -0.029}
+  m_LocalRotation: {x: -0.51036155, y: 0.51036155, z: -0.48941913, w: 0.48941913}
+  m_LocalPosition: {x: -0.44, y: 0.5496, z: -0.036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3109066750540220222}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 92.4, z: -90}
 --- !u!1 &5846986925477638951
 GameObject:
   m_ObjectHideFlags: 0
