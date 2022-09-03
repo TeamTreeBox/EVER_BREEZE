@@ -2725,6 +2725,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5297925781834827523}
   - component: {fileID: 5297925781827152339}
+  - component: {fileID: 82612997}
+  - component: {fileID: 82612998}
   m_Layer: 0
   m_Name: SiberianJay
   m_TagString: Untagged
@@ -2764,16 +2766,62 @@ Animator:
   m_GameObject: {fileID: 5297925781834537827}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 35925fd401d0879459ff27aae7d8c37f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 64d2eedf15cf4c544a0e342839c2c1eb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 55f457def971b11448b6adc36cedd264, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!195 &82612997
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5297925781834537827}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &82612998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5297925781834537827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a71f408a617a8847a24e433eb95a262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  birdsMove:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  distance: 0
+  aiDis: 0
+  XRange: 0
+  YRange: 0
+  ZRange: 0
+  a: 0
+  speed: 0.1
 --- !u!1 &5297925781834537841
 GameObject:
   m_ObjectHideFlags: 0
