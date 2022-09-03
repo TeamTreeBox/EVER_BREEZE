@@ -56,7 +56,19 @@ public class JY_RayGrab : MonoBehaviour
                     isGrabOn = true;
                     grabable.transform.SetParent(grabPos.transform);
 
-                    grabable.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+                    grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    if (grabable.tag == "WaterBall")
+                    {
+                        grabable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
+                    }
+                    else if (grabable.tag == "JingleBell")
+                    {
+                        grabable.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                    }
+                    else if (grabable.tag == "JamStone")
+                    {
+                        grabable.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    }
                     grabable.transform.localPosition = Vector3.zero;
 
                     grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Grab;
@@ -80,13 +92,21 @@ public class JY_RayGrab : MonoBehaviour
     }
     public void GrabOff()
     {
-            print("%%Slot Hit OUT%%");
-            grabable.transform.SetParent(null);
-            grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            isGrabOn = false;
-            grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Field;
+        print("%%Slot Hit OUT%%");
+        grabable.transform.SetParent(null);
+        grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        if (grabable.tag == "JingleBell")
+        {
+            grabable.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        }
+        else if (grabable.tag == "JamStone")
+        {
+            grabable.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+        isGrabOn = false;
+        grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Field;
 
-            grabable.GetComponent<Rigidbody>().useGravity = true;
+        grabable.GetComponent<Rigidbody>().useGravity = true;
     }
 }
 

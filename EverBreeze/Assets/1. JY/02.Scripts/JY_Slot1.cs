@@ -46,7 +46,7 @@ public class JY_Slot1 : MonoBehaviour
     {
         if (isInitem == true && OVRInput.GetDown(OVRInput.Button.One))
         {
-            GameObject obj = transform.GetChild(1).gameObject;
+            GameObject obj = transform.GetChild(0).gameObject;
             ReleaseItem(obj);
         }
     }
@@ -70,7 +70,20 @@ public class JY_Slot1 : MonoBehaviour
         obj.transform.SetParent(gameObject.transform, true);
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localEulerAngles = obj.GetComponent<Item>().slotRotatin;
-        obj.transform.localScale = new Vector3(obj.transform.localScale.x / 4.0f, obj.transform.localScale.y / 4.0f, obj.transform.localScale.z / 4.0f);
+        obj.transform.localScale = new Vector3(obj.transform.localScale.x / 2.0f, obj.transform.localScale.y / 2.0f, obj.transform.localScale.z / 2.0f);
+
+        if (obj.tag == "WaterBall")
+        {
+            obj.transform.GetChild(1).gameObject.SetActive(false);
+            obj.transform.GetChild(2).gameObject.SetActive(false);
+        }
+        else if (obj.tag == "JamStone")
+        {
+            obj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            obj.transform.GetChild(0).gameObject.SetActive(false);
+            obj.transform.GetChild(1).gameObject.SetActive(false);
+        }
+
         obj.GetComponent<Item>().inSlot = true;
         if (this == slot01)
         {

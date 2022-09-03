@@ -67,13 +67,13 @@ public class JY_ItemInfo : MonoBehaviour
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
-                print("»ç¶óÁü");
+                //print("»ç¶óÁü");
                 activeState = false;
             }
             else
             {
                 itemInfo.SetActive(false);
-                print("»ý°ÜÁü");
+                //print("»ý°ÜÁü");
                 activeState = true;
             }
         }
@@ -82,18 +82,18 @@ public class JY_ItemInfo : MonoBehaviour
     bool itemInfoActive;
     private void Inventory()
     {
-        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "Water")
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "WaterBall")
         {
             //print("B¹öÆ° ´©¸§");
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
-                print("Water»ý°ÜÁü");
+                //print("Water»ý°ÜÁü");
                 activeState = false;
             }else
             {
                 itemInfo.SetActive(false);
-                print("Water»ç¶óÁü");
+                //print("Water»ç¶óÁü");
                 activeState = true;
             }
         }
@@ -104,13 +104,13 @@ public class JY_ItemInfo : MonoBehaviour
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
-                print("Branch»ý°ÜÁü");
+                //print("Branch»ý°ÜÁü");
                 activeState = false;
             }
             else
             {
                 itemInfo.SetActive(false);
-                print("Branch»ç¶óÁü");
+                //print("Branch»ç¶óÁü");
                 activeState = true;
             }
         }
@@ -121,13 +121,30 @@ public class JY_ItemInfo : MonoBehaviour
             if (activeState == true)
             {
                 itemInfo.SetActive(true);
-                print("JamSotone»ý°ÜÁü");
+                //print("JamSotone»ý°ÜÁü");
                 activeState = false;
             }
             else
             {
                 itemInfo.SetActive(false);
-                print("JamSotone»ç¶óÁü");
+               // print("JamSotone»ç¶óÁü");
+                activeState = true;
+            }
+        }
+
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && gameObject.tag == "JingleBell")
+        {
+            //print("B¹öÆ° ´©¸§");
+            if (activeState == true)
+            {
+                itemInfo.SetActive(true);
+                //print("JamSotone»ý°ÜÁü");
+                activeState = false;
+            }
+            else
+            {
+                itemInfo.SetActive(false);
+               // print("JamSotone»ç¶óÁü");
                 activeState = true;
             }
         }

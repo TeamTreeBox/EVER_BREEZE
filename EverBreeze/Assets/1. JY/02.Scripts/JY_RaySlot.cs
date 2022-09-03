@@ -19,6 +19,9 @@ public class JY_RaySlot : MonoBehaviour
     public GameObject slot03;
 
     private bool state;
+    private bool infoState;
+
+    public GameObject waterItemInfo;
 
     void Start()
     {
@@ -38,12 +41,13 @@ public class JY_RaySlot : MonoBehaviour
             state = false;
         }
 
+
         //Ray Hit가 안 되어 있을 떄 상태
         if (state == false)
         {
-            slot01.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            slot02.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            slot03.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            slot01.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            slot02.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            slot03.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         }
 
         //Ray Hit가 되었을 떄 상태
@@ -56,7 +60,7 @@ public class JY_RaySlot : MonoBehaviour
                 //선택 O
                 if (hitThing.gameObject == slot01)
                 {
-                    hitThing.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+                    hitThing.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                     if (OVRInput.GetDown(OVRInput.Button.One))
                     {
                         hitThing.GetComponent<JY_Slot1>().OutItem();
@@ -65,7 +69,7 @@ public class JY_RaySlot : MonoBehaviour
 
                 if (hitThing.gameObject == slot02)
                 {
-                    hitThing.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+                    hitThing.transform.localScale = new Vector3(0.225f, 0.25f, 0.25f);
                     if (OVRInput.GetDown(OVRInput.Button.One))
                     {
                         hitThing.GetComponent<JY_Slot1>().OutItem();
@@ -74,7 +78,7 @@ public class JY_RaySlot : MonoBehaviour
 
                 if (hitThing.gameObject == slot03)
                 {
-                    hitThing.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+                    hitThing.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                     if (OVRInput.GetDown(OVRInput.Button.One))
                     {
                         hitThing.GetComponent<JY_Slot1>().OutItem();
@@ -84,15 +88,15 @@ public class JY_RaySlot : MonoBehaviour
                 //선택 X
                 if (hitThing.gameObject != slot01)
                 {
-                    slot01.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    slot01.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 }
                 if (hitThing.gameObject != slot02)
                 {
-                    slot02.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    slot02.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 }
                 if (hitThing.gameObject != slot03)
                 {
-                    slot03.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    slot03.transform.localScale = new Vector3(0.22f, 0.2f, 0.2f);
                 }
             }
         }
