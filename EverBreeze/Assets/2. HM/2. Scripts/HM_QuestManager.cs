@@ -47,6 +47,7 @@ public class HM_QuestManager : MonoBehaviour
 
     IEnumerator FirstQuestExit()
     {
+        HM_FoxAI.instane.QuestComplete();
         HM_FoxSpoke.instacne.SelectNum_Talk(2);
         isQuest_1_Clear = true;
         //block_2.SetActive(false);
@@ -83,7 +84,7 @@ public class HM_QuestManager : MonoBehaviour
         isQuest_2_Clear = true;
         //block_2.SetActive(true);
         //block_3.SetActive(false);
-
+        HM_FoxAI.instane.QuestComplete();
         HM_FoxSpoke.instacne.SelectNum_Talk(5);
         HM_TreeManager.instance.QuestEventTrigger(2);
         

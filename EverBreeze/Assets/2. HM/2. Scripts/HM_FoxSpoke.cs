@@ -44,8 +44,6 @@ public class HM_FoxSpoke : MonoBehaviour
         foxAnim = this.GetComponent<Animator>();
         foxAi = this.GetComponent<NavMeshAgent>();
         fox_Talk_UI.SetActive(false);
-
-        StartCoroutine(FoxAnim());
     }
 
     // Update is called once per frame
@@ -55,55 +53,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
     }
 
-    IEnumerator FoxAnim()
-    {
-        if (foxAi.isStopped == false)
-        {
-            foxAnim.SetBool("IsWalking", false);
-            ranBehavior = Random.Range(1, 4);
-
-            switch (ranBehavior)
-            {
-                case 1:
-                    foxAnim.SetTrigger("Idle_1");
-                    break;
-
-                case 2:
-                    foxAnim.SetTrigger("Idle_2");
-                    break;
-
-                case 3:
-                    foxAnim.SetTrigger("Idle_3");
-                    break;
-            }
-        }
-        else
-        {
-            foxAnim.SetBool("IsWalking", true);
-        }
-
-        yield return new WaitForSeconds(8f);
-        StartCoroutine(FoxAnim());
-    }
-
-    IEnumerator OnQuestComplete()
-    {
-        //StopCoroutine(FoxAnim());
-
-        //print("stopCoroutine");
-
-        //yield return new WaitForSeconds(.5f);
-
-
-
-        foxAnim.SetTrigger("QuestComplete");
-
-        print("settrigger");
-
-        yield return new WaitForSeconds(2f);
-
-        StartCoroutine(FoxAnim());
-    }
+   
 
     public void SelectNum_Talk(int num)
     {
@@ -165,8 +115,6 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_2()
     {
-        StartCoroutine(OnQuestComplete());
-
         //yield return new WaitForSeconds(5f);
 
         fox_Talk_UI.SetActive(true);
