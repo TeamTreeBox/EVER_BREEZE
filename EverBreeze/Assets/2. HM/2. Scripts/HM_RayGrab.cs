@@ -61,6 +61,7 @@ public class HM_RayGrab : MonoBehaviour
                     else if(grapable.tag == "JingleBell")
                     {
                         grapable.transform.localScale = new Vector3(.8f, .8f, .8f);
+                        grapable.transform.localEulerAngles = new Vector3(-108, 0, 0);
                     }
 
                     isGrabOn = true;
