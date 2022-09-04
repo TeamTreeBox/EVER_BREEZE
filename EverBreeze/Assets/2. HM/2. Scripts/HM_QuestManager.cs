@@ -5,11 +5,13 @@ using UnityEngine;
 public class HM_QuestManager : MonoBehaviour
 {
     public static HM_QuestManager instance;
+    public GameObject Trigger_VFX;
 
     private void Start()
     {
         instance = this;
     }
+    public bool isTutorial_Clear = false;
     public bool isQuest_1_Clear = false;
     public bool isQuest_2_Clear = false;
     public bool isQuest_3_Clear = false;
@@ -23,10 +25,7 @@ public class HM_QuestManager : MonoBehaviour
 
     private void Update()
     {
-        if(OVRInput.GetDown(OVRInput.Button.Three))
-        {
-            HM_ItemSpawner.instance.SpwanJemStone();
-        }
+       
     }
 
     public void StartCoru(int num)
@@ -45,33 +44,49 @@ public class HM_QuestManager : MonoBehaviour
         }
     }
 
+    IEnumerator Tutorial()
+    {
+        Trigger_VFX.SetActive(false);
+        HM_FoxSpoke.instacne.SelectNum_Talk(0);
+        isTutorial_Clear = true;
+
+        yield return new WaitForSeconds(10f);
+        Trigger_VFX.SetActive(true);
+
+    }
+
     IEnumerator FirstQuestExit()
     {
-        HM_FoxAI.instane.QuestComplete();
+        Trigger_VFX.SetActive(false);
         HM_FoxSpoke.instacne.SelectNum_Talk(2);
         isQuest_1_Clear = true;
         //block_2.SetActive(false);
         //block_1.SetActive(true);
         HM_TreeManager.instance.QuestEventTrigger(1);
 
-        HM_ItemSpawner.instance.SpwanJemStone();
+       
         HM_RayGrab.instance.NullGrabable();
         HM_RayGrab.instance.isGrabOn = false;
 
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(1f);
+        HM_FoxAI.instane.QuestComplete();
+        yield return new WaitForSeconds(9f);
+        Trigger_VFX.SetActive(true);
     }
 
     IEnumerator SecondQuestClearing()
     {
         if (isQuest2_Clearing == true)
         {
+            Trigger_VFX.SetActive(false);
             HM_FoxSpoke.instacne.SelectNum_Talk(4);
-            HM_ItemSpawner.instance.SpwanJingleBell();
+           
             HM_RayGrab.instance.NullGrabable();
             HM_RayGrab.instance.isGrabOn = false;
         }
         else
         {
+            
             isQuest2_Clearing = true;
             HM_RayGrab.instance.NullGrabable();
             HM_RayGrab.instance.isGrabOn = false;
@@ -84,19 +99,21 @@ public class HM_QuestManager : MonoBehaviour
         isQuest_2_Clear = true;
         //block_2.SetActive(true);
         //block_3.SetActive(false);
-        HM_FoxAI.instane.QuestComplete();
         HM_FoxSpoke.instacne.SelectNum_Talk(5);
         HM_TreeManager.instance.QuestEventTrigger(2);
         
         HM_RayGrab.instance.NullGrabable();
         HM_RayGrab.instance.isGrabOn = false;
 
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(1f);
+        HM_FoxAI.instane.QuestComplete();
+        yield return new WaitForSeconds(9f);
+        Trigger_VFX.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "WaterBall" && isQuest_1_Clear == false)
+        if(other.tag == "WaterBall" && isQuest_1_Clear == false && isTutorial_Clear == true)
         {
             StartCoru(1);
             Destroy(other.gameObject.transform.GetChild(2).gameObject);
@@ -108,6 +125,11 @@ public class HM_QuestManager : MonoBehaviour
             StartCoru(2);
             Destroy(other.gameObject);
             print("Branch");
+        }
+
+        if(other.tag == "Player" && isTutorial_Clear == false)
+        {
+            StartCoroutine(Tutorial());
         }
     }
 }

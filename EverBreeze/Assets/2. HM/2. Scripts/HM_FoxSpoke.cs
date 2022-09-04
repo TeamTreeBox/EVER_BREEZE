@@ -111,6 +111,10 @@ public class HM_FoxSpoke : MonoBehaviour
 
         is_UI_Open = false;
 
+        yield return new WaitForSeconds(2f);
+
+        StartCoroutine(Fox_Talk_2());
+
     }
 
     IEnumerator Fox_Talk_2()
@@ -169,10 +173,12 @@ public class HM_FoxSpoke : MonoBehaviour
             yield return new WaitForSeconds(txt_Speed);
         }
 
+        HM_ItemSpawner.instance.SpwanJemStone();
+
         fox_Talk_UI.SetActive(false);
 
-        is_UI_Open = false;
 
+        is_UI_Open = false;
 
     }
 
@@ -188,6 +194,8 @@ public class HM_FoxSpoke : MonoBehaviour
 
             yield return new WaitForSeconds(txt_Speed);
         }
+
+        HM_ItemSpawner.instance.SpwanJingleBell();
 
         fox_Talk_UI.SetActive(false);
 

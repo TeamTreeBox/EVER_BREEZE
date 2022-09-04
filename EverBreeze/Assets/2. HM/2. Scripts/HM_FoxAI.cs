@@ -103,6 +103,8 @@ public class HM_FoxAI : MonoBehaviour
         {
             int a = Random.Range(0, 3);
 
+            yield return new WaitForSeconds(3f);
+
             switch (a)
             {
                 case 0:

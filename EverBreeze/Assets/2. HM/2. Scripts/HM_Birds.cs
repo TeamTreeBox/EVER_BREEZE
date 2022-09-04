@@ -48,7 +48,7 @@ public class HM_Birds : MonoBehaviour
         distance = Vector3.Distance(this.transform.position, Player.transform.position);
         aiDis = Vector3.Distance(this.transform.position, birdsMove[a].transform.position);
 
-        if(distance < 10)
+        if(distance < 50)
         {
             isPlayerCom = true;
         }
@@ -101,7 +101,7 @@ public class HM_Birds : MonoBehaviour
 
             birds_Ai.SetDestination(birdsMove[a].transform.position);
 
-            if(aiDis < 1f)
+            if(aiDis < 2f)
             {
                 isWalking = false;
                 co_Move = StartCoroutine(IsNextMove());
