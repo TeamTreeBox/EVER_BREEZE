@@ -67,7 +67,11 @@ public class JY_RaySlot : MonoBehaviour
                     }
                     if (OVRInput.GetDown(OVRInput.Button.Two))
                     {
-                        hitThing.GetComponent<JY_Slot1>().OutItem();
+                        if (hitThing.transform.GetChild(0).gameObject.tag == "WaterBall")
+                        {
+                            waterItemInfo.SetActive(true);
+                        }
+                        
                     }
                 }
 
