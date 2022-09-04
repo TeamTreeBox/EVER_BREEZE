@@ -72,6 +72,8 @@ public class HM_QuestManager : MonoBehaviour
         HM_FoxAI.instane.QuestComplete();
         yield return new WaitForSeconds(9f);
         Trigger_VFX.SetActive(true);
+
+        SB_MapManager.instance.FirstChange_Spring();
     }
 
     IEnumerator SecondQuestClearing()
@@ -109,6 +111,8 @@ public class HM_QuestManager : MonoBehaviour
         HM_FoxAI.instane.QuestComplete();
         yield return new WaitForSeconds(9f);
         Trigger_VFX.SetActive(true);
+
+        SB_MapManager.instance.SecondChange_Spring();
     }
 
     private void OnTriggerEnter(Collider other)
