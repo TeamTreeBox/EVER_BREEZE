@@ -30,9 +30,10 @@ public class PageChange : MonoBehaviour
     bool isPage09 = true;
     bool isPage10 = false;
 
-    //Back
+    //Page0910
     public GameObject page12; //null page
     public GameObject page13; //Ending page
+
 
     void Start()
     {

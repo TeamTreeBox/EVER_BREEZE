@@ -14,6 +14,7 @@ public class JY_RayGrab : MonoBehaviour
     int layerMask00;
 
     public GameObject grabPos;
+    public GameObject jingleBellGrabPos;
     public GameObject grabable;
     public GameObject hitThing;
 
@@ -63,7 +64,10 @@ public class JY_RayGrab : MonoBehaviour
                     }
                     else if (grabable.tag == "JingleBell")
                     {
+                        grabable.transform.SetParent(jingleBellGrabPos.transform);
                         grabable.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                        grabable.transform.localPosition = new Vector3(0.0287f, -0.04f, 0.0254f);
+                        grabable.transform.localRotation = Quaternion.Euler(new Vector3(20.0f, 0.0f, -170.0f));
                     }
                     else if (grabable.tag == "JamStone")
                     {

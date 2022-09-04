@@ -30,7 +30,12 @@ public class PageTurn : MonoBehaviour {
 			print("0002");
 			SendMessageUpwards("TurnPage", direction);
         }
+		if (direction == 6)
+		{
+			SendMessageUpwards("TurnToPage", int.Parse(name.Substring(3, 2)));
+		}
 		
+
 	}
 
 }

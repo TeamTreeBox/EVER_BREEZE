@@ -65,6 +65,10 @@ public class JY_RaySlot : MonoBehaviour
                     {
                         hitThing.GetComponent<JY_Slot1>().OutItem();
                     }
+                    if (OVRInput.GetDown(OVRInput.Button.Two))
+                    {
+                        hitThing.GetComponent<JY_Slot1>().OutItem();
+                    }
                 }
 
                 if (hitThing.gameObject == slot02)
