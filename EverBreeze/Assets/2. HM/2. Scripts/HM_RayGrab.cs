@@ -63,6 +63,13 @@ public class HM_RayGrab : MonoBehaviour
                         grapable.transform.localScale = new Vector3(.8f, .8f, .8f);
                         grapable.transform.localEulerAngles = new Vector3(-108, 0, 0);
                     }
+                    else if (grapable.tag == "Bottle")
+
+                    {
+                        grapable.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+
+                    }
+
 
                     isGrabOn = true;
                 }
