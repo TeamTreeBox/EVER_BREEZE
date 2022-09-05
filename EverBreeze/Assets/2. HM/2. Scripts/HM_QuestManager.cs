@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HM_QuestManager : MonoBehaviour
 {
     public static HM_QuestManager instance;
+
     public GameObject Trigger_VFX;
 
-    private void Start()
-    {
-        instance = this;
-    }
     public bool isTutorial_Clear = false;
     public bool isQuest_1_Clear = false;
     public bool isQuest_2_Clear = false;
@@ -18,15 +16,21 @@ public class HM_QuestManager : MonoBehaviour
 
     public bool isQuest2_Clearing = false;
 
+    public GameObject bookIcon_UI;
+    CanvasGroup bookAlpha;
+
     //public GameObject block_1;
     //public GameObject block_2;
     //public GameObject block_3;
     //public GameObject block_4;
 
-    private void Update()
+    private void Awake()
     {
-       
+        instance = this;
+        bookAlpha = bookIcon_UI.GetComponent<CanvasGroup>();
     }
+
+
 
     public void StartCoru(int num)
     {
@@ -64,7 +68,7 @@ public class HM_QuestManager : MonoBehaviour
         //block_1.SetActive(true);
         HM_TreeManager.instance.QuestEventTrigger(1);
 
-       
+
         HM_RayGrab.instance.NullGrabable();
         HM_RayGrab.instance.isGrabOn = false;
 
@@ -82,13 +86,12 @@ public class HM_QuestManager : MonoBehaviour
         {
             Trigger_VFX.SetActive(false);
             HM_FoxSpoke.instacne.SelectNum_Talk(4);
-           
+
             HM_RayGrab.instance.NullGrabable();
             HM_RayGrab.instance.isGrabOn = false;
         }
         else
         {
-            
             isQuest2_Clearing = true;
             HM_RayGrab.instance.NullGrabable();
             HM_RayGrab.instance.isGrabOn = false;
@@ -103,7 +106,7 @@ public class HM_QuestManager : MonoBehaviour
         //block_3.SetActive(false);
         HM_FoxSpoke.instacne.SelectNum_Talk(5);
         HM_TreeManager.instance.QuestEventTrigger(2);
-        
+
         HM_RayGrab.instance.NullGrabable();
         HM_RayGrab.instance.isGrabOn = false;
 
@@ -117,23 +120,58 @@ public class HM_QuestManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "WaterBall" && isQuest_1_Clear == false && isTutorial_Clear == true)
+        if (other.tag == "WaterBall" && isQuest_1_Clear == false && isTutorial_Clear == true)
         {
             StartCoru(1);
             Destroy(other.gameObject.transform.GetChild(2).gameObject);
             Destroy(other.gameObject);
         }
-        
-        else if(other.tag == "Branch" && isQuest_1_Clear == true)
+
+        else if (other.tag == "Branch" && isQuest_1_Clear == true)
         {
             StartCoru(2);
             Destroy(other.gameObject);
             print("Branch");
         }
 
-        if(other.tag == "Player" && isTutorial_Clear == false)
+        if (other.tag == "Player" && isTutorial_Clear == false)
         {
             StartCoroutine(Tutorial());
         }
+    }
+
+    public void BookIconPopUP()
+    {
+        StartCoroutine(BookIconUIActive());
+    }
+
+    IEnumerator BookIconUIActive()
+    {
+        bookIcon_UI.SetActive(true);
+
+        bookAlpha.alpha = 1;
+
+        for (float i = 1f; i > 0.5f; i -= 0.05f)
+        {
+            bookAlpha.alpha = i;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        for (float i = 0.5f; i <= 1f; i += 0.05f)
+        {
+            bookAlpha.alpha = i;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        for (float i = 1f; i >= 0f; i -= 0.05f)
+        {
+            bookAlpha.alpha = i;
+            yield return new WaitForSeconds(0.03f);
+        }
+
+        bookIcon_UI.SetActive(false);
+
     }
 }
