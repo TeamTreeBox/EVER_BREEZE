@@ -57,6 +57,7 @@ public class HM_QuestManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         Trigger_VFX.SetActive(true);
 
+        BookIconPopUP();
     }
 
     IEnumerator FirstQuestExit()
@@ -78,6 +79,7 @@ public class HM_QuestManager : MonoBehaviour
         Trigger_VFX.SetActive(true);
 
         SB_MapManager.instance.FirstChange_Spring();
+        BookIconPopUP();
     }
 
     IEnumerator SecondQuestClearing()
@@ -89,14 +91,17 @@ public class HM_QuestManager : MonoBehaviour
 
             HM_RayGrab.instance.NullGrabable();
             HM_RayGrab.instance.isGrabOn = false;
+            BookIconPopUP();
         }
         else
         {
             isQuest2_Clearing = true;
             HM_RayGrab.instance.NullGrabable();
             HM_RayGrab.instance.isGrabOn = false;
+            BookIconPopUP();
         }
         yield return new WaitForEndOfFrame();
+
     }
 
     IEnumerator SecondQuestExit()
@@ -116,6 +121,7 @@ public class HM_QuestManager : MonoBehaviour
         Trigger_VFX.SetActive(true);
 
         SB_MapManager.instance.SecondChange_Spring();
+        BookIconPopUP();
     }
 
     private void OnTriggerEnter(Collider other)
