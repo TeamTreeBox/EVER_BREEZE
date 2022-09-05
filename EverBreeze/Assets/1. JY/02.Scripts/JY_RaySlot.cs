@@ -20,8 +20,12 @@ public class JY_RaySlot : MonoBehaviour
 
     private bool state;
     private bool infoState;
+    private bool activeState;
 
     public GameObject waterItemInfo;
+    public GameObject branchItemInfo;
+    public GameObject jamStonneItemInfo;
+    public GameObject jingleBellItemInfo;
 
     void Start()
     {
@@ -29,9 +33,49 @@ public class JY_RaySlot : MonoBehaviour
         state = false;
     }
 
+    public void INItemInfo()
+    {
+        if (hitThing.transform.GetChild(0).gameObject.tag == "WaterBall")
+        {
+            waterItemInfo.SetActive(true);
+        }
+        if (hitThing.transform.GetChild(0).gameObject.tag == "Branch")
+        {
+            branchItemInfo.SetActive(true);
+        }
+        if (hitThing.transform.GetChild(0).gameObject.tag == "JamStone")
+        {
+            jamStonneItemInfo.SetActive(true);
+        }
+        if (hitThing.transform.GetChild(0).gameObject.tag == "JingleBell")
+        {
+            jingleBellItemInfo.SetActive(true);
+        }
+    }
+
+    public void OUTItemInfo()
+    {
+        if (hitThing.transform.GetChild(0).gameObject.tag == "WaterBall")
+        {
+            waterItemInfo.SetActive(false);
+        }
+        if (hitThing.transform.GetChild(0).gameObject.tag == "Branch")
+        {
+            branchItemInfo.SetActive(false);
+        }
+        if (hitThing.transform.GetChild(0).gameObject.tag == "JamStone")
+        {
+            jamStonneItemInfo.SetActive(false);
+        }
+        if (hitThing.transform.GetChild(0).gameObject.tag == "JingleBell")
+        {
+            jingleBellItemInfo.SetActive(false);
+        }
+    }
+
     public void Update()
     {
-        //버튼을 On Off 여부
+        //SecondaryHandTrigger 버튼을 On Off 여부
         if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
         {
             state = true;
@@ -41,6 +85,15 @@ public class JY_RaySlot : MonoBehaviour
             state = false;
         }
 
+        //Two 버튼을 On Off 여부
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
+        {
+            activeState = true;
+        }
+        else if (OVRInput.GetUp(OVRInput.Button.Two, OVRInput.Controller.RTouch))
+        {
+            activeState = false;
+        }
 
         //Ray Hit가 안 되어 있을 떄 상태
         if (state == false)
@@ -65,31 +118,51 @@ public class JY_RaySlot : MonoBehaviour
                     {
                         hitThing.GetComponent<JY_Slot1>().OutItem();
                     }
-                    if (OVRInput.GetDown(OVRInput.Button.Two))
+                    //Item Info
+                    if (activeState == true)
                     {
-                        if (hitThing.transform.GetChild(0).gameObject.tag == "WaterBall")
-                        {
-                            waterItemInfo.SetActive(true);
-                        }
-                        
+                        INItemInfo();
+                    }
+                    else if (activeState == false)
+                    {
+                        OUTItemInfo();
                     }
                 }
 
                 if (hitThing.gameObject == slot02)
                 {
-                    hitThing.transform.localScale = new Vector3(0.225f, 0.25f, 0.25f);
+                    hitThing.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                     if (OVRInput.GetDown(OVRInput.Button.One))
                     {
                         hitThing.GetComponent<JY_Slot1>().OutItem();
+                    }
+                    //Item Info
+                    if (activeState == true)
+                    {
+                        INItemInfo();
+                    }
+                    else if (activeState == false)
+                    {
+                        OUTItemInfo();
                     }
                 }
 
                 if (hitThing.gameObject == slot03)
                 {
                     hitThing.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+                    
                     if (OVRInput.GetDown(OVRInput.Button.One))
                     {
                         hitThing.GetComponent<JY_Slot1>().OutItem();
+                    }
+                    //Item Info
+                    if (activeState == true)
+                    {
+                        INItemInfo();
+                    }
+                    else if (activeState == false)
+                    {
+                        OUTItemInfo();
                     }
                 }
 

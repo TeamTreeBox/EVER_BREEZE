@@ -21,6 +21,7 @@ public class JY_Slot1 : MonoBehaviour
 
     public bool isInitem = false;
     public GameObject itemPOS;
+    public GameObject jingleBellGrabPos;
 
     public bool inSlot01;
     public bool inSlot02;
@@ -85,6 +86,7 @@ public class JY_Slot1 : MonoBehaviour
         }
 
         obj.GetComponent<Item>().inSlot = true;
+
         if (this == slot01)
         {
             inSlot01 = true;
@@ -97,6 +99,7 @@ public class JY_Slot1 : MonoBehaviour
         {
             inSlot03 = true;
         }
+
         obj.GetComponent<Item>().currentSlot = this;
         ItemInSlot = obj;
         isInitem = true;
@@ -133,6 +136,14 @@ public class JY_Slot1 : MonoBehaviour
 
         obj.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         obj.transform.localPosition = Vector3.zero;
+
+        if (obj.tag == "JingleBell")
+        {
+            obj.transform.SetParent(jingleBellGrabPos.transform);
+            obj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            obj.transform.localPosition = new Vector3(0.0287f, -0.04f, 0.0254f);
+            obj.transform.localRotation = Quaternion.Euler(new Vector3(20.0f, 0.0f, -170.0f));
+        }
 
         obj.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Grab;
         JY_RayGrab.instance.isSlotOff = false;

@@ -41,7 +41,7 @@ public class JY_ItemInfo : MonoBehaviour
                 break;
 
             case ItemState.Inventory:
-                Inventory();
+                //Inventory();
                 break;
         }
 
