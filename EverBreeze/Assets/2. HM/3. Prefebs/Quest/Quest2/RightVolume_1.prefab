@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6662037512896085948}
   - component: {fileID: 6813952707329694226}
-  - component: {fileID: 5507034755795064526}
   m_Layer: 0
   m_Name: RightVolume_1
   m_TagString: Right_Song
@@ -48,20 +47,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: -0.22184724, z: 0}
---- !u!114 &5507034755795064526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3970879993552016135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9b351b10c65f3146a73b077c45e223b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  start_vfx: {fileID: 611784514274755986}
-  jam_vfx: {fileID: 8933175812493239463}
 --- !u!1001 &611179721762176766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,11 +149,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4259755202149456, guid: 947f1ffa22c0f8b44bcda940b50e6aae, type: 3}
   m_PrefabInstance: {fileID: 611179721762176766}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &611784514274755986 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1731173506153324, guid: 947f1ffa22c0f8b44bcda940b50e6aae, type: 3}
-  m_PrefabInstance: {fileID: 611179721762176766}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1212196895278279621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,10 +241,5 @@ PrefabInstance:
 --- !u!4 &8731355219513613886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7637709044617590267, guid: 011fb90b3cb6c1a4ca32e4d46149478a, type: 3}
-  m_PrefabInstance: {fileID: 1212196895278279621}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8933175812493239463 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7722427292531674978, guid: 011fb90b3cb6c1a4ca32e4d46149478a, type: 3}
   m_PrefabInstance: {fileID: 1212196895278279621}
   m_PrefabAsset: {fileID: 0}
