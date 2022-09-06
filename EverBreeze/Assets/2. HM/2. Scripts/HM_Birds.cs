@@ -30,8 +30,8 @@ public class HM_Birds : MonoBehaviour
     {
         birds_anim = GetComponent<Animator>();
         birds_Ai = GetComponent<NavMeshAgent>();
-        XRange = Random.Range(-100, 100);
-        ZRange = Random.Range(-100, 100);
+        XRange = Random.Range(800, 1000);
+        ZRange = Random.Range(-500, 500);
         YRange = Random.Range(30, 60);
 
         a = Random.Range(0, birdsMove.Length);

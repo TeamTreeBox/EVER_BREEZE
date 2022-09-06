@@ -56,7 +56,8 @@ public class ButterflyAI : MonoBehaviour
 
 
     public bool rest;
-   
+    public bool catchpossible = false;
+
     public GameObject grabHand;
     public GameObject bottle;
     public GameObject arrive;
@@ -185,17 +186,18 @@ public class ButterflyAI : MonoBehaviour
        
         rest = true;
         this.speed = 0;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(5.0f);
         if (grabHand.GetComponent<CapOpen>().isGrabOn == true && bottle.GetComponent<StopStateCheck>().gatherState == true&& bottle.GetComponent<StopStateCheck>().stopState == true)
         {
             print(isComingClose);
             currentWaypoint = arrive.transform;
            
             Rotate();
+            catchpossible = true;
             speed = 6;
             isComingClose = false;
             this.transform.position = Vector3.MoveTowards(transform.position, arrive.transform.position, 0.1f);
-            print(isComingClose);
+            catchpossible = false;
 
         }
 
@@ -204,6 +206,7 @@ public class ButterflyAI : MonoBehaviour
             isComingClose = true;
             StartWaypoint();
         }
+        
         yield return new WaitForSeconds(5.0f);
         rest = false;
         this.speed += 0.01f;
@@ -214,7 +217,7 @@ public class ButterflyAI : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {       
-            if (grabHand.GetComponent<CapOpen>().isGrabOn == true && bottle.GetComponent<StopStateCheck>().gatherState == true && rest == true)
+            if (grabHand.GetComponent<CapOpen>().isGrabOn == true && bottle.GetComponent<StopStateCheck>().gatherState == true && catchpossible == true)
             {
                 if (other.tag == "Bottle")
                 {
