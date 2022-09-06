@@ -16,6 +16,7 @@ public class HM_WaterQuest : MonoBehaviour
     float cristal_Dis;
 
     bool iscris_blowup = false;
+    public float speed = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,7 @@ public class HM_WaterQuest : MonoBehaviour
         {
             inSideWater.SetActive(false);
             inSideWater.SetActive(true);
-            cristal.transform.position = Vector3.Lerp(cristal.transform.position, cristal_pos.transform.position, Time.deltaTime);
+            cristal.transform.position = Vector3.Lerp(cristal.transform.position, cristal_pos.transform.position, Time.deltaTime * speed);
 
             yield return new WaitForSeconds(0.1f);
 
