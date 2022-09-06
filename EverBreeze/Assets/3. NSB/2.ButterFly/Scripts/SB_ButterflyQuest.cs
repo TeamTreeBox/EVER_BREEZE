@@ -26,14 +26,18 @@ public class SB_ButterflyQuest : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ButterFly" && touchCount < Inbutterfly.Length && other.GetComponent<ButterflyAI>().rest==true)
+        if (other.tag == "ButterFly" && other.GetComponent<ButterflyAI>().catchpossible == true && other.GetComponent<ButterflyAI>().rest == true)
         {
 
+            if (touchCount < Inbutterfly.Length)
+            {
+                Inbutterfly[touchCount].SetActive(true);
+            }
 
-            Inbutterfly[touchCount].SetActive(true);
-        }
-            
-        }
-    
 
+
+        }
+
+
+    }
 }
