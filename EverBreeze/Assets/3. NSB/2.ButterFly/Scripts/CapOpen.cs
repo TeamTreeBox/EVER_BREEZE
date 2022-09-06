@@ -31,7 +31,7 @@ public class CapOpen : MonoBehaviour
         { 
             Cap.transform.position = Vector3.zero;
             Cap.transform.SetParent(GrapPos.transform);
-            
+            Cap.transform.localPosition = new Vector3(-0.0192000009f, -0.137099996f, 0.0428000018f);
             isGrabOn = true;
           
      

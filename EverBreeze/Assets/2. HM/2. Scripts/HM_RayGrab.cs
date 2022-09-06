@@ -84,7 +84,7 @@ public class HM_RayGrab : MonoBehaviour
         {
             if(grapable.gameObject != null)
             {
-                grapable.transform.localScale = new Vector3(.2f, .2f, .2f);
+               // grapable.transform.localScale = new Vector3(.2f, .2f, .2f);
                 grapable.transform.SetParent(null);
 
                 isGrabOn = false;

@@ -63,7 +63,7 @@ public class ButterflyAI : MonoBehaviour
     public GameObject arrive;
 
     public GameObject shader;
-
+   
 
 
 
@@ -182,22 +182,26 @@ public class ButterflyAI : MonoBehaviour
 
      
     IEnumerator ButterflyRest() //활성화 상태의 휴식하는 나비
-    {   //Vector3.Distance(arrive.transform.position, this.transform.position) < 15.0f &&
+    {  
        
-        rest = true;
+       
         this.speed = 0;
         yield return new WaitForSeconds(5.0f);
+        if (Vector3.Distance(grabHand.transform.position, this.transform.position) < 15.0f )
+        {
+
+       
         if (grabHand.GetComponent<CapOpen>().isGrabOn == true && bottle.GetComponent<StopStateCheck>().gatherState == true&& bottle.GetComponent<StopStateCheck>().stopState == true)
         {
             print(isComingClose);
             currentWaypoint = arrive.transform;
            
             Rotate();
-            catchpossible = true;
+            rest = true;
             speed = 6;
             isComingClose = false;
             this.transform.position = Vector3.MoveTowards(transform.position, arrive.transform.position, 0.1f);
-            catchpossible = false;
+           
 
         }
 
@@ -208,22 +212,23 @@ public class ButterflyAI : MonoBehaviour
         }
         
         yield return new WaitForSeconds(5.0f);
+       
         rest = false;
         this.speed += 0.01f;
         isComingClose = true;
         StartWaypoint();
         }
-       
-    
+    }
+
     private void OnTriggerEnter(Collider other)
     {       
-            if (grabHand.GetComponent<CapOpen>().isGrabOn == true && bottle.GetComponent<StopStateCheck>().gatherState == true && catchpossible == true)
+            if (grabHand.GetComponent<CapOpen>().isGrabOn == true && bottle.GetComponent<StopStateCheck>().gatherState == true && rest==true)
             {
                 if (other.tag == "Bottle")
                 {
                     this.gameObject.SetActive(false);
                     other.gameObject.GetComponent<SB_ButterflyQuest>().touchCount++;
-
+                    
                 }
 
             }
