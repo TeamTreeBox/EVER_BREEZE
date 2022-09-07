@@ -10,7 +10,7 @@ public class SB_CapOpen : MonoBehaviour
     public GameObject Cap;
     public bool isGrabOn = false;
     public GameObject GrapPos;
-    public GameObject CapPos;
+
 
     // Start is called before the first frame update
     void Start()

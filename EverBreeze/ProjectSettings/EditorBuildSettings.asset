@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/3. NSB/MapFinial 1.unity
-    guid: e6be8450eb4b3e34d95871eb4122507e
+    path: Assets/0. Team/MapFinial.unity
+    guid: dba60794644de5345aa582580d265c54
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 86e7e9779c042ed4db47995686b26efa, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9bac0619228665e4f81b124d96d99ddc, type: 2}
