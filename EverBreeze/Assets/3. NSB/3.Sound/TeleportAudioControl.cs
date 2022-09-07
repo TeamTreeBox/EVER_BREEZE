@@ -1,6 +1,7 @@
 using Oculus.Interaction.Input;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -8,7 +9,6 @@ using UnityEngine.XR;
 public class TeleportAudioControl : MonoBehaviour
 {
     public GameObject PlayerAudio;
-
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +19,7 @@ public class TeleportAudioControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
-        {
-            PlayerAudio.GetComponent<AudioListener>().enabled = false;
-        }
+    
         if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
         {
             StartCoroutine(AudioOff());
@@ -30,8 +27,13 @@ public class TeleportAudioControl : MonoBehaviour
     }
     IEnumerator AudioOff()
     {
-        PlayerAudio.GetComponent<AudioListener>().enabled = false;
+        AudioListener.volume = 0f;
         yield return new WaitForSeconds(0.5f);
-        PlayerAudio.GetComponent<AudioListener>().enabled = true;
+        for (float f = 0f; f < 1f; f += 0.04f)
+        {
+            AudioListener.volume = f;
+            yield return null;
+        }
+
     }
 }
