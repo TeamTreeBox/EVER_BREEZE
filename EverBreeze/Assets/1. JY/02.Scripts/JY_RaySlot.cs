@@ -35,19 +35,20 @@ public class JY_RaySlot : MonoBehaviour
 
     public void INItemInfo()
     {
-        if (hitThing.transform.GetChild(0).gameObject.tag == "WaterBall")
+        if (hitThing.transform.GetChild(0).gameObject.CompareTag("WaterBall"))
         {
+            print("**들어옴**");
             waterItemInfo.SetActive(true);
         }
-        if (hitThing.transform.GetChild(0).gameObject.tag == "Branch")
+        else if (hitThing.transform.GetChild(0).gameObject.tag == "Branch")
         {
             branchItemInfo.SetActive(true);
         }
-        if (hitThing.transform.GetChild(0).gameObject.tag == "JamStone")
+        else if (hitThing.transform.GetChild(0).gameObject.tag == "JamStone")
         {
             jamStonneItemInfo.SetActive(true);
         }
-        if (hitThing.transform.GetChild(0).gameObject.tag == "JingleBell")
+        else if (hitThing.transform.GetChild(0).gameObject.tag == "JingleBell")
         {
             jingleBellItemInfo.SetActive(true);
         }
@@ -57,17 +58,18 @@ public class JY_RaySlot : MonoBehaviour
     {
         if (hitThing.transform.GetChild(0).gameObject.tag == "WaterBall")
         {
+            print("**나감**");
             waterItemInfo.SetActive(false);
         }
-        if (hitThing.transform.GetChild(0).gameObject.tag == "Branch")
+        else if (hitThing.transform.GetChild(0).gameObject.tag == "Branch")
         {
             branchItemInfo.SetActive(false);
         }
-        if (hitThing.transform.GetChild(0).gameObject.tag == "JamStone")
+        else if (hitThing.transform.GetChild(0).gameObject.tag == "JamStone")
         {
             jamStonneItemInfo.SetActive(false);
         }
-        if (hitThing.transform.GetChild(0).gameObject.tag == "JingleBell")
+        else if (hitThing.transform.GetChild(0).gameObject.tag == "JingleBell")
         {
             jingleBellItemInfo.SetActive(false);
         }
@@ -109,7 +111,7 @@ public class JY_RaySlot : MonoBehaviour
             if (state == true)
             {
                 hitThing = hit.transform.gameObject;
-
+                print(hitThing.gameObject.name);
                 //선택 O
                 if (hitThing.gameObject == slot01)
                 {
@@ -123,13 +125,13 @@ public class JY_RaySlot : MonoBehaviour
                     {
                         INItemInfo();
                     }
-                    else if (activeState == false)
+                    else if (activeState == false && hitThing.transform.childCount != 0)
                     {
                         OUTItemInfo();
                     }
                 }
 
-                if (hitThing.gameObject == slot02)
+                else if (hitThing.gameObject == slot02)
                 {
                     hitThing.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                     if (OVRInput.GetDown(OVRInput.Button.One))
@@ -141,13 +143,13 @@ public class JY_RaySlot : MonoBehaviour
                     {
                         INItemInfo();
                     }
-                    else if (activeState == false)
+                    else if (activeState == false && hitThing.transform.childCount != 0)
                     {
                         OUTItemInfo();
                     }
                 }
 
-                if (hitThing.gameObject == slot03)
+                else if (hitThing.gameObject == slot03)
                 {
                     hitThing.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                     
@@ -160,7 +162,7 @@ public class JY_RaySlot : MonoBehaviour
                     {
                         INItemInfo();
                     }
-                    else if (activeState == false)
+                    else if (activeState == false && hitThing.transform.childCount != 0)
                     {
                         OUTItemInfo();
                     }
@@ -181,5 +183,6 @@ public class JY_RaySlot : MonoBehaviour
                 }
             }
         }
+
     }
 }

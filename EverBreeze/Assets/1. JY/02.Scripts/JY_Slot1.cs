@@ -107,7 +107,7 @@ public class JY_Slot1 : MonoBehaviour
         ItemInSlot = obj;
         isInitem = true;
 
-        //obj.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Inventory;
+        obj.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Inventory;
 
         //Count UI
         itemCount++;
