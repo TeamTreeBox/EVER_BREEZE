@@ -73,6 +73,9 @@ public class JY_Slot1 : MonoBehaviour
         obj.transform.localEulerAngles = obj.GetComponent<Item>().slotRotatin;
         obj.transform.localScale = new Vector3(obj.transform.localScale.x / 2.0f, obj.transform.localScale.y / 2.0f, obj.transform.localScale.z / 2.0f);
 
+        StartCoroutine(IEVibration(1, 1, 0.3f, true, false));
+
+
         if (obj.tag == "WaterBall")
         {
             obj.transform.GetChild(1).gameObject.SetActive(false);
@@ -160,5 +163,16 @@ public class JY_Slot1 : MonoBehaviour
     public void ClearSlot()
     {
         countImage.SetActive(false);
+    }
+
+    IEnumerator IEVibration(float frequency, float amplitude, float duration, bool rightHand, bool leftHand)
+    {
+        if (rightHand) OVRInput.SetControllerVibration(frequency, amplitude, OVRInput.Controller.RTouch);
+        if (leftHand) OVRInput.SetControllerVibration(frequency, amplitude, OVRInput.Controller.LTouch);
+
+        yield return new WaitForSeconds(duration);
+
+        if (rightHand) OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+        if (leftHand) OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
     }
 }
