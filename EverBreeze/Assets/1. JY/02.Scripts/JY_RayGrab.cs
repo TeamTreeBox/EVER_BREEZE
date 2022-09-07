@@ -75,8 +75,8 @@ public class JY_RayGrab : MonoBehaviour
                     }
                     else if (grabable.tag == "Branch")
                     {
-                        grabable.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                        grabable.transform.localRotation = Quaternion.Euler(new Vector3(30f, 0.0f, 180.0f));
+                        grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        //grabable.transform.localRotation = Quaternion.Euler(new Vector3(30f, 0.0f, 180.0f));
                     }
                     grabable.transform.localPosition = Vector3.zero;
 

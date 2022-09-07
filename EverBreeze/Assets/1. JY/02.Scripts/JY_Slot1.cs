@@ -83,7 +83,6 @@ public class JY_Slot1 : MonoBehaviour
         }
         else if (obj.tag == "JamStone")
         {
-            obj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             obj.transform.GetChild(0).gameObject.SetActive(false);
             obj.transform.GetChild(1).gameObject.SetActive(false);
         }

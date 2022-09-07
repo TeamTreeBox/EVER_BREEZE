@@ -31,6 +31,8 @@ public class JY_RaySlot : MonoBehaviour
     {
         layerMask01 = 1 << 7;
         state = false;
+
+        jingleBellItemInfo.SetActive(false);
     }
 
     public void INItemInfo()
