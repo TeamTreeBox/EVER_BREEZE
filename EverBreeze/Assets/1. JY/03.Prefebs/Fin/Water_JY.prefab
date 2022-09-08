@@ -5189,6 +5189,7 @@ MonoBehaviour:
   cristal_pos: {fileID: 0}
   waterVfx: {fileID: 5193794564528601980}
   inSideWater: {fileID: 4923343907997058182}
+  speed: 2
 --- !u!65 &3841447038859492363
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5240,7 +5241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3836890692382342977}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
   m_Name: 

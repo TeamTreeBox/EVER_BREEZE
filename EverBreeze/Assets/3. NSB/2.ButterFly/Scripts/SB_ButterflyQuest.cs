@@ -11,6 +11,7 @@ public class SB_ButterflyQuest : MonoBehaviour
     public GameObject capA;
     public GameObject capB;
 
+    public bool isCatchAll = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,8 @@ public class SB_ButterflyQuest : MonoBehaviour
         {
             capA.SetActive(false);
             capB.SetActive(true);
+
+            isCatchAll = true;
         }
 
 

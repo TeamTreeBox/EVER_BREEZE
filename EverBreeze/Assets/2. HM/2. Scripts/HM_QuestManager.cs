@@ -45,6 +45,9 @@ public class HM_QuestManager : MonoBehaviour
             case 3:
                 StartCoroutine(SecondQuestExit());
                 break;
+            case 4:
+                StartCoroutine(ThirdQuestExit());
+                break;
         }
     }
 
@@ -57,8 +60,6 @@ public class HM_QuestManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         //Trigger_VFX.SetActive(true);
 
-        BookIconPopUP();
-        PageManager.instance.debug_StageClear = 1;
     }
 
     IEnumerator FirstQuestExit()
@@ -71,8 +72,8 @@ public class HM_QuestManager : MonoBehaviour
         HM_TreeManager.instance.QuestEventTrigger(1);
 
 
-        HM_RayGrab.instance.NullGrabable();
-        HM_RayGrab.instance.isGrabOn = false;
+        JY_RayGrab.instance.NullGrabable();
+        JY_RayGrab.instance.isGrabOn = false;
 
         yield return new WaitForSeconds(1f);
         HM_FoxAI.instane.QuestComplete();
@@ -80,6 +81,7 @@ public class HM_QuestManager : MonoBehaviour
         //Trigger_VFX.SetActive(true);
 
         SB_MapManager.instance.FirstChange_Spring();
+        SB_MapManager.instance.FirstChange_Main();
         //BookIconPopUP();
     }
 
@@ -89,15 +91,15 @@ public class HM_QuestManager : MonoBehaviour
         {
             HM_FoxSpoke.instacne.SelectNum_Talk(4);
 
-            HM_RayGrab.instance.NullGrabable();
-            HM_RayGrab.instance.isGrabOn = false;
+            JY_RayGrab.instance.NullGrabable();
+            JY_RayGrab.instance.isGrabOn = false;
             BookIconPopUP();
         }
         else
         {
             isQuest2_Clearing = true;
-            HM_RayGrab.instance.NullGrabable();
-            HM_RayGrab.instance.isGrabOn = false;
+            JY_RayGrab.instance.NullGrabable();
+            JY_RayGrab.instance.isGrabOn = false;
         }
         yield return new WaitForEndOfFrame();
 
@@ -111,21 +113,43 @@ public class HM_QuestManager : MonoBehaviour
         HM_FoxSpoke.instacne.SelectNum_Talk(5);
         HM_TreeManager.instance.QuestEventTrigger(2);
 
-        HM_RayGrab.instance.NullGrabable();
-        HM_RayGrab.instance.isGrabOn = false;
+        JY_RayGrab.instance.NullGrabable();
+        JY_RayGrab.instance.isGrabOn = false;
 
         yield return new WaitForSeconds(1f);
         HM_FoxAI.instane.QuestComplete();
         yield return new WaitForSeconds(9f);
-        Trigger_VFX.SetActive(true);
+        //Trigger_VFX.SetActive(true);
 
         SB_MapManager.instance.SecondChange_Spring();
-        BookIconPopUP();
+        SB_MapManager.instance.SecondChange_Main();
+
+        //BookIconPopUP();
+    }
+
+    IEnumerator ThirdQuestExit()
+    {
+
+        isQuest_3_Clear = true;
+
+        HM_FoxSpoke.instacne.SelectNum_Talk(7);
+        HM_TreeManager.instance.QuestEventTrigger(3);
+
+        JY_RayGrab.instance.NullGrabable();
+        JY_RayGrab.instance.isGrabOn = false;
+
+        HM_FoxAI.instane.QuestComplete();
+
+        yield return new WaitForSeconds(1f);
+        SB_MapManager.instance.ThirdChange_Spring();
+        SB_MapManager.instance.ThirdChange_Main();
+
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "WaterBall" && isQuest_1_Clear == false && isTutorial_Clear == true)
+        if (other.gameObject.tag == "WaterBall" && isQuest_1_Clear == false && isTutorial_Clear == true)
         {
             StartCoru(1);
             Destroy(other.gameObject.transform.GetChild(2).gameObject);
@@ -138,9 +162,16 @@ public class HM_QuestManager : MonoBehaviour
             Destroy(other.gameObject);
             print("Branch");
         }
+        else if(other.tag == "Bottle" && isQuest_2_Clear == true && other.gameObject.GetComponentInChildren<SB_ButterflyQuest>().isCatchAll == true)
+        {
+            StartCoru(4);
+            Destroy(other.gameObject);
+            print("Bottle");
+        }
 
         if (other.tag == "Player" && isTutorial_Clear == false)
         {
+            print("Æ©Åä¸®¾ó");
             StartCoroutine(Tutorial());
         }
     }

@@ -66,18 +66,18 @@ public class SB_MapManager : MonoBehaviour
             print(a);
             if (a == 1 && test_1 == false)
             {
-                FirstWinter.SetActive(false);
-                FirstSpring.SetActive(true);
+                FirstChange_Spring();
+                FirstChange_Main();
             }
             else if (a == 2 && test_2 == false)
             {
-                test_2 = true;
                 SecondChange_Spring();
+                SecondChange_Main();
             }
             else if(a == 3 && test_3 == false)
             {
-                test_3 = true;
                 ThirdChange_Spring();
+                ThirdChange_Main();
             }
         }
         #endif
@@ -118,21 +118,21 @@ public class SB_MapManager : MonoBehaviour
 
     IEnumerator FirstChangeSpring()
     {
-        FirstWinter.SetActive(false);
         FirstSpring.SetActive(true);
+        FirstWinter.SetActive(false);
         print("Change");
         yield return new WaitForEndOfFrame();
     }
     IEnumerator SecondChangeSpring()
     {
-        SecondWinter.SetActive(false);
         SecondSpring.SetActive(true);
+        SecondWinter.SetActive(false);
         yield return new WaitForEndOfFrame();
     }
     IEnumerator ThirdChangeSpring()
     {
-        ThirdWinter.SetActive(false);
         ThirdSpring.SetActive(true);
+        ThirdWinter.SetActive(false);
         yield return new WaitForEndOfFrame();
     }
 

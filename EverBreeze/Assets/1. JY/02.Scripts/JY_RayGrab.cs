@@ -33,7 +33,10 @@ public class JY_RayGrab : MonoBehaviour
 
     public void NullGrabable()
     {
+        if(grabable!=null)
+        {
         grabable = null;
+        }
     }
 
     public bool slotHit;
@@ -57,7 +60,7 @@ public class JY_RayGrab : MonoBehaviour
                     isGrabOn = true;
                     grabable.transform.SetParent(grabPos.transform);
 
-                    grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    //grabable.transform.localScale = new Vector3(1f, 1f, 1f);
                     if (grabable.tag == "WaterBall")
                     {
                         grabable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
@@ -79,6 +82,12 @@ public class JY_RayGrab : MonoBehaviour
                         //grabable.transform.localRotation = Quaternion.Euler(new Vector3(30f, 0.0f, 180.0f));
                     }
                     grabable.transform.localPosition = Vector3.zero;
+
+                    grabable.gameObject.GetComponent<Rigidbody>().useGravity = false;
+
+                    grabable.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+
+                    grabable.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 
                     grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Grab;
                     
@@ -103,7 +112,7 @@ public class JY_RayGrab : MonoBehaviour
     {
         print("%%Slot Hit OUT%%");
         grabable.transform.SetParent(null);
-        grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        //grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         if (grabable.tag == "JingleBell")
         {
             grabable.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
@@ -116,6 +125,9 @@ public class JY_RayGrab : MonoBehaviour
         grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Field;
 
         grabable.GetComponent<Rigidbody>().useGravity = true;
+
+        grabable.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
     }
 }
 

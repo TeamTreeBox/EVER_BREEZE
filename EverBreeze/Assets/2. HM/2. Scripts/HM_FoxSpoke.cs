@@ -8,20 +8,28 @@ public class HM_FoxSpoke : MonoBehaviour
 {
     public static HM_FoxSpoke instacne;
 
-    private void Awake()
-    {
-        instacne = this;
-    }
-
     Animator foxAnim;
     NavMeshAgent foxAi;
-    int ranBehavior = 0;
-
-    public float txt_Speed = 3f;
-
-    public GameObject fox_Talk_UI;
     SpriteRenderer fox_spriterender;
 
+    int ranBehavior = 0;
+    [Header("텍스트 넘어가는 속도")]
+    public float txt_Speed = 3f;
+
+    //================퀘스트 VFX========================//
+
+    [Header("Quest VFX")]
+    public GameObject Trigger_Vfx;
+
+    //==================================================//
+    //==============대화UI 창 오브젝트===================//
+
+    public GameObject fox_Talk_UI;
+
+    //=================================================//
+    //================대화 스프라이트===================//
+
+    [Header("대화 스프라이트 배열")]
     public Sprite[] fox_Talk_1;
     public Sprite[] fox_Talk_2;
     public Sprite[] fox_Talk_3;
@@ -31,17 +39,17 @@ public class HM_FoxSpoke : MonoBehaviour
     public Sprite[] fox_Talk_7;
     public Sprite[] fox_Talk_8;
 
+    //=================================================//
     public int save_num = 0;
-
     public int debug_Num = 0;
-
     public bool is_UI_Open = false;
     public bool debug_buttonTest = false;
 
-    //=========퀘스트 VFX===============================//
 
-    [Header("Quest VFX")]
-    public GameObject Trigger_Vfx;
+    private void Awake()
+    {
+        instacne = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -51,15 +59,6 @@ public class HM_FoxSpoke : MonoBehaviour
         foxAi = this.GetComponent<NavMeshAgent>();
         fox_Talk_UI.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-
-    }
-
-   
 
     public void SelectNum_Talk(int num)
     {
