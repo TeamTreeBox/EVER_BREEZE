@@ -14,6 +14,23 @@ public class SB_MapManager : MonoBehaviour
     public GameObject SecondWinter;
     public GameObject ThirdWinter;
 
+
+    public GameObject MainGrass;
+    public GameObject MainFlower;
+    public GameObject MainSpringTree;
+    public GameObject MainWinterTree;
+
+    public GameObject MainSpringPlant;
+    public GameObject MainWinterPlant;
+
+    public GameObject MainCenterSpringGround;
+    public GameObject MainSpringGround;
+    public GameObject MainCenterWinterGround;
+    public GameObject MainWinterGround;
+
+    public GameObject MainColorTree;
+    public GameObject MainDeadTree;
+
     bool test_1 = false;
     bool test_2 = false;
     bool test_3 = false;
@@ -33,6 +50,8 @@ public class SB_MapManager : MonoBehaviour
         FirstWinter.SetActive(true);
         SecondWinter.SetActive(true);
         ThirdWinter.SetActive(true);
+
+        
     }
 
 
@@ -79,6 +98,22 @@ public class SB_MapManager : MonoBehaviour
         StartCoroutine(ThirdChangeSpring());
     }
 
+    public void FirstChange_Main()
+    {
+        StartCoroutine(MainFirstChange());
+    }
+
+    public void SecondChange_Main()
+    {
+        StartCoroutine(MainSecondChange());
+    }
+
+
+    public void ThirdChange_Main()
+    {
+        StartCoroutine(MainThirdChange());
+    }
+
 
 
     IEnumerator FirstChangeSpring()
@@ -101,4 +136,35 @@ public class SB_MapManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
+    IEnumerator MainFirstChange()
+
+    {
+        MainColorTree.SetActive(true);
+        MainSpringPlant.SetActive(true);
+        MainSpringGround.SetActive(true);
+
+        MainDeadTree.SetActive(false);
+        MainWinterPlant.SetActive(false);
+        MainWinterGround.SetActive(false);
+        yield return new WaitForEndOfFrame();
+    }
+
+    IEnumerator MainSecondChange()
+
+    {
+        MainFlower.SetActive(true);
+        MainCenterSpringGround.SetActive(true);
+        MainSpringTree.SetActive(true);
+
+        MainCenterWinterGround.SetActive(false);
+        MainWinterTree.SetActive(false);
+        yield return new WaitForEndOfFrame();
+    }
+
+    IEnumerator MainThirdChange()
+
+    {
+        MainGrass.SetActive(true);
+        yield return new WaitForEndOfFrame();
+    }
 }
