@@ -50,19 +50,20 @@ public class HM_QuestManager : MonoBehaviour
 
     IEnumerator Tutorial()
     {
-        Trigger_VFX.SetActive(false);
+        //Trigger_VFX.SetActive(false);
         HM_FoxSpoke.instacne.SelectNum_Talk(0);
         isTutorial_Clear = true;
 
-        yield return new WaitForSeconds(10f);
-        Trigger_VFX.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        //Trigger_VFX.SetActive(true);
 
         BookIconPopUP();
+        PageManager.instance.debug_StageClear = 1;
     }
 
     IEnumerator FirstQuestExit()
     {
-        Trigger_VFX.SetActive(false);
+        //Trigger_VFX.SetActive(false);
         HM_FoxSpoke.instacne.SelectNum_Talk(2);
         isQuest_1_Clear = true;
         //block_2.SetActive(false);
@@ -76,17 +77,16 @@ public class HM_QuestManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         HM_FoxAI.instane.QuestComplete();
         yield return new WaitForSeconds(9f);
-        Trigger_VFX.SetActive(true);
+        //Trigger_VFX.SetActive(true);
 
         SB_MapManager.instance.FirstChange_Spring();
-        BookIconPopUP();
+        //BookIconPopUP();
     }
 
     IEnumerator SecondQuestClearing()
     {
         if (isQuest2_Clearing == true)
         {
-            Trigger_VFX.SetActive(false);
             HM_FoxSpoke.instacne.SelectNum_Talk(4);
 
             HM_RayGrab.instance.NullGrabable();
@@ -98,7 +98,6 @@ public class HM_QuestManager : MonoBehaviour
             isQuest2_Clearing = true;
             HM_RayGrab.instance.NullGrabable();
             HM_RayGrab.instance.isGrabOn = false;
-            BookIconPopUP();
         }
         yield return new WaitForEndOfFrame();
 

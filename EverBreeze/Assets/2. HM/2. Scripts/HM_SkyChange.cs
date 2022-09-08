@@ -6,6 +6,10 @@ public class HM_SkyChange : MonoBehaviour
 {
     public GameObject skyChange;
     float blend;
+
+    public Material[] skyBoxMat;
+    public int i = 0;
+
    // Start is called before the first frame update
    void Start()
     {
@@ -29,6 +33,7 @@ public class HM_SkyChange : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(1f);
+        StartCoroutine(ChangeSkyBoxMat());
         StartCoroutine(ChangeDownSkyBox());
     }
 
@@ -44,5 +49,21 @@ public class HM_SkyChange : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         StartCoroutine(ChangeUpSkyBox());
+    }
+
+    IEnumerator ChangeSkyBoxMat()
+    {
+        i += 1;
+
+        if(i < skyBoxMat.Length)
+        {
+            skyChange.GetComponent<SkyboxBlender>().skyBox2 = skyBoxMat[i];
+        }
+        else
+        {
+            i = 0;
+        }
+
+        yield return new WaitForEndOfFrame();
     }
 }
