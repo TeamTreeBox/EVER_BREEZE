@@ -65,7 +65,7 @@ public class PageChange : MonoBehaviour
     {
         //Page0304 
         if (PageManager.instance.debug_StageClear == 1 && isPage01 == true)
-        {
+        {   // => 퀘스트 1 시작할때
             page01.SetActive(false);
             page02.SetActive(true);
             isPage01 = false;
@@ -73,14 +73,14 @@ public class PageChange : MonoBehaviour
 
         //Page0506
         if (PageManager.instance.debug_StageClear == 2 && isPage03 == true && isPage04 == false)
-        {
-            page03.SetActive(false);
+        {   // => 퀘스트 1 끝났을 때
+            page03.SetActive(false);//null page
             page04.SetActive(true);
             isPage03 = false;
             isPage04 = true;
         }
         if (PageManager.instance.debug_StageClear == 3 && isPage03 == false && isPage04 == true)
-        {
+        {   // => 퀘스트 2 시작할 때
             page04.SetActive(false);
             page05.SetActive(true);
             isPage04 = false;
@@ -88,14 +88,14 @@ public class PageChange : MonoBehaviour
 
         //Page0708
         if (PageManager.instance.debug_StageClear == 4 && isPage06 == true && isPage07 == false)
-        {
-            page06.SetActive(false);
+        {   // => 퀘스트 2 끝날 때
+            page06.SetActive(false);//null page
             page07.SetActive(true);
             isPage06 = false;
             isPage07 = true;
         }
         if (PageManager.instance.debug_StageClear == 5 && isPage06 == false && isPage07 == true)
-        {
+        {   // => 퀘스트 3 시작할 때
             page07.SetActive(false);
             page08.SetActive(true);
             isPage07 = false;
@@ -103,20 +103,20 @@ public class PageChange : MonoBehaviour
 
         //Page0910
         if (PageManager.instance.debug_StageClear == 6 && isPage09 == true && isPage10 == false)
-        {
-            page09.SetActive(false);
+        {   // => 퀘스트 3 끝날 때
+            page09.SetActive(false);//null page
             page10.SetActive(true);
             isPage09 = false;
             isPage10 = true;
         }
         //Ending page
         if (PageManager.instance.debug_StageClear == 7 && isPage09 == false && isPage10 == true)
-        {
+        {   // 엔딩
             page10.SetActive(false);
-            page11.SetActive(true);
+            page11.SetActive(true);//Ending page
 
-            page12.SetActive(false);
-            page13.SetActive(true);
+            page12.SetActive(false);//null page
+            page13.SetActive(true);//Ending page
             isPage10 = false;
         }
     }

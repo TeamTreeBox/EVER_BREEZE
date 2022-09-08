@@ -24,7 +24,7 @@ public class PageManager : MonoBehaviour
     //디버그 버튼 클릭
     public void Debug_StageClear()
     {
-        debug_StageClear++;
+        //debug_StageClear++;
 
         /*if (debug_StageClear == 1)
         else if (debug_StageClear == 2) AutoSave.instance.gameData.isClear_2 = true;
