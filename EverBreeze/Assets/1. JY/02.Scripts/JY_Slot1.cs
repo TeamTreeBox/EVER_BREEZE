@@ -75,7 +75,6 @@ public class JY_Slot1 : MonoBehaviour
 
         StartCoroutine(IEVibration(1, 1, 0.3f, true, false));
 
-
         if (obj.tag == "WaterBall")
         {
             obj.transform.GetChild(1).gameObject.SetActive(false);
@@ -85,6 +84,10 @@ public class JY_Slot1 : MonoBehaviour
         {
             obj.transform.GetChild(0).gameObject.SetActive(false);
             obj.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else if (obj.tag == "Bottle")
+        {
+            obj.transform.localScale = new Vector3(10.0f, 10.0f, 10.0f);
         }
 
         obj.GetComponent<Item>().inSlot = true;
@@ -136,7 +139,7 @@ public class JY_Slot1 : MonoBehaviour
         JY_RayGrab.instance.grabable = obj.gameObject;
         obj.transform.SetParent(itemPOS.transform);
 
-        obj.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        
         obj.transform.localPosition = Vector3.zero;
 
         if (obj.tag == "JingleBell")
@@ -145,6 +148,23 @@ public class JY_Slot1 : MonoBehaviour
             obj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             obj.transform.localPosition = new Vector3(0.0287f, -0.04f, 0.0254f);
             obj.transform.localRotation = Quaternion.Euler(new Vector3(20.0f, 0.0f, -170.0f));
+        }
+
+        else if (obj.tag == "WaterBall")
+        {
+            obj.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        }
+        else if (obj.tag == "JamStone")
+        {
+            obj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+        else if (obj.tag == "Branch")
+        {
+            obj.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        }
+        else if (obj.tag == "Bottle")
+        {
+            obj.transform.localScale = new Vector3(6.0f, 6.0f, 6.0f);
         }
 
         obj.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Grab;

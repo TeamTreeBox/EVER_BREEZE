@@ -60,10 +60,10 @@ public class JY_RayGrab : MonoBehaviour
                     isGrabOn = true;
                     grabable.transform.SetParent(grabPos.transform);
 
-                    //grabable.transform.localScale = new Vector3(1f, 1f, 1f);
                     if (grabable.tag == "WaterBall")
                     {
                         grabable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
+
                     }
                     else if (grabable.tag == "JingleBell")
                     {
@@ -79,8 +79,12 @@ public class JY_RayGrab : MonoBehaviour
                     else if (grabable.tag == "Branch")
                     {
                         grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                        //grabable.transform.localRotation = Quaternion.Euler(new Vector3(30f, 0.0f, 180.0f));
                     }
+                    else if (grabable.tag == "Bottle")
+                    {
+                        grabable.transform.localScale = new Vector3(6.0f, 6.0f, 6.0f);
+                    }
+                    
                     grabable.transform.localPosition = Vector3.zero;
 
                     grabable.gameObject.GetComponent<Rigidbody>().useGravity = false;
@@ -120,6 +124,10 @@ public class JY_RayGrab : MonoBehaviour
         else if (grabable.tag == "JamStone")
         {
             grabable.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+        else if (grabable.tag == "Bottle")
+        {
+            grabable.transform.localScale = new Vector3(6.0f, 6.0f, 6.0f);
         }
         isGrabOn = false;
         grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Field;

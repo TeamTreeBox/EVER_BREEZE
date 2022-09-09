@@ -26,6 +26,7 @@ public class JY_RaySlot : MonoBehaviour
     public GameObject branchItemInfo;
     public GameObject jamStonneItemInfo;
     public GameObject jingleBellItemInfo;
+    public GameObject bottleItemInfo;
 
     void Start()
     {
@@ -54,6 +55,11 @@ public class JY_RaySlot : MonoBehaviour
         {
             jingleBellItemInfo.SetActive(true);
         }
+
+        else if (hitThing.transform.GetChild(0).gameObject.tag == "Bottle")
+        {
+            bottleItemInfo.SetActive(true);
+        }
     }
 
     public void OUTItemInfo()
@@ -74,6 +80,10 @@ public class JY_RaySlot : MonoBehaviour
         else if (hitThing.transform.GetChild(0).gameObject.tag == "JingleBell")
         {
             jingleBellItemInfo.SetActive(false);
+        }
+        else if (hitThing.transform.GetChild(0).gameObject.tag == "Bottle")
+        {
+            bottleItemInfo.SetActive(false);
         }
     }
 
@@ -181,7 +191,7 @@ public class JY_RaySlot : MonoBehaviour
                 }
                 if (hitThing.gameObject != slot03)
                 {
-                    slot03.transform.localScale = new Vector3(0.22f, 0.2f, 0.2f);
+                    slot03.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 }
             }
         }

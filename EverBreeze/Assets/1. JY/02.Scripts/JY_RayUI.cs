@@ -10,19 +10,20 @@ public class JY_RayUI : MonoBehaviour
     {
         instance = this;
     }
-    public Transform rightHand;
-
     public RaycastHit hit;
     int layerMask01;
 
     public GameObject hitThing;
+    public GameObject bookMark01;
+    public GameObject bookMark02;
+    public GameObject bookMark03;
+    public GameObject bookMark04;
 
     private bool state;
-    private bool activeState;
 
     void Start()
     {
-        layerMask01 = 1 << 5;
+        layerMask01 = 1 << 9;
         state = false;
     }
 
@@ -38,31 +39,59 @@ public class JY_RayUI : MonoBehaviour
             state = false;
         }
 
-        //One 버튼을 On Off 여부
-        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
+        //Ray Hit가 안 되어 있을 떄 상태
+        if (state == false)
         {
-            activeState = true;
+            bookMark01.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            bookMark02.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            bookMark03.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            bookMark04.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }
-        else if (OVRInput.GetUp(OVRInput.Button.One, OVRInput.Controller.RTouch))
-        {
-            activeState = false;
-        }
- 
+
         //Ray Hit가 되었을 떄 상태
         if (Physics.Raycast(transform.position, transform.forward, out hit, 300f, layerMask01))
         {
             if (state == true)
             {
                 hitThing = hit.transform.gameObject;
-                print("UI" + " " + hitThing.gameObject.name);
+                print(hitThing.gameObject.name);
                 //선택 O
-                if (activeState == true)
+                if (hitThing.gameObject == bookMark01)
                 {
-                    Button btn = hitThing.transform.GetComponent<Button>();
-                    if (hitThing != null)
-                    {
-                        btn.onClick.Invoke();
-                    }
+                    hitThing.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+                }
+
+                if (hitThing.gameObject == bookMark02)
+                {
+                    hitThing.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+                }
+
+                if (hitThing.gameObject == bookMark03)
+                {
+                    hitThing.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+                }
+
+                if (hitThing.gameObject == bookMark04)
+                {
+                    hitThing.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+                }
+
+                //선택 X
+                if (hitThing.gameObject != bookMark01)
+                {
+                    bookMark01.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                }
+                if (hitThing.gameObject != bookMark02)
+                {
+                    bookMark02.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                }
+                if (hitThing.gameObject != bookMark03)
+                {
+                    bookMark03.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                }
+                if (hitThing.gameObject != bookMark04)
+                {
+                    bookMark04.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
                 }
             }
         }

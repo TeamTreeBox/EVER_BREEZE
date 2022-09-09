@@ -11,11 +11,18 @@ public class JY_ItemDebug : MonoBehaviour
         instance = this;
     }
 
-    public int debug_Item = 0;
+    public int debug_JamStoneItem = 0;
+    public int debug_BottleItem = 0;
 
-    //디버그 버튼 클릭
-    public void Debug_StageClear()
+    //JamStone 디버그 버튼 클릭
+    public void Debug_JamStoneItem()
     {
-        debug_Item++;
+        debug_JamStoneItem++;
+    }
+
+    //Bottle 디버그 버튼 클릭
+    public void Debug_BottleItem()
+    {
+        debug_BottleItem++;
     }
 }
