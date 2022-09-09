@@ -112,7 +112,7 @@ public class JY_RayGrab : MonoBehaviour
     {
         print("%%Slot Hit OUT%%");
         grabable.transform.SetParent(null);
-        //grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        grabable.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         if (grabable.tag == "JingleBell")
         {
             grabable.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);

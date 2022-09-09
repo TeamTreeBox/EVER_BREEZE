@@ -56,7 +56,7 @@ public class HM_JemStone : MonoBehaviour
             touchCount++;
         }
         
-        if(other.gameObject.name == "QuestTrigger" && isTouchEnough == true)
+        if(other.gameObject.name == "QuestTrigger" && isTouchEnough == true && this.GetComponent<JY_ItemInfo>().state == ItemState.Grab)
         {
             HM_QuestManager.instance.StartCoru(2);
             Destroy(this.gameObject);

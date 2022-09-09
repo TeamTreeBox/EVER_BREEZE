@@ -149,14 +149,14 @@ public class HM_QuestManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "WaterBall" && isQuest_1_Clear == false && isTutorial_Clear == true)
+        if (other.gameObject.tag == "WaterBall" && isQuest_1_Clear == false && isTutorial_Clear == true && other.gameObject.GetComponent<JY_ItemInfo>().state == ItemState.Grab)
         {
             StartCoru(1);
             Destroy(other.gameObject.transform.GetChild(2).gameObject);
             Destroy(other.gameObject);
         }
 
-        else if (other.tag == "Branch" && isQuest_1_Clear == true)
+        else if (other.tag == "Branch" && isQuest_1_Clear == true && other.gameObject.GetComponent<JY_ItemInfo>().state == ItemState.Grab)
         {
             StartCoru(2);
             Destroy(other.gameObject);
