@@ -118,8 +118,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
         is_UI_Open = false;
 
-        HM_QuestManager.instance.BookIconPopUP();
-        PageManager.instance.debug_StageClear = 1;
+       
 
         yield return new WaitForSeconds(2f);
 
@@ -145,7 +144,7 @@ public class HM_FoxSpoke : MonoBehaviour
         is_UI_Open = false;
 
         HM_QuestManager.instance.BookIconPopUP();
-        PageManager.instance.debug_StageClear = 2;
+        PageManager.instance.debug_StageClear = 1;
 
         yield return new WaitForSeconds(2f);
 
@@ -174,7 +173,7 @@ public class HM_FoxSpoke : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         HM_QuestManager.instance.BookIconPopUP();
-        PageManager.instance.debug_StageClear = 3;
+        PageManager.instance.debug_StageClear = 2;
 
         StartCoroutine(Fox_Talk_4());
     }
@@ -199,7 +198,7 @@ public class HM_FoxSpoke : MonoBehaviour
         is_UI_Open = false;
 
         HM_QuestManager.instance.BookIconPopUP();
-        PageManager.instance.debug_StageClear = 4;
+        PageManager.instance.debug_StageClear = 3;
 
         yield return new WaitForSeconds(2f);
 
@@ -248,7 +247,7 @@ public class HM_FoxSpoke : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         HM_QuestManager.instance.BookIconPopUP();
-        PageManager.instance.debug_StageClear = 5;
+        PageManager.instance.debug_StageClear = 4;
 
         yield return new WaitForSeconds(2f);
 
@@ -273,7 +272,7 @@ public class HM_FoxSpoke : MonoBehaviour
         is_UI_Open = false;
 
         HM_QuestManager.instance.BookIconPopUP();
-        PageManager.instance.debug_StageClear = 6;
+        PageManager.instance.debug_StageClear = 5;
 
         yield return new WaitForSeconds(2f);
 
@@ -301,8 +300,11 @@ public class HM_FoxSpoke : MonoBehaviour
         is_UI_Open = false;
 
         HM_QuestManager.instance.BookIconPopUP();
-        PageManager.instance.debug_StageClear = 7;
+        PageManager.instance.debug_StageClear = 6;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
+
+        HM_QuestManager.instance.BookIconPopUP();
+        PageManager.instance.debug_StageClear = 7;
     }
 }

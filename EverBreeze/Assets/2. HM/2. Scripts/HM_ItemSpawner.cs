@@ -13,11 +13,13 @@ public class HM_ItemSpawner : MonoBehaviour
 
     public GameObject gemStone;
     public GameObject JingleBell;
+    public GameObject Bottle;
 
     public GameObject itemSpwaner;
     bool gemPrefeb;
     bool jingle;
     bool isBranch;
+    bool isBottle;
 
     public void SpwanJemStone()
     {
@@ -40,5 +42,13 @@ public class HM_ItemSpawner : MonoBehaviour
         }
     }
 
-
+    public void SpwanBottle()
+    {
+        if(isBottle == false)
+        {
+            Bottle.transform.position = itemSpwaner.transform.position;
+            Bottle.SetActive(true);
+            isBottle = true;
+        }
+    }
 }
