@@ -7,7 +7,7 @@ using UnityEngine;
 public class SB_StopStateCheck : MonoBehaviour
 {
     public bool gatherState = false;
-    public bool stopState = false;
+    public bool stopState;
     public GameObject Player;
     Vector3 lastPos;
 
@@ -15,13 +15,38 @@ public class SB_StopStateCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+            stopState = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckChangePosition();
+
+        if(OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch) !=Vector2.zero)
+        {
+            stopState = false ;
+        }
+        if (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch) == Vector2.zero)
+        {
+            stopState = true;
+        }
+
+        if (OVRInput.GetDown(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
+        {
+            stopState = false;
+
+        }
+
+        else if (OVRInput.GetUp(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
+        {
+            stopState = true;
+
+        }
+
+
+
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,17 +69,4 @@ public class SB_StopStateCheck : MonoBehaviour
         }
     }
 
-    void CheckChangePosition()
-    {
-        if (lastPos != Player.transform.position)
-        {
-            stopState = false;
-            lastPos = Player.transform.localPosition;
-           
-        }   
-        else if(lastPos == Player.transform.position)
-        {
-            stopState = true;
-        }
-    }
 }

@@ -145,7 +145,9 @@ public class SB_ButterflyAI : MonoBehaviour
 
     void StartWaypoint()
     {
-        this.speed = 6;
+        rest = false;
+        isComingClose = true;
+        this.speed = 3;
         shader.GetComponent<Renderer>().material.SetFloat("_Speed", 5);
         waypointQueue = new Queue<Transform>();
         foreach (Transform t in initialWaypoints)
@@ -186,22 +188,24 @@ public class SB_ButterflyAI : MonoBehaviour
        
        
         this.speed = 0;
-        yield return new WaitForSeconds(5.0f);
-        if (Vector3.Distance(grabHand.transform.position, this.transform.position) < 15.0f )
-        {
-
+        rest = true;
+        yield return new WaitForSeconds(2.0f);
+    
        
         if (grabHand.GetComponent<SB_CapOpen>().isGrabOn == true && bottle.GetComponent<SB_StopStateCheck>().gatherState == true&& bottle.GetComponent<SB_StopStateCheck>().stopState == true)
         {
             print(isComingClose);
             currentWaypoint = arrive.transform;
-           
-            Rotate();
-            rest = true;
-            speed = 6;
-            isComingClose = false;
-            this.transform.position = Vector3.MoveTowards(transform.position, arrive.transform.position, 0.1f);
-           
+            if (Vector3.Distance(grabHand.transform.position, this.transform.position) < 15.0f)
+            {
+             
+                Rotate();
+                yield return new WaitForSeconds(3.0f);
+                speed = 6;
+                isComingClose = false;
+                this.transform.position = Vector3.MoveTowards(transform.position, arrive.transform.position, 0.1f);
+            }
+                yield return new WaitForSeconds(5.0f);
 
         }
 
@@ -210,15 +214,10 @@ public class SB_ButterflyAI : MonoBehaviour
             isComingClose = true;
             StartWaypoint();
         }
-        
-        yield return new WaitForSeconds(5.0f);
-       
-        rest = false;
-        this.speed += 0.01f;
-        isComingClose = true;
+    
         StartWaypoint();
         }
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {       
