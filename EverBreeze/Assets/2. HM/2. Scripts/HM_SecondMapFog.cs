@@ -36,9 +36,9 @@ public class HM_SecondMapFog : MonoBehaviour
 
     IEnumerator FogFadeIn()
     {
-        for(float a = 0; a >= 1; a += 0.01f)
+        for(float a = 0; a <= 1; a += 0.05f)
         {
-            fogmat.material.SetFloat("Fog Intensity", a);
+            fogmat.material.SetFloat("_FogIntensity", a);
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -49,7 +49,7 @@ public class HM_SecondMapFog : MonoBehaviour
 
     IEnumerator FogFadeOut()
     {
-        for (float a = 1; a <= 0; a -= 0.01f)
+        for (float a = 1; a >= 0; a -= 0.01f)
         {
             fogmat.material.SetFloat("Fog Intensity", a);
             yield return new WaitForSeconds(0.1f);
