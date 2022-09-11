@@ -20,6 +20,10 @@ public class TeleportAudioControl : MonoBehaviour
     void Update()
     {
     
+        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+        {
+            PlayerAudio.GetComponent<AudioListener>().enabled = false;
+        }
         if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
         {
             StartCoroutine(AudioOff());
@@ -27,8 +31,9 @@ public class TeleportAudioControl : MonoBehaviour
     }
     IEnumerator AudioOff()
     {
+        yield return new WaitForSeconds(1f);
+        PlayerAudio.GetComponent<AudioListener>().enabled = true;
         AudioListener.volume = 0f;
-        yield return new WaitForSeconds(0.5f);
         for (float f = 0f; f < 1f; f += 0.04f)
         {
             AudioListener.volume = f;
