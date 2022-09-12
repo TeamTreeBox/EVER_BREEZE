@@ -23,7 +23,7 @@ public class SB_GemSong : MonoBehaviour
     {
         if(FirstSong_vfx == false)
         {
-            SecondSong.GetComponent<AudioSource>().volume += Time.deltaTime * 0.1f;
+            SecondSong.GetComponent<AudioSource>().volume += Time.deltaTime * 0.3f;
             istouched = true;
         }
     }
