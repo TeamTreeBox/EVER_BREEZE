@@ -192,6 +192,7 @@ public class HM_FoxSpoke : MonoBehaviour
             yield return new WaitForSeconds(txt_Speed);
         }
 
+        JY_AudioManager.instance.debug_BGM = 2;
         HM_ItemSpawner.instance.SpwanJemStone();
 
         fox_Talk_UI.SetActive(false);
@@ -268,6 +269,7 @@ public class HM_FoxSpoke : MonoBehaviour
             yield return new WaitForSeconds(txt_Speed);
         }
 
+        JY_AudioManager.instance.debug_BGM = 3;
         fox_Talk_UI.SetActive(false);
 
         is_UI_Open = false;
@@ -289,6 +291,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
         fox_Talk_UI.SetActive(true);
 
+        JY_AudioManager.instance.debug_BGM = 4;
         for (int i = 0; i < fox_Talk_8.Length; i++)
         {
             fox_spriterender.sprite = fox_Talk_8[i];

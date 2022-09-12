@@ -82,7 +82,7 @@ public class HM_Birds : MonoBehaviour
 
        this.transform.position = Vector3.Lerp(this.transform.position,new Vector3(XRange, YRange, ZRange), speed * Time.deltaTime);
 
-
+        JY_AudioManager.instance.debug_Audio = 2;
         Destroy(this.gameObject, 10f);
     }
 

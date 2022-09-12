@@ -65,7 +65,7 @@ public class HM_QuestManager : MonoBehaviour
     {
         //Trigger_VFX.SetActive(false);
         HM_FoxSpoke.instacne.SelectNum_Talk(2);
-        JY_AudioManager.instance.debug_Audio = 2;
+        JY_AudioManager.instance.debug_Audio = 3;
         isQuest_1_Clear = true;
         //block_2.SetActive(false);
         //block_1.SetActive(true);
