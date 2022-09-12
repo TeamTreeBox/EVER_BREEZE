@@ -139,7 +139,7 @@ public class HM_FoxSpoke : MonoBehaviour
             yield return new WaitForSeconds(txt_Speed);
         }
         JY_AudioManager.instance.debug_Audio = 1;
-        JY_AudioManager.instance.debug_BGM = 1;
+        JY_AudioManager.instance.debug_BGM = 1; 
         fox_Talk_UI.SetActive(false);
 
         is_UI_Open = false;

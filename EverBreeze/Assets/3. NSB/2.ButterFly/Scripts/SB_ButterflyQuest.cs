@@ -27,6 +27,7 @@ public class SB_ButterflyQuest : MonoBehaviour
             capB.SetActive(true);
 
             isCatchAll = true;
+
         }
 
 
@@ -34,14 +35,18 @@ public class SB_ButterflyQuest : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ButterFly"  && other.GetComponent<SB_ButterflyAI>().rest == true)
+        if (other.tag == "ButterFly" && other.GetComponent<SB_ButterflyAI>().rest == true)
         {
 
             if (touchCount < Inbutterfly.Length)
             {
                 Inbutterfly[touchCount].SetActive(true);
             }
-        
+
+            if (touchCount == 2)
+            {
+                HM_QuestManager.instance.QuestTriggerIconPopUp();
+            }
 
 
         }

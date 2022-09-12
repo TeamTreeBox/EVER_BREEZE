@@ -16,8 +16,11 @@ public class HM_QuestManager : MonoBehaviour
 
     public bool isQuest2_Clearing = false;
 
+    public GameObject UICanvas;
     public GameObject bookIcon_UI;
+    public GameObject QuestTriggerUI;
     CanvasGroup bookAlpha;
+    
 
     //public GameObject block_1;
     //public GameObject block_2;
@@ -27,7 +30,7 @@ public class HM_QuestManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        bookAlpha = bookIcon_UI.GetComponent<CanvasGroup>();
+        bookAlpha = UICanvas.GetComponent<CanvasGroup>();
     }
 
 
@@ -181,6 +184,11 @@ public class HM_QuestManager : MonoBehaviour
         StartCoroutine(BookIconUIActive());
     }
 
+    public void QuestTriggerIconPopUp()
+    {
+        StartCoroutine(QuestTriggerUIActive());
+    }
+
     IEnumerator BookIconUIActive()
     {
         bookIcon_UI.SetActive(true);
@@ -209,5 +217,33 @@ public class HM_QuestManager : MonoBehaviour
 
         bookIcon_UI.SetActive(false);
 
+    }
+
+    IEnumerator QuestTriggerUIActive()
+    {
+        QuestTriggerUI.SetActive(true);
+        bookAlpha.alpha = 1;
+
+        for (float i = 1f; i > 0.5f; i -= 0.05f)
+        {
+            bookAlpha.alpha = i;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        for (float i = 0.5f; i <= 1f; i += 0.05f)
+        {
+            bookAlpha.alpha = i;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        for (float i = 1f; i >= 0f; i -= 0.05f)
+        {
+            bookAlpha.alpha = i;
+            yield return new WaitForSeconds(0.03f);
+        }
+
+        QuestTriggerUI.SetActive(false);
     }
 }

@@ -64,6 +64,8 @@ public class JY_RayGrab : MonoBehaviour
                     {
                         grabable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
 
+                        HM_QuestManager.instance.QuestTriggerIconPopUp();
+
                     }
                     else if (grabable.tag == "JingleBell")
                     {

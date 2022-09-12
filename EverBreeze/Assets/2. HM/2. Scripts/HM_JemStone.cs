@@ -43,6 +43,7 @@ public class HM_JemStone : MonoBehaviour
 
         if (touchCount >= 2)
         {
+            HM_QuestManager.instance.QuestTriggerIconPopUp();
             isTouchEnough = true;
         }
     }
