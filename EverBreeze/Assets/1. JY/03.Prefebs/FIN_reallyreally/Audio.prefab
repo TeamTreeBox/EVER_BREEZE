@@ -1219,7 +1219,7 @@ MonoBehaviour:
   quest01_BGM: {fileID: 5560947909477244166}
   quest02_BGM: {fileID: 5560947909185243734}
   quest03_BGM: {fileID: 5560947910301762895}
-  ending_BGM: {fileID: 0}
+  ending_BGM: {fileID: 5560947909745004448}
 --- !u!1 &8074912121265756568
 GameObject:
   m_ObjectHideFlags: 0
