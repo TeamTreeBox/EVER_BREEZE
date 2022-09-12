@@ -14,7 +14,8 @@ public class HM_TreeManager : MonoBehaviour
     public int[] levels = { 0, 1, 2, 3 };
     public GameObject[] trees; 
 
-    public GameObject particle;
+    public GameObject particle_1;
+    public GameObject particle_2;
     int a = 0;
 
     public void QuestEventTrigger(int num)
@@ -24,7 +25,8 @@ public class HM_TreeManager : MonoBehaviour
 
     IEnumerator ChangeTreesMat(int level)
     {
-        particle.SetActive(true);
+        particle_1.SetActive(true);
+        particle_2.SetActive(true);
         yield return new WaitForSeconds(3f);
         trees[level].SetActive(true);
 
@@ -41,7 +43,8 @@ public class HM_TreeManager : MonoBehaviour
         #endregion
 
         yield return new WaitForSeconds(3f);
-        particle.SetActive(false);
+        particle_1.SetActive(false);
+        particle_2.SetActive(false);
     }
 
 }
