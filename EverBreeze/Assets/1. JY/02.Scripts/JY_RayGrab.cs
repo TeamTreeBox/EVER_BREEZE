@@ -82,7 +82,7 @@ public class JY_RayGrab : MonoBehaviour
                     }
                     else if (grabable.tag == "Bottle")
                     {
-                        grabable.transform.localScale = new Vector3(6.0f, 6.0f, 6.0f);
+                        grabable.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
                     }
                     
                     grabable.transform.localPosition = Vector3.zero;
