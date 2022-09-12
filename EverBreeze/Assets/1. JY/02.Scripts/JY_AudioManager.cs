@@ -13,10 +13,10 @@ public class JY_AudioManager : MonoBehaviour
         instance = this;
     }
 
-    public AudioClip defaultAudio;
-    public AudioClip quest01Audio;
-    private AudioSource track01, track02;
-    public bool isPlayingTrack01;
+    //public AudioClip defaultAudio;
+    //public AudioClip quest01Audio;
+    //private AudioSource track01, track02;
+    //public bool isPlayingTrack01;
 
     public int debug_Audio = 0;
     public int debug_BGM = 0;
@@ -24,18 +24,18 @@ public class JY_AudioManager : MonoBehaviour
 
     void Start()
     {
-        track01 = gameObject.AddComponent<AudioSource>();
+        /*track01 = gameObject.AddComponent<AudioSource>();
         track01.clip = defaultAudio;
         track02 = gameObject.AddComponent<AudioSource>();
         //track02.clip = quest01Audio;
-        isPlayingTrack01 = true;
+        isPlayingTrack01 = true;*/
 
         debug_BGM = 0;
 
-        SwapTrack(defaultAudio);
+        //SwapTrack(defaultAudio);
     }
 
-    public void SwapTrack(AudioClip newClip)
+    /*public void SwapTrack(AudioClip newClip)
     {
         StopCoroutine(FadeTrack(newClip));
 
@@ -84,7 +84,7 @@ public class JY_AudioManager : MonoBehaviour
             isPlayingTrack01 = true;
         }
     }
-
+*/
 
     //디버그 버튼 클릭
     /*public void Debug_Audio()

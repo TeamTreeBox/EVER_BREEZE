@@ -8,11 +8,11 @@ public class JY_AudioSwap01 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && JY_AudioManager.instance.debug_BGM == 1)
+        /*if (other.CompareTag("Player") && JY_AudioManager.instance.debug_BGM == 1)
         {
             JY_AudioManager.instance.SwapTrack(newTrack);
             JY_AudioManager.instance.isPlayingTrack01 = true;
             JY_AudioManager.instance.debug_BGM = 0;
-        }
+        }*/
     }
 }
