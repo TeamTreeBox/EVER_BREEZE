@@ -22,6 +22,7 @@ public class HM_QuestManager : MonoBehaviour
     public GameObject UICanvas;
     public GameObject bookIcon_UI;
     public GameObject QuestTriggerUI;
+    public GameObject ChangeSkyBox;
     CanvasGroup bookAlpha;
 
     public GameObject Quest2;
@@ -164,7 +165,7 @@ public class HM_QuestManager : MonoBehaviour
         SB_MapManager.instance.ThirdChange_Spring();
         SB_MapManager.instance.ThirdChange_Main();
 
-
+        ChangeSkyBox.GetComponent<HM_SkyboxTrigger>().ChangeSkyDay();
     }
 
     private void OnTriggerEnter(Collider other)
