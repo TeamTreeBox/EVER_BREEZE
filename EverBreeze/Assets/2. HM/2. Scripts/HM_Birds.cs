@@ -74,15 +74,16 @@ public class HM_Birds : MonoBehaviour
     {
         this.transform.LookAt(new Vector3(XRange, 10, ZRange));
 
-       
+        //JY_AudioManager.instance.debug_Audio = 2;
+
         birds_anim.SetBool("IsWalk", false);
         birds_anim.SetBool("IsPlayerCome", true);
 
-       // this.transform.Translate(new Vector3(XRange, YRange, ZRange) * speed * Time.deltaTime);
+        // this.transform.Translate(new Vector3(XRange, YRange, ZRange) * speed * Time.deltaTime);
 
-       this.transform.position = Vector3.Lerp(this.transform.position,new Vector3(XRange, YRange, ZRange), speed * Time.deltaTime);
+        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(XRange, YRange, ZRange), speed * Time.deltaTime);
 
-        JY_AudioManager.instance.debug_Audio = 2;
+
         Destroy(this.gameObject, 10f);
     }
 
