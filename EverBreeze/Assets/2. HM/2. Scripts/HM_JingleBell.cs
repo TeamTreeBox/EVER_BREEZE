@@ -60,8 +60,6 @@ public class HM_JingleBell : MonoBehaviour
         print("나무가 변하게 하기");
         HM_QuestManager.instance.StartCoru(3);
 
-        Destroy(this.gameObject);
-
     }
 
 }

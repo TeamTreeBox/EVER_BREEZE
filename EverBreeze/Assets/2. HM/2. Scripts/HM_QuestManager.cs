@@ -16,11 +16,22 @@ public class HM_QuestManager : MonoBehaviour
 
     public bool isQuest2_Clearing = false;
 
+    public bool isBranchOn = false;
+    public bool isJamStoneOn = false;
+
     public GameObject UICanvas;
     public GameObject bookIcon_UI;
     public GameObject QuestTriggerUI;
     CanvasGroup bookAlpha;
-    
+
+    public GameObject Quest2;
+    public GameObject[] PlayerInventory;
+    GameObject InPlayerSlot_Item = null;
+    string tagname;
+
+    bool isCheckOnce_1_2 = false;
+    bool isCheckOnce_6_2 = false;
+
 
     //public GameObject block_1;
     //public GameObject block_2;
@@ -33,7 +44,11 @@ public class HM_QuestManager : MonoBehaviour
         bookAlpha = UICanvas.GetComponent<CanvasGroup>();
     }
 
-
+    private void Update()
+    {
+        print("isJamStone = " + isJamStoneOn);
+        print("isBranch = " + isBranchOn);
+    }
 
     public void StartCoru(int num)
     {
@@ -85,12 +100,14 @@ public class HM_QuestManager : MonoBehaviour
 
         SB_MapManager.instance.FirstChange_Spring();
         SB_MapManager.instance.FirstChange_Main();
+
+        Quest2.SetActive(true);
         //BookIconPopUP();
     }
 
     IEnumerator SecondQuestClearing()
     {
-        if (isQuest2_Clearing == true)
+        if(isBranchOn == true && isJamStoneOn == true)
         {
             HM_FoxSpoke.instacne.SelectNum_Talk(4);
 
@@ -98,12 +115,12 @@ public class HM_QuestManager : MonoBehaviour
             JY_RayGrab.instance.isGrabOn = false;
             BookIconPopUP();
         }
-        else
+        else if(isBranchOn == true || isJamStoneOn == true)
         {
-            isQuest2_Clearing = true;
             JY_RayGrab.instance.NullGrabable();
             JY_RayGrab.instance.isGrabOn = false;
         }
+
         yield return new WaitForEndOfFrame();
 
     }
@@ -158,25 +175,59 @@ public class HM_QuestManager : MonoBehaviour
             Destroy(other.gameObject.transform.GetChild(2).gameObject);
             Destroy(other.gameObject);
         }
-
+       
         else if (other.tag == "Branch" && isQuest_1_Clear == true && other.gameObject.GetComponent<JY_ItemInfo>().state == ItemState.Grab)
         {
+            isBranchOn = true;
             StartCoru(2);
             Destroy(other.gameObject);
             print("Branch");
         }
         else if(other.tag == "Bottle" && isQuest_2_Clear == true && other.gameObject.GetComponentInChildren<SB_ButterflyQuest>().isCatchAll == true)
         {
+           
             StartCoru(4);
             Destroy(other.gameObject);
             print("Bottle");
         }
-
-        if (other.tag == "Player" && isTutorial_Clear == false)
-        {
+            if (other.tag == "Player" && isTutorial_Clear == false)
+            {
             print("Æ©Åä¸®¾ó");
             StartCoroutine(Tutorial());
+            }
+            else if(other.tag == "Player" && isTutorial_Clear == true)
+            {
+            StartCoroutine(Check_Player_Invetory());
+            }
+            
+    }
+
+    IEnumerator Check_Player_Invetory()
+    {
+         for(int i = 0; i < PlayerInventory.Length; i++)
+        {
+            if(PlayerInventory[i].transform.childCount != 0)
+            {
+                //InPlayerSlot_Item = PlayerInventory[i].transform.GetChild(0).gameObject;
+                tagname = PlayerInventory[i].transform.GetChild(0).gameObject.tag;
+                print(tagname);
+            }
         }
+
+         if(tagname == "WaterBall" && isCheckOnce_1_2 == false)
+        {
+            isCheckOnce_1_2 = true;
+            print("FoxTalk_1_2");
+            HM_FoxSpoke.instacne.Fox_Talk_1_2_Func();
+        }
+         else if(tagname == "Bottle" && isCheckOnce_6_2 == false)
+        {
+            isCheckOnce_6_2 = true;
+            print("FoxTalk_6_2");
+            HM_FoxSpoke.instacne.Fox_Talk_6_2_Func();
+        }
+
+        yield return new WaitForEndOfFrame();
     }
 
     public void BookIconPopUP()

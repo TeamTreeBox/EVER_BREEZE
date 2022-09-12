@@ -17,6 +17,7 @@ public class HM_JemStone : MonoBehaviour
 
     public GameObject player;
     public GameObject JingleBell;
+    public bool isPopOn = false;
     GameObject particle;
     float dist;
 
@@ -38,16 +39,21 @@ public class HM_JemStone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
+        print(touchCount);
         dist = Vector3.Distance(player.transform.position, this.transform.position);
 
         if (touchCount >= 2)
         {
-            HM_QuestManager.instance.QuestTriggerIconPopUp();
+            if (isPopOn == false)
+            {
+                HM_QuestManager.instance.QuestTriggerIconPopUp();
+                isPopOn = true;
+            }
             isTouchEnough = true;
         }
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Right_Song" && isTouchEnough == false && isTouching == false)
@@ -56,9 +62,10 @@ public class HM_JemStone : MonoBehaviour
             StartCoroutine(ChangeEmissionValue());
             touchCount++;
         }
-        
-        if(other.gameObject.name == "QuestTrigger" && isTouchEnough == true && this.GetComponent<JY_ItemInfo>().state == ItemState.Grab)
+
+        if (other.gameObject.name == "QuestTrigger" && isTouchEnough == true && this.GetComponent<JY_ItemInfo>().state == ItemState.Grab)
         {
+            HM_QuestManager.instance.isJamStoneOn = true;
             HM_QuestManager.instance.StartCoru(2);
             Destroy(this.gameObject);
         }

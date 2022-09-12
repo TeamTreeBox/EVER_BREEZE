@@ -40,6 +40,14 @@ public class HM_FoxSpoke : MonoBehaviour
     public Sprite[] fox_Talk_8;
 
     //=================================================//
+    //================추가 대화 스프라이트===================//
+
+    [Header("추가 대화 스프라이트 배열")]
+    public Sprite[] fox_Talk_1_2;
+    public Sprite[] fox_Talk_6_2;
+    //=================================================//
+
+
     public int save_num = 0;
     public int debug_Num = 0;
     public bool is_UI_Open = false;
@@ -279,6 +287,8 @@ public class HM_FoxSpoke : MonoBehaviour
 
         is_UI_Open = false;
 
+
+        HM_ItemSpawner.instance.SpwanBottle();
         HM_QuestManager.instance.BookIconPopUP();
         PageManager.instance.debug_StageClear = 5;
 
@@ -316,5 +326,53 @@ public class HM_FoxSpoke : MonoBehaviour
 
         HM_QuestManager.instance.BookIconPopUP();
         PageManager.instance.debug_StageClear = 7;
+    }
+
+
+    //======추가 대화==========//
+
+    public void Fox_Talk_1_2_Func()
+    {
+        StartCoroutine(Fox_Talk_1_2());
+    }
+    public void Fox_Talk_6_2_Func()
+    {
+        StartCoroutine(Fox_Talk_6_2());
+    }
+
+    IEnumerator Fox_Talk_1_2()
+    {
+        fox_Talk_UI.SetActive(true);
+
+        for (int i = 0; i < fox_Talk_1_2.Length; i++)
+        {
+            fox_spriterender.sprite = fox_Talk_1_2[i];
+
+            yield return new WaitForSeconds(txt_Speed);
+        }
+
+        fox_Talk_UI.SetActive(false);
+
+        is_UI_Open = false;
+
+        yield return new WaitForSeconds(1f);
+    }
+
+    IEnumerator Fox_Talk_6_2()
+    {
+        fox_Talk_UI.SetActive(true);
+
+        for (int i = 0; i < fox_Talk_6_2.Length; i++)
+        {
+            fox_spriterender.sprite = fox_Talk_6_2[i];
+
+            yield return new WaitForSeconds(txt_Speed);
+        }
+
+        fox_Talk_UI.SetActive(false);
+
+        is_UI_Open = false;
+
+        yield return new WaitForSeconds(1f);
     }
 }

@@ -132,7 +132,8 @@ public class JY_RayGrab : MonoBehaviour
             grabable.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
         }
         isGrabOn = false;
-        grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Field;
+        //grabable.GetComponentInChildren<JY_ItemInfo>().state = ItemState.Field;
+        grabable.GetComponent<JY_ItemInfo>().state = ItemState.Field;
 
         grabable.GetComponent<Rigidbody>().useGravity = true;
 
