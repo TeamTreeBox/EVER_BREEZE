@@ -15,7 +15,6 @@ public class HM_JemStone : MonoBehaviour
 
     Color color;
 
-    public GameObject player;
     public GameObject JingleBell;
     public bool isPopOn = false;
     GameObject particle;
@@ -28,7 +27,6 @@ public class HM_JemStone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         particle = this.transform.GetChild(0).gameObject;
         meshRenderer = GetComponent<MeshRenderer>();
         mat = meshRenderer.material;
@@ -41,7 +39,6 @@ public class HM_JemStone : MonoBehaviour
     {
 
         print(touchCount);
-        dist = Vector3.Distance(player.transform.position, this.transform.position);
 
         if (touchCount >= 2)
         {

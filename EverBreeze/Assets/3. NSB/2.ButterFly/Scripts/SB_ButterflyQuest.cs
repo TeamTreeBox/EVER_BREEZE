@@ -21,6 +21,7 @@ public class SB_ButterflyQuest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print("나비 터치카운트 : "+touchCount);
            if (touchCount == 3)
         {
             capA.SetActive(false);
