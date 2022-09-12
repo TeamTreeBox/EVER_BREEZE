@@ -16,14 +16,14 @@ public class HM_WaterQuest : MonoBehaviour
 
     bool iscris_blowup = false;
     public float speed = 2f;
-
+    Rigidbody rigi;
     // Start is called before the first frame update
     void Start()
     {
         inSideWater.SetActive(false);
         inSideWater.SetActive(true);
 
-        Rigidbody rigi = cristal.GetComponent<Rigidbody>();
+        // rigi = cristal.GetComponent<Rigidbody>();
         
 
         rigi.useGravity = false;
@@ -36,6 +36,16 @@ public class HM_WaterQuest : MonoBehaviour
 
         if(cristal_Dis < 1f)
         {
+            this.gameObject.layer = 1 << 6;
+            iscris_blowup = true;
+
+            this.gameObject.AddComponent<Rigidbody>();
+
+            rigi = this.gameObject.GetComponent<Rigidbody>();
+
+            rigi.useGravity = false;
+            //rigi.constraints = RigidbodyConstraints.FreezeAll;
+
             StopAllCoroutines();
         }
     }
@@ -54,21 +64,7 @@ public class HM_WaterQuest : MonoBehaviour
             cristal.transform.position = Vector3.Lerp(cristal.transform.position, cristal_pos.transform.position, Time.deltaTime * speed);
 
             yield return new WaitForSeconds(0.1f);
-
-            cristal.AddComponent<Rigidbody>();
-
-            
-            //rigi.isKinematic = true;
-
-            if (cristal_Dis < 0.55f)
-            {
-                this.gameObject.layer = 1 << 6;
-                iscris_blowup = true;
-                StopAllCoroutines();
-            }
         }
-
-       
     }
 
     public void SizeChangeWaterVFX()
