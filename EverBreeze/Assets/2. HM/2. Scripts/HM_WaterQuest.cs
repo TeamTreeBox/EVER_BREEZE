@@ -5,7 +5,6 @@ using UnityEditor;
 
 public class HM_WaterQuest : MonoBehaviour
 {
-    public GameObject player;
     public GameObject cristal;
     public GameObject cristal_pos;
 
@@ -24,10 +23,10 @@ public class HM_WaterQuest : MonoBehaviour
         inSideWater.SetActive(false);
         inSideWater.SetActive(true);
 
-        //Rigidbody rigi = cristal.GetComponent<Rigidbody>();
-        //rigi.constraints = RigidbodyConstraints.FreezePosition;
+        Rigidbody rigi = cristal.GetComponent<Rigidbody>();
+        
 
-        //rigi.useGravity = false;
+        rigi.useGravity = false;
     }
 
     // Update is called once per frame
