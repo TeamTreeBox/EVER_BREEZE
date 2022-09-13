@@ -8,8 +8,9 @@ public class HM_QuestManager : MonoBehaviour
 {
     public static HM_QuestManager instance;
 
+    
     public GameObject Trigger_VFX;
-
+   [SerializeField]
     public bool isTutorial_Clear = false;
     public bool isQuest_1_Clear = false;
     public bool isQuest_2_Clear = false;
