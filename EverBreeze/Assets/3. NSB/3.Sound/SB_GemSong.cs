@@ -45,6 +45,7 @@ public class SB_GemSong : MonoBehaviour
             SecondSong_vfx.SetActive(false);
             SecondJam_vfx.SetActive(true);
             Destroy(this.gameObject, 1f);
+            RenderSettings.fog = false;
         }
     }
 

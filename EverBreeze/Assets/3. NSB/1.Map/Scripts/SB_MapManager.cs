@@ -152,10 +152,10 @@ public class SB_MapManager : MonoBehaviour
     IEnumerator MainSecondChange()
 
     {
-        MainFlower.SetActive(true);
+       
         MainCenterSpringGround.SetActive(true);
         MainSpringTree.SetActive(true);
-
+        MainGrass.SetActive(true);
         MainCenterWinterGround.SetActive(false);
         MainWinterTree.SetActive(false);
         yield return new WaitForEndOfFrame();
@@ -164,7 +164,7 @@ public class SB_MapManager : MonoBehaviour
     IEnumerator MainThirdChange()
 
     {
-        MainGrass.SetActive(true);
+        MainFlower.SetActive(true);
         yield return new WaitForEndOfFrame();
     }
 }

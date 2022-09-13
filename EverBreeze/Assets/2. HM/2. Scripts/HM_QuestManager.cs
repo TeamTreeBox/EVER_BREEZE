@@ -1,3 +1,4 @@
+using GlobalSnowEffect;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class HM_QuestManager : MonoBehaviour
     public bool isQuest_1_Clear = false;
     public bool isQuest_2_Clear = false;
     public bool isQuest_3_Clear = false;
-
+    
     public bool isQuest2_Clearing = false;
 
     public bool isBranchOn = false;
@@ -25,6 +26,8 @@ public class HM_QuestManager : MonoBehaviour
     public GameObject ChangeSkyBox;
     public GameObject PlayerParticle;
     CanvasGroup bookAlpha;
+    public GameObject Snow;
+    public GameObject SnowParticle;
 
     public GameObject Quest2;
     public GameObject[] PlayerInventory;
@@ -48,8 +51,8 @@ public class HM_QuestManager : MonoBehaviour
 
     private void Update()
     {
-        print("isJamStone = " + isJamStoneOn);
-        print("isBranch = " + isBranchOn);
+        //print("isJamStone = " + isJamStoneOn);
+        //print("isBranch = " + isBranchOn);
     }
 
     public void StartCoru(int num)
@@ -76,6 +79,7 @@ public class HM_QuestManager : MonoBehaviour
         //Trigger_VFX.SetActive(false);
         HM_FoxSpoke.instacne.SelectNum_Talk(0);
         isTutorial_Clear = true;
+        Snow.GetComponent<GlobalSnow>().enabled = true;
         yield return new WaitForSeconds(1f);
         //Trigger_VFX.SetActive(true);
 
@@ -90,7 +94,7 @@ public class HM_QuestManager : MonoBehaviour
         //block_2.SetActive(false);
         //block_1.SetActive(true);
         HM_TreeManager.instance.QuestEventTrigger(1);
-
+        
 
         JY_RayGrab.instance.NullGrabable();
         JY_RayGrab.instance.isGrabOn = false;
@@ -103,13 +107,16 @@ public class HM_QuestManager : MonoBehaviour
         PlayerParticle.SetActive(true);
         SB_MapManager.instance.FirstChange_Spring();
         SB_MapManager.instance.FirstChange_Main();
-
+        Snow.GetComponent<GlobalSnow>().enabled = false;
+        SnowParticle.SetActive(false);
+        GameObject.Find("");
         Quest2.SetActive(true);
-
+       
         yield return new WaitForSeconds(2f);
         PlayerParticle.SetActive(false);
         //BookIconPopUP();
     }
+   
 
     IEnumerator SecondQuestClearing()
     {
@@ -160,7 +167,6 @@ public class HM_QuestManager : MonoBehaviour
     {
 
         isQuest_3_Clear = true;
-
         HM_FoxSpoke.instacne.SelectNum_Talk(7);
         HM_TreeManager.instance.QuestEventTrigger(3);
 
