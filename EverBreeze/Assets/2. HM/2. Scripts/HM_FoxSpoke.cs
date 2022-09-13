@@ -109,6 +109,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_1()
     {
+        //봄을 되찾는 거 도와 줄 거죠? - TUTORIAL
         Trigger_Vfx.SetActive(false);
 
         yield return new WaitForSeconds(3f);
@@ -136,6 +137,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_2()
     {
+        //샘의 물 - Quest01 Start
         //yield return new WaitForSeconds(5f);
 
         fox_Talk_UI.SetActive(true);
@@ -162,7 +164,9 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_3()
     {
+        //나무에게서 조금 생기가 느껴져 - Qust01 Clear
         Trigger_Vfx.SetActive(false);
+        JY_Audio.instance.Audio_Tree01();
 
         yield return new WaitForSeconds(1f);
 
@@ -189,6 +193,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_4()
     {
+        //나뭇가지 챙겨서 숲으로 - Quest02 Start
         yield return new WaitForSeconds(1.5f);
 
         fox_Talk_UI.SetActive(true);
@@ -220,6 +225,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_5()
     {
+        //이 종을 받아주세요 - Quest02 Bell
         Trigger_Vfx.SetActive(false);
 
         yield return new WaitForSeconds(1.5f);
@@ -242,6 +248,8 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_6()
     {
+        JY_Audio.instance.Audio_Tree02();
+        //이제 곧 완전한 봄 - Quest02 Clear
         yield return new WaitForSeconds(1.5f);
 
         fox_Talk_UI.SetActive(true);
@@ -269,6 +277,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_7()
     {
+        //고대의 나비 - Quest03 Start
         yield return new WaitForSeconds(1.5f);
 
         fox_Talk_UI.SetActive(true);
@@ -279,6 +288,7 @@ public class HM_FoxSpoke : MonoBehaviour
 
             yield return new WaitForSeconds(txt_Speed);
         }
+
         //오디오
         JY_AudioManager.instance.debug_BGM = 3;
         JY_AudioManager.instance.debug_Audio = 5;
@@ -300,13 +310,15 @@ public class HM_FoxSpoke : MonoBehaviour
 
     IEnumerator Fox_Talk_8()
     {
+        JY_Audio.instance.Audio_Tree03();
+
+        //더이상 겨울은 없을 거예요 - Ending
         Trigger_Vfx.SetActive(false);
 
         yield return new WaitForSeconds(1.5f);
 
         fox_Talk_UI.SetActive(true);
 
-        JY_AudioManager.instance.debug_BGM = 4;
 
         for (int i = 0; i < fox_Talk_8.Length; i++)
         {
@@ -315,6 +327,7 @@ public class HM_FoxSpoke : MonoBehaviour
             yield return new WaitForSeconds(txt_Speed);
         }
 
+        JY_AudioManager.instance.debug_BGM = 4;
         fox_Talk_UI.SetActive(false);
 
         is_UI_Open = false;

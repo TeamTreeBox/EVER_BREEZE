@@ -10,6 +10,8 @@ public class HM_Birds : MonoBehaviour
     Animator birds_anim;
     NavMeshAgent birds_Ai;
 
+    private AudioSource birdsFlySound;
+
     public float distance;
     public float aiDis;
 
@@ -36,10 +38,10 @@ public class HM_Birds : MonoBehaviour
 
         a = Random.Range(0, birdsMove.Length);
 
-      
+        birdsFlySound = this.gameObject.GetComponent<AudioSource>();
+        birdsFlySound.Pause();
 
         co_idle = StartCoroutine(IsIdle());
-
     }
 
     // Update is called once per frame
@@ -74,15 +76,15 @@ public class HM_Birds : MonoBehaviour
     {
         this.transform.LookAt(new Vector3(XRange, 10, ZRange));
 
-        //JY_AudioManager.instance.debug_Audio = 2;
-
         birds_anim.SetBool("IsWalk", false);
         birds_anim.SetBool("IsPlayerCome", true);
 
         // this.transform.Translate(new Vector3(XRange, YRange, ZRange) * speed * Time.deltaTime);
 
-        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(XRange, YRange, ZRange), speed * Time.deltaTime);
+        JY_AudioManager.instance.debug_Audio = 2;
+        birdsFlySound.Play();
 
+        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(XRange, YRange, ZRange), speed * Time.deltaTime);
 
         Destroy(this.gameObject, 10f);
     }
@@ -125,4 +127,30 @@ public class HM_Birds : MonoBehaviour
         StartCoroutine(IsIdle());
     }
 
+    public static IEnumerator StartFadeIn(AudioSource audioSource, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float start = 1.0f;
+        //  audioSource.loop = true;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
+    }
+
+    public static IEnumerator StartFadeOut(AudioSource audioSource, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float start = 0.2f;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
+    }
 }
