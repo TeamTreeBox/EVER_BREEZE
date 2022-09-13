@@ -7,11 +7,18 @@ public class JY_IntroUI : MonoBehaviour
 {
     public GameObject menuUI;
     public GameObject optionUI;
+    public GameObject SystemMgr;
+
+    AsyncOperation op;
+    float time;
+
+    bool goNextScene = false;
 
     private void Start()
     {
         menuUI.SetActive(true);
         optionUI.SetActive(false);
+
     }
 
     //종료버튼
@@ -25,7 +32,7 @@ public class JY_IntroUI : MonoBehaviour
     public void OnClickNewGame()
     {
         print("OnClickNewGame");
-        SceneManager.LoadScene(0);
+        SystemMgr.GetComponent<HM_GameSystemMgr>().LoadScnenFunc();
         Time.timeScale = 1;
     }
 
@@ -44,4 +51,6 @@ public class JY_IntroUI : MonoBehaviour
         menuUI.SetActive(true);
         optionUI.SetActive(false);
     }
+
+    
 }
