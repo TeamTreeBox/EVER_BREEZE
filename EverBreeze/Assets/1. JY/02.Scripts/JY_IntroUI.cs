@@ -52,5 +52,10 @@ public class JY_IntroUI : MonoBehaviour
         optionUI.SetActive(false);
     }
 
-    
+    //타이틀버튼
+    public void OnClickTitle()
+    {
+        print("OnClickQuit");
+        SceneManager.LoadScene(0);
+    }
 }
