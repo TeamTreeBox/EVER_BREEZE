@@ -14,12 +14,6 @@ public class HM_GameSystemMgr : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void LoadScnenFunc()
     {
        SceneManager.LoadScene(1);
@@ -28,9 +22,9 @@ public class HM_GameSystemMgr : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        yield return null;
-
+        yield return new WaitForSeconds(1f);
         AsyncOperation op = SceneManager.LoadSceneAsync(2);
+        op.allowSceneActivation = false;
 
         while (!op.isDone)
         {

@@ -9,11 +9,19 @@ public class HM_JingleBell : MonoBehaviour
 
      GameObject tree;
 
+    public GameObject firstTouch;
+    public GameObject secondTouch;
+    AudioSource first;
+    AudioSource Second;
+
     float distance;
 
     private void Start()
     {
         tree = GameObject.FindGameObjectWithTag("Tree");
+
+        first = firstTouch.GetComponent<AudioSource>();
+        Second = secondTouch.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,11 +35,11 @@ public class HM_JingleBell : MonoBehaviour
     {
         if(distance < 20f)
         {
-            if (other.gameObject.name == "First_Touch")
+            if (other.gameObject.name == "First_Touch" && isJingleTouch == false)
             {
                 FirstTouch();
             }
-            else if (other.gameObject.name == "Second_Touch")
+            else if (other.gameObject.name == "Second_Touch" && isJingleTouch == true)
             {
                 SecondTouch();
                 if (jingleShake >= 3)
@@ -46,6 +54,9 @@ public class HM_JingleBell : MonoBehaviour
     void FirstTouch()
     {
         isJingleTouch = true;
+        first.Play();
+        print("종 1");
+
     }
 
     void SecondTouch()
@@ -53,6 +64,8 @@ public class HM_JingleBell : MonoBehaviour
         jingleShake += 1;
         isJingleTouch = false;
         print("벨 한번 휘두름");
+        Second.Play();
+        print("종 2");
     }
 
     void ThirdShake()
