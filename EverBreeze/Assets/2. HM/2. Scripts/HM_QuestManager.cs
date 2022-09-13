@@ -23,6 +23,7 @@ public class HM_QuestManager : MonoBehaviour
     public GameObject bookIcon_UI;
     public GameObject QuestTriggerUI;
     public GameObject ChangeSkyBox;
+    public GameObject PlayerParticle;
     CanvasGroup bookAlpha;
 
     public GameObject Quest2;
@@ -99,10 +100,14 @@ public class HM_QuestManager : MonoBehaviour
         yield return new WaitForSeconds(9f);
         //Trigger_VFX.SetActive(true);
 
+        PlayerParticle.SetActive(true);
         SB_MapManager.instance.FirstChange_Spring();
         SB_MapManager.instance.FirstChange_Main();
 
         Quest2.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+        PlayerParticle.SetActive(false);
         //BookIconPopUP();
     }
 
@@ -142,9 +147,12 @@ public class HM_QuestManager : MonoBehaviour
         yield return new WaitForSeconds(9f);
         //Trigger_VFX.SetActive(true);
 
+        PlayerParticle.SetActive(true);
         SB_MapManager.instance.SecondChange_Spring();
         SB_MapManager.instance.SecondChange_Main();
 
+        yield return new WaitForSeconds(2f);
+        PlayerParticle.SetActive(false);
         //BookIconPopUP();
     }
 
@@ -162,10 +170,14 @@ public class HM_QuestManager : MonoBehaviour
         HM_FoxAI.instane.QuestComplete();
 
         yield return new WaitForSeconds(1f);
+        PlayerParticle.SetActive(true);
         SB_MapManager.instance.ThirdChange_Spring();
         SB_MapManager.instance.ThirdChange_Main();
 
         ChangeSkyBox.GetComponent<HM_SkyboxTrigger>().ChangeSkyDay();
+
+        yield return new WaitForSeconds(2f);
+        PlayerParticle.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)

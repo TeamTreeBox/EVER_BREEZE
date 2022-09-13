@@ -19,7 +19,7 @@ public class JY_RayGrab : MonoBehaviour
     public GameObject hitThing;
 
     public bool isGrabOn = false;
-
+    bool isWaterTriggerOnce = false;
     //public GameObject waterFactory;
 
     // Start is called before the first frame update
@@ -64,7 +64,11 @@ public class JY_RayGrab : MonoBehaviour
                     {
                         grabable.GetComponent<HM_WaterQuest>().SizeChangeWaterVFX();
 
+                        if(isWaterTriggerOnce == false)
+                        {
+                            isWaterTriggerOnce = true;
                         HM_QuestManager.instance.QuestTriggerIconPopUp();
+                        }
 
                     }
                     else if (grabable.tag == "JingleBell")
