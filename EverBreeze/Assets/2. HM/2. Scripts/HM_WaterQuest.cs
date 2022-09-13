@@ -23,10 +23,6 @@ public class HM_WaterQuest : MonoBehaviour
         inSideWater.SetActive(false);
         inSideWater.SetActive(true);
 
-        // rigi = cristal.GetComponent<Rigidbody>();
-        
-
-        rigi.useGravity = false;
     }
 
     // Update is called once per frame
@@ -41,9 +37,9 @@ public class HM_WaterQuest : MonoBehaviour
 
             this.gameObject.AddComponent<Rigidbody>();
 
-            rigi = this.gameObject.GetComponent<Rigidbody>();
+            //rigi = this.gameObject.GetComponent<Rigidbody>();
 
-            rigi.useGravity = false;
+            //rigi.useGravity = false;
             //rigi.constraints = RigidbodyConstraints.FreezeAll;
 
             StopAllCoroutines();
