@@ -27,6 +27,12 @@ public class HM_QuestManager : MonoBehaviour
     public GameObject PlayerParticle;
     CanvasGroup bookAlpha;
 
+    public GameObject Snow;
+
+    public GameObject Stage1_Collidor;
+    public GameObject Stage2_Collidor;
+    public GameObject Stage3_Collidor;
+
     public GameObject Quest2;
     public GameObject[] PlayerInventory;
     GameObject InPlayerSlot_Item = null;
@@ -45,6 +51,8 @@ public class HM_QuestManager : MonoBehaviour
     {
         instance = this;
         bookAlpha = UICanvas.GetComponent<CanvasGroup>();
+        Snow.SetActive(true);
+       
     }
 
     private void Update()
@@ -80,6 +88,7 @@ public class HM_QuestManager : MonoBehaviour
       
         yield return new WaitForSeconds(1f);
         //Trigger_VFX.SetActive(true);
+        Stage1_Collidor.SetActive(false);
 
     }
 
@@ -108,7 +117,9 @@ public class HM_QuestManager : MonoBehaviour
       
         GameObject.Find("");
         Quest2.SetActive(true);
-       
+        Snow.SetActive(false);
+        Stage2_Collidor.SetActive(false);
+        Stage1_Collidor.SetActive(true);
         yield return new WaitForSeconds(2f);
         PlayerParticle.SetActive(false);
         //BookIconPopUP();
@@ -154,7 +165,8 @@ public class HM_QuestManager : MonoBehaviour
         PlayerParticle.SetActive(true);
         SB_MapManager.instance.SecondChange_Spring();
         SB_MapManager.instance.SecondChange_Main();
-
+        Stage3_Collidor.SetActive(false);
+        Stage2_Collidor.SetActive(true);
         yield return new WaitForSeconds(2f);
         PlayerParticle.SetActive(false);
         //BookIconPopUP();
@@ -178,7 +190,7 @@ public class HM_QuestManager : MonoBehaviour
         SB_MapManager.instance.ThirdChange_Main();
 
         ChangeSkyBox.GetComponent<HM_SkyboxTrigger>().ChangeSkyDay();
-
+        Stage3_Collidor.SetActive(true);
         yield return new WaitForSeconds(2f);
         PlayerParticle.SetActive(false);
     }

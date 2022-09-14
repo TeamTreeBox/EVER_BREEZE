@@ -225,6 +225,7 @@ public class SB_ButterflyAI : MonoBehaviour
             {
                 if (other.tag == "Bottle")
                 {
+                    
                     this.gameObject.SetActive(false);
                     other.gameObject.GetComponent<SB_ButterflyQuest>().touchCount++;
                     

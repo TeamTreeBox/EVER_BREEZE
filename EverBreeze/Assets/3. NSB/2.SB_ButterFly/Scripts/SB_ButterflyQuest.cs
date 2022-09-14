@@ -10,12 +10,14 @@ public class SB_ButterflyQuest : MonoBehaviour
     public int touchCount=0;
     public GameObject capA;
     public GameObject capB;
+    public GameObject GateStone;
 
     public bool isCatchAll = false;
     // Start is called before the first frame update
     void Start()
     {
         capB.SetActive(false);
+        GateStone.SetActive(true);
     }
 
     // Update is called once per frame
@@ -28,6 +30,8 @@ public class SB_ButterflyQuest : MonoBehaviour
             capB.SetActive(true);
 
             isCatchAll = true;
+
+            GateStone.SetActive(false);
 
         }
 
@@ -42,6 +46,7 @@ public class SB_ButterflyQuest : MonoBehaviour
             if (touchCount < Inbutterfly.Length)
             {
                 Inbutterfly[touchCount].SetActive(true);
+                JY_ItemDebug.instance.debug_BottleItem = touchCount;
             }
 
             if (touchCount == 2)
