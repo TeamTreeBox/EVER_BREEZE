@@ -87,7 +87,7 @@ public class JY_Slot1 : MonoBehaviour
         }
         else if (obj.tag == "Bottle")
         {
-            obj.transform.localScale = new Vector3(5.0f, 5.0f, 5.0f);
+            obj.transform.localScale = new Vector3(10.0f, 10.0f, 10.0f);
         }
 
         obj.GetComponent<Item>().inSlot = true;
