@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/1. JY/01.Scenes/JY_Title.unity
     guid: a6bfe83ab842e7b4e8bbd091641f3c67
   - enabled: 1
-    path: Assets/2. HM/1. Scene/HM_Loading.unity
-    guid: d6d0cb9ff3a7ddc468c745c118da0055
+    path: Assets/1. JY/01.Scenes/KJY_Loading.unity
+    guid: c9d298afa0f91ac4da2c6382e75f3f9a
   - enabled: 1
-    path: Assets/0. Team/MapFinial.unity
+    path: Assets/0. Team/MapFinal.unity
     guid: dba60794644de5345aa582580d265c54
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 86e7e9779c042ed4db47995686b26efa, type: 2}

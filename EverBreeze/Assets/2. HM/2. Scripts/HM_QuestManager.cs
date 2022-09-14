@@ -27,8 +27,6 @@ public class HM_QuestManager : MonoBehaviour
     public GameObject ChangeSkyBox;
     public GameObject PlayerParticle;
     CanvasGroup bookAlpha;
-    public GameObject Snow;
-    public GameObject SnowParticle;
 
     public GameObject Quest2;
     public GameObject[] PlayerInventory;
@@ -80,7 +78,7 @@ public class HM_QuestManager : MonoBehaviour
         //Trigger_VFX.SetActive(false);
         HM_FoxSpoke.instacne.SelectNum_Talk(0);
         isTutorial_Clear = true;
-        Snow.GetComponent<GlobalSnow>().enabled = true;
+      
         yield return new WaitForSeconds(1f);
         //Trigger_VFX.SetActive(true);
 
@@ -108,8 +106,7 @@ public class HM_QuestManager : MonoBehaviour
         PlayerParticle.SetActive(true);
         SB_MapManager.instance.FirstChange_Spring();
         SB_MapManager.instance.FirstChange_Main();
-        Snow.GetComponent<GlobalSnow>().enabled = false;
-        SnowParticle.SetActive(false);
+      
         GameObject.Find("");
         Quest2.SetActive(true);
        
