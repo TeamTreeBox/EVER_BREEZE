@@ -32,7 +32,7 @@ public class JY_IntroUI : MonoBehaviour
     public void OnClickNewGame()
     {
         print("OnClickNewGame");
-        SystemMgr.GetComponent<HM_GameSystemMgr>().LoadScnenFunc();
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
 

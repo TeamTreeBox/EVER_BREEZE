@@ -25,6 +25,8 @@ public class HM_QuestManager : MonoBehaviour
     public GameObject QuestTriggerUI;
     public GameObject ChangeSkyBox;
     public GameObject PlayerParticle;
+    public GameObject PlayerCam_Quad;
+    public GameObject GoOutro;
     CanvasGroup bookAlpha;
 
     public GameObject Snow;
@@ -112,6 +114,7 @@ public class HM_QuestManager : MonoBehaviour
         //Trigger_VFX.SetActive(true);
 
         PlayerParticle.SetActive(true);
+        PlayerCam_Quad.GetComponent<HM_PlayerCameraFadeout>().StartFadeIn();
         SB_MapManager.instance.FirstChange_Spring();
         SB_MapManager.instance.FirstChange_Main();
       
@@ -163,6 +166,7 @@ public class HM_QuestManager : MonoBehaviour
         //Trigger_VFX.SetActive(true);
 
         PlayerParticle.SetActive(true);
+        PlayerCam_Quad.GetComponent<HM_PlayerCameraFadeout>().StartFadeIn();
         SB_MapManager.instance.SecondChange_Spring();
         SB_MapManager.instance.SecondChange_Main();
         Stage3_Collidor.SetActive(false);
@@ -186,6 +190,7 @@ public class HM_QuestManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         PlayerParticle.SetActive(true);
+        PlayerCam_Quad.GetComponent<HM_PlayerCameraFadeout>().StartFadeIn();
         SB_MapManager.instance.ThirdChange_Spring();
         SB_MapManager.instance.ThirdChange_Main();
 
@@ -193,6 +198,8 @@ public class HM_QuestManager : MonoBehaviour
         Stage3_Collidor.SetActive(true);
         yield return new WaitForSeconds(2f);
         PlayerParticle.SetActive(false);
+
+        GoOutro.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)

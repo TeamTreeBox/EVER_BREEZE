@@ -13,6 +13,7 @@ public class HM_PlayerCameraFadeout : MonoBehaviour
     void Start()
     {
         render = Quad.GetComponent<MeshRenderer>();
+
     }
 
     // Update is called once per frame
