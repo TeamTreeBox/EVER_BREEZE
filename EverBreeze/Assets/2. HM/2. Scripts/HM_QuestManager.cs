@@ -110,7 +110,7 @@ public class HM_QuestManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         HM_FoxAI.instane.QuestComplete();
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(15f);
         //Trigger_VFX.SetActive(true);
 
         PlayerParticle.SetActive(true);
@@ -162,7 +162,7 @@ public class HM_QuestManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         HM_FoxAI.instane.QuestComplete();
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(15f);
         //Trigger_VFX.SetActive(true);
 
         PlayerParticle.SetActive(true);
@@ -188,7 +188,7 @@ public class HM_QuestManager : MonoBehaviour
 
         HM_FoxAI.instane.QuestComplete();
 
-        yield return new WaitForSeconds(11f);
+        yield return new WaitForSeconds(15f);
         PlayerParticle.SetActive(true);
         PlayerCam_Quad.GetComponent<HM_PlayerCameraFadeout>().StartFadeIn();
         SB_MapManager.instance.ThirdChange_Spring();
