@@ -72,6 +72,7 @@ public class PageChange : MonoBehaviour
         }
         if (PageManager.instance.debug_StageClear == 3)
         {   // => 퀘스트 2 시작할 때
+            page01.SetActive(false);
             page03.SetActive(false);//null page
             page04.SetActive(false);
             page05.SetActive(true);
@@ -80,11 +81,17 @@ public class PageChange : MonoBehaviour
         //Page0910
         if (PageManager.instance.debug_StageClear == 4)
         {   // => 퀘스트 2 끝날 때
+            page01.SetActive(false);
+            page03.SetActive(false);//null page
+            page04.SetActive(false);
             page06.SetActive(false);//null page
             page07.SetActive(true);
         }
         if (PageManager.instance.debug_StageClear == 5)
         {   // => 퀘스트 3 시작할 때
+            page01.SetActive(false);
+            page03.SetActive(false);//null page
+            page04.SetActive(false);
             page06.SetActive(false);//null page
             page07.SetActive(false);
             page08.SetActive(true);
@@ -93,12 +100,22 @@ public class PageChange : MonoBehaviour
         //Page1112
         if (PageManager.instance.debug_StageClear == 6)
         {   // => 퀘스트 3 끝날 때
+            page01.SetActive(false);
+            page03.SetActive(false);//null page
+            page04.SetActive(false);
+            page06.SetActive(false);//null page
+            page07.SetActive(false);
             page09.SetActive(false);//null page
             page10.SetActive(true);
         }
         //Ending page
         if (PageManager.instance.debug_StageClear == 7)
         {   // 엔딩
+            page01.SetActive(false);
+            page03.SetActive(false);//null page
+            page04.SetActive(false);
+            page06.SetActive(false);//null page
+            page07.SetActive(false);
             page09.SetActive(false);//null page
             page10.SetActive(false);
             page11.SetActive(true);//Ending page

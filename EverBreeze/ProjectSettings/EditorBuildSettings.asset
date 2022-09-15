@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0. Team/MapFinial.unity
     guid: 14ec19296eb0e974db4439391b267922
+  - enabled: 1
+    path: Assets/1. JY/01.Scenes/JY_Outro.unity
+    guid: f8801fdee1d0fa54ca65ab4d070bea69
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 86e7e9779c042ed4db47995686b26efa, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9bac0619228665e4f81b124d96d99ddc, type: 2}

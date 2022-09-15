@@ -123,7 +123,7 @@ public class HM_QuestManager : MonoBehaviour
         Snow.SetActive(false);
         Stage2_Collidor.SetActive(false);
         Stage1_Collidor.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         PlayerParticle.SetActive(false);
         //BookIconPopUP();
     }
@@ -188,7 +188,7 @@ public class HM_QuestManager : MonoBehaviour
 
         HM_FoxAI.instane.QuestComplete();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(11f);
         PlayerParticle.SetActive(true);
         PlayerCam_Quad.GetComponent<HM_PlayerCameraFadeout>().StartFadeIn();
         SB_MapManager.instance.ThirdChange_Spring();
@@ -218,7 +218,7 @@ public class HM_QuestManager : MonoBehaviour
             Destroy(other.gameObject);
             print("Branch");
         }
-        else if(other.tag == "Bottle" && isQuest_2_Clear == true && other.gameObject.GetComponentInChildren<SB_ButterflyQuest>().isCatchAll == true)
+        else if(other.tag == "Bottle" && isQuest_2_Clear == true && other.gameObject.GetComponentInChildren<SB_ButterflyQuest>().isCatchAll == true && other.gameObject.GetComponent<JY_ItemInfo>().state == ItemState.Grab)
         {
            
             StartCoru(4);
