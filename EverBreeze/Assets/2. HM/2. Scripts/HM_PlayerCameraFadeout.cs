@@ -35,7 +35,7 @@ public class HM_PlayerCameraFadeout : MonoBehaviour
         {
             C.a = i;
             render.material.color = C;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         C.a = 0;
@@ -50,7 +50,7 @@ public class HM_PlayerCameraFadeout : MonoBehaviour
         {
             C.a = i;
             render.material.color = C;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         C.a = 1;
