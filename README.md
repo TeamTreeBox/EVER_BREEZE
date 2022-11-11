@@ -18,7 +18,7 @@ __Seungbin Nam__ | `Map Developer / Game System`
 ---
   
  
-## 🕹 If You want download this Project
+## 🕹 If You want to download this Project
 
 #### Please download the files below
 
